@@ -1,0 +1,100 @@
+<div id="activity" class="tab-pane fade activity">
+            <div class="row">
+                <div class="col-sm-1 col-lg-10" >
+                    <h3>Recent Transactions</h3>
+                    <div class="row rt">
+                        <div class="col-sm-2">
+                            <h4>Date</h4>
+                        </div>
+                        <div class="col-sm-2 text-center">
+                            <h4>Merchant</h4>
+                        </div>
+                        <div class="col-sm-1">
+                            <h4>Amount</h4>
+                        </div>
+                        <div class="col-sm-2 text-center">
+                            <h4>Status</h4>
+                        </div>
+                       
+                        <div class="col-sm-2">
+                            <h4># Ref.ID</h4>
+                        </div>
+                    </div>
+
+                    <div class="row rt1" th:each="trans:${transaction}" th:if="${trans.orderStatus=='SUCCESS'}">
+                        <div class="col-sm-2" th:text="${#dates.format(trans.createdDate,'dd/MM/yyyy')}">
+                           
+                        </div> 
+                        <div class="col-sm-2 text-center" th:text="${trans.merchant.merchantName}">
+                            fsdasdf
+                        </div>
+                        <div class="col-sm-1" th:text="${trans.amount}">
+                            fsdasdf
+                        </div>
+                        <div class="col-sm-2 text-center" th:text="${trans.orderStatus}">
+                            fsdasdf
+                        </div>
+                      
+                        <div class="col-sm-2">
+                            fsdasdf
+                        </div>
+                    </div>
+                    <h3>Clicks History</h3>
+                    <div class="row ch" >
+                        <div class="col-sm-3">
+                            <h4>Date</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4>Merchant</h4>
+                        </div>
+                        <div class="col-sm-3" >
+                            <h4>Ref.ID</h4>
+                        </div>
+                    </div>
+                    <div class="row ch1" th:each="trans:${transaction}">
+                        <div class="col-sm-3" th:text="${#dates.format(trans.createdDate,'dd/MM/yyyy')}">
+                        
+                        </div>
+                        <div class="col-sm-4" th:text="${trans.merchant.merchantName}">
+                         
+                        </div>
+                        <div class="col-sm-3" th:text="${trans.code}">
+                          
+                        </div>
+                    </div>
+                    <h3>Missing Transactions</h3>
+                    <div class="row mt">
+                        <div class="col-sm-1">
+                            <h4>Date</h4>
+                        </div>
+                        <div class="col-sm-2 text-center">
+                            <h4>Merchant</h4>
+                        </div>
+                        <div class="col-sm-1">
+                            <h4>Amount</h4>
+                        </div>
+                    
+                        
+                        <div class="col-sm-2">
+                            <h4># Ref.ID</h4>
+                        </div>
+                    </div>
+                     <div class="row mt1" th:each="trans:${transaction}" th:if="${trans.orderStatus=='FAILURE'}">
+                        <div class="col-sm-1"  th:text="${#dates.format(trans.createdDate,'dd/MM/yyyy')}">
+                            fsdasdf
+                        </div>
+                        <div class="col-sm-2 text-center" th:text="${trans.merchant.merchantName}">
+                            fsdasdf
+                        </div>
+                        <div class="col-sm-1" th:text="${trans.amount}">
+                            fsdasdf
+                        </div>
+                      
+                      
+                        <div class="col-sm-2" th:text="${trans.code}">
+                            fsdasdf
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 

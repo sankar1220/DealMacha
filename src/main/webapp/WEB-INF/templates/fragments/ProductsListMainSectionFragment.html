@@ -1,0 +1,49 @@
+<div class="col-lg-9 col-md-8 col-sm-7 ">
+    <img src="/home/images/electronic-cat.png" class="img-responsive"/>
+    <div class="bars">
+        <div class="row ">
+            <div class="col-lg-12 col-xs-12">
+                <i class="fa fa-th hidden-xs" aria-hidden="true"></i>
+                <i class="fa fa-th-list hidden-xs" aria-hidden="true"></i>
+                <div class="control_label">
+                    <span>
+                        sort by:
+                        <select class="sort_by">
+                            <option>Default</option>
+                            <option>b</option>
+                            <option>c</option>
+                            <option>d</option>
+                            <option>e</option>
+                        </select>
+                    </span>
+                    <span>
+                        show:
+                        <select class="sort_by">
+                            <option>16</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>75</option>
+                            <option>100</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="row">
+        <th:block th:replace="fragments/ListProductFragment"></th:block>
+    </div>
+    <div class="bars">
+        <div class=" ">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <i class="fa fa-th" aria-hidden="true"></i>
+                <i class="fa fa-th-list" aria-hidden="true"></i>
+                <div class="showing">
+                    <span >
+                    <a href="3">NEXT</a>
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

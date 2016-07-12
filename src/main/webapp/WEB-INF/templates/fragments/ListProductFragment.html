@@ -1,0 +1,14 @@
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6" th:each="product:${products}">
+    <div class="item_div">
+        <img th:src="${product.product_image}" onerror="this.src='/home/images/6.png'" class="img-responsive"/>
+        
+         <div class="star_rate">
+            <span class="rating r12"></span>
+            <i style="width:81%"></i>
+        </div> 
+        <h4><a th:href="'/product?title='+${#strings.replace(product.product_title,' ','_')}" th:text="${product.product_title}" th:title="${product.product_title}">Mens Formal</a></h4>
+        <p class="price">
+            <span class="price_new" th:text="${product.product_lowest_price}">£20.70</span>       
+        </p>
+    </div>
+</div>

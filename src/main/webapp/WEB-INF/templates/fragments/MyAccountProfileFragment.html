@@ -1,0 +1,95 @@
+<div id="profile" class="tab-pane fade">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="container" ng-controller = "MyAccountDetailsController">
+                <ul class="nav nav-tabs navt2">
+                    <li class="active"><a data-toggle="tab" href="#home">PROFILE</a></li>
+                    <li><a data-toggle="tab" href="#menu1">CHANGE PASSWORD</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <h4>YOUR PROFILE PROGRESS</h4>
+                        
+
+<form class="form-horizontal" >
+    <div class="row">
+        <div class="col-md-6">
+            <th:block th:if="${users}">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label"><span class="f-f-u">Name</span><span>:</span></label>
+    <div class="col-sm-9 col-md-9 col-xs-9">
+      <input type="text"   placeholder="User Name" class="form-control hide editable" th:attr="ng-init='setIntialValues(\'userName\',\''+${users.userName}+'\')'" ng-model="user.userName" th:value="${users.userName}"  />
+    <h4 class="text-success h-lh-30 no_edit" ng-model="user.userName" th:text="${users.userName}"></h4> 
+    </div>
+  </div>
+</th:block>
+</div>
+
+</div>
+    <div class="row">
+    
+  <div class="col-md-6">
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label"><span class="f-f-u">Phone Number</span><span>:</span></label>
+    <div class="col-sm-9 col-md-9 col-xs-9">
+                <input type="text"  placeholder="+1 646 580 DEMO (6284)" class="form-control hide editable" th:attr="ng-init='setIntialValues(\'mobileNo\',\''+${users.mobileNo}+'\')'" ng-model="user.mobileNo" th:value="${users.mobileNo}" />
+                                                            <h5 class="text-success h-lh-30 no_edit" ng-model="user.mobileNo" th:text="${users.mobileNo}"></h5>
+    </div>
+  </div>
+</div>
+</div>
+    <div class="row">
+        <div class="col-md-6">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label"><span class="f-f-u">Email</span><span>:</span></label>
+    <div class="col-sm-9 col-md-9 col-xs-9">
+            <input type="text"   placeholder="please enter valid emailid" class="form-control hide editable" th:attr="ng-init='setIntialValues(\'emailId\',\''+${users.emailId}+'\')'" ng-model="user.emailId"  th:value="${users.emailId}" />
+                                                            <h4 class="text-success h-lh-30 no_edit" ng-model="user.emailId" th:text="${users.emailId}"></h4>
+    </div>
+  </div></div>
+
+</div>
+
+    <div class="row text-center mgt30">
+                <button class="btn btn-large btn-default no_edit" ng-click="editUser($event)">Edit</button>
+                <button class="btn btn-large btn_custom hide editable" ng-click="updateUser(user)">Save</button>
+                <button class="btn btn-large btn-default hide editable" ng-click = "cancelEdit($event)">Cancel</button>
+
+            </div>
+</form>
+
+
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        
+<form data-toggle="validator" role="form" class="user-chgpwd chgpwd form-group">
+    <div class="form-group col-lg-4">
+    <label for="currentPassword" class="control-label">Current Password <sup>*</sup></label>
+    <input type="password" class="input-text form-control input-sm" placeholder="current password" ng-model="chgpwd.password" name="" data-minlength="6" required="required" />
+     
+    </div>
+<div class="clearfix"></div>
+    <div class="form-group col-lg-4">
+                                    <label for="newPassword">New Password <sup>*</sup></label>
+                                        <input type="password" class="form-control input-text input-sm" ng-model="chgpwd.newPassword" id="newPassword" placeholder="new password" data-minlength="6" name="newPassword" required="required"  />
+                                     <span class="help-block">i.e,Minimum of 6 characters</span>
+                                    </div>
+<div class="clearfix"></div>
+    <div class="form-group col-lg-4">
+                                        <label for="confirmPassword">Confirm Password <sup>*</sup></label>
+                    <input type="password" class="form-control input-text input-sm" ng-model="chgpwd.confirmPassword" id="confirmPassword"  placeholder="confirm password" data-match="#newPassword" data-match-error="Whoops, these don't match"  name="confirmPassword" required="required"  />
+                                          <div class="help-block with-errors"></div>
+                                    </div>
+
+<div class="clearfix"></div>
+  <div class="input_box form-group col-lg-4">
+                            <button type="submit" class="btn btn-main button" name="chgpwd" ng-click="changePassword(chgpwd)" value="chgpwd">Submit</button>
+                            </div>
+  
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,247 @@
+<ion-content ng-controller="AccountController" style="margin-top: 40px;">
+	<ion-list class="account_tab">
+ 		<div class="col">
+ 			<a ui-sref="app.dashboard" style="padding: 15px 15px 10px 7px;" href="#/templates/dashboard">
+				<span class="ion-ios-arrow-thin-left" style="font-size: 25px;"></span>
+			</a>
+ 		</div>
+		<div class="col">
+ 			<h3 style="text-align:center;color:#cc2828;">MY ACCOUNT</h3>
+ 		</div>
+		<ul class="list">
+    		<li class="item pad">
+    			<div class="account_tab_head_1" ng-click="toggleGroup(1)">
+    				<a href="" class="none">OVER VIEW</a>	
+    			</div>
+    			<div class="row" style="padding: 0px;">
+					<div class="col cash_back_list" ng-show="isGroupShown(1)">
+						<div class="col recent_tran">
+							<h4>CASH BACK SUMMARY</h4>
+						</div>
+						<ul>
+							<li>
+								<p>Pending Cashback<span style="float: right;padding-right: 15px;" th:text="${users.accounts[0].cashbackAmount}">Rs:0.00/-</span></p>
+							</li>
+							<li>
+								<p>Available Cashback<span style="float: right;padding-right: 15px;" th:text="${users.accounts[0].cashbackAmount}">Rs:0.00/-</span></p>
+							</li>
+							<li>
+								<p>Lifetime Cashback<span style="float: right;padding-right: 15px;" th:text="${users.accounts[0].cashbackAmount}">Rs:0.00/-</span></p>
+							</li>
+						</ul>
+					</div>
+				</div>
+    		</li>
+    		
+    		<li class="item pad" >
+    			<div class="account_tab_head_1" ng-click="toggleGroup(2)">
+    				<a href="" class="none">ACTIVITY</a>
+				</div>
+    		
+    		<div class="row" style="padding: 0px;">
+				<div class="col cash_back_list" ng-show="isGroupShown(2)">
+					<div class="col recent_tran">
+						<h4>Recent Transactions</h4>
+					</div>
+					<div class="row">
+						<div class="col">
+							<b>Date</b>
+						</div>
+						<div class="col">
+							<b>Merchant</b>
+						</div>
+						<div class="col">
+							<b>Amount</b>
+						</div>
+						<div class="col">
+							<b>Status</b>
+						</div>
+						<div class="col">
+							<b>#Ref.ID</b>
+						</div>
+					</div>	
+					<div class="row" th:each="trans:${transaction}" th:if="${trans.orderStatus=='SUCCESS'}">
+						<div class="col">
+							<h4 th:text="${#dates.format(trans.createdDate,'dd/MM/yyyy')}"> </h4>
+						</div>
+						<div class="col">
+							<h4 th:text="${trans.merchant.merchantName}"></h4>
+						</div>
+						<div class="col">
+							<h4 th:text="${trans.amount}"></h4>
+						</div>
+						<div class="col">
+							<h4 th:text="${trans.orderStatus}"></h4>
+						</div>
+						<div class="col">
+							<h4 th:text="${trans.code}"></h4>
+						</div>
+					</div>
+					<div class="col recent_tran">
+						<h4>Click History</h4>
+					</div>
+				
+					<div class="row">
+						<div class="col">
+							<b>Date</b>
+						</div>
+						<div class="col">
+							<b>Merchant</b>
+						</div>
+						<div class="col">
+							<b>#Ref.ID</b>
+						</div>
+					</div>
+					<div class="row merchant_dtl" th:each="trans:${transaction}">
+						<div class="col">
+							<h4 th:text="${#dates.format(trans.createdDate,'dd/MM/yyyy')}"> </h4>
+						</div>
+						<div class="col">
+							<h4 th:text="${trans.merchant.merchantName}"></h4>
+						</div>
+						<div class="col">
+							<h4 th:text="${trans.code}"></h4>
+						</div>
+					</div>
+					<div class="col recent_tran">
+						<h4>Missing Transactions</h4>
+					</div>
+					<div class="row">
+						<div class="col">
+							<h4>Date</h4>
+						</div>
+						<div class="col">
+							<h4>Merchant</h4>
+						</div>
+						<div class="col">
+							<h4>Amount</h4>
+						</div>
+						<div class="col">
+							<h4>#Ref.ID</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			</li>
+    		<li class="item pad"  >
+    			<div class="account_tab_head_1" ng-click="toggleGroup(3)">
+    				<a href="" class="none">MY WALLET</a>
+				</div>
+    		
+	    		<div class="row" style="padding: 0px;">
+					<div class="col cash_back_list" ng-show="isGroupShown(3)">
+						<div class="col recent_tran">
+							<h4>CASH BACK SUMMARY</h4>
+						</div>
+						<ul>
+							<li>
+								<p>Pending Cashback<span style="float: right;padding-right: 15px;">Rs:0.00/-</span></p>
+							</li>
+						
+							<li>
+								<p>Available Cashback<span style="float: right;padding-right: 15px;" th:text="${users.accounts[0].cashbackAmount}"></span></p>
+							</li>
+							</ul>
+					</div>
+				</div>
+			</li>
+    		<li class="item pad" ng-class="{active: isGroupShown.show4}">
+    			<div class="account_tab_head_1"  ng-click="toggleGroup('4')">
+    			<a href="" class="none">SUPPORT</a>
+    			</div>
+    		</li>
+    		<!-- <div class="row" style="padding: 0px;" ng-show="isGroupShown.show4">
+				<div class="col" >
+					<button>Have A Question</button>					
+				</div>
+				<div class="col" >
+					<button>Misssing Cashback</button>					
+				</div>
+				<div class="col" >
+					<button>FAQs</button>					
+				</div>
+			</div> -->
+			
+    		<li class="item pad ram">
+    			<div class="account_tab_head_1" ng-click="toggleGroup(5)">
+    			<a href="" class="none"><i class="fa fa-user" aria-hidden="true"></i> PROFILE</a>
+    			</div>
+    		
+    		<div class="profile_tab" ng-show="isGroupShown(5)">
+    			<ul class="nav nav-pills">
+  					<li class="active"><a data-toggle="pill" data-target="#home">PROFILE</a></li>
+  					<li><a data-toggle="pill" data-target="#menu1">CHANGE PASSWORD</a></li>
+				</ul>
+				<div class="tab-content">
+  					<div id="home" class="tab-pane fade in active">
+    					<form class="form-horizontal" style="padding-top: 10px;">
+					  		<div class="form-group row">
+					    		<label class="control-label col-sm-2" for="email">USER NAME:</label>
+					    		<div class="col-sm-10" th:text="${users.userName}">
+					      			
+					    		</div>
+					  		</div>
+  							<div class="form-group row">
+    							<label class="control-label col-sm-2" for="pwd">EMAIL ID:</label>
+    							<div class="col-sm-10" th:text="${users.emailId}"> 
+      								ram@gmail.com
+    							</div>
+  							</div>
+  						
+						</form>
+  					</div>
+  					
+  					<div id="menu1" class="tab-pane fade">
+  						<form class="form-horizontal" role="form">
+  							<div class="form-group row">
+    							<label class="pass_input control-label col-sm-2" for="email">PASSWORD:</label>
+								<div class="col-sm-10">
+  									<input type="email" class="form-control pass_inpu_1" id="email" placeholder="ENTER PASSWORD" style="border: 1px solid #ddd;padding-left: 10px;padding-top: 5px;"/>
+								</div>
+  							</div>
+  							<div class="form-group row">
+    							<label class="pass_input control-label col-sm-2" for="pwd">CHANGE PASSWORD:</label>
+								<div class="col-sm-10"> 
+      								<input type="password" class="form-control" id="pwd" placeholder="ENTER PASSWORD" style="border: 1px solid #ddd;padding-left: 10px;padding-top: 5px;"/>
+    							</div>
+  							</div>
+  							<div class="form-group row">
+    							<label class="pass_input control-label col-sm-2" for="pwd">CONFIRMPASSWORD:</label>
+								<div class="col-sm-10"> 
+      								<input type="password" class="form-control" id="pwd" placeholder="ENTER PASSWORD" style="border: 1px solid #ddd;padding-left: 8px;padding-top: 5px;"/>
+    							</div>
+  							</div>
+						</form>
+  					</div>
+				</div>
+    		</div>
+    		</li>
+    		<li class="item pad">
+    			<div class="account_tab_head_1">
+    			<a href="" class="none">DEALS INPUTER</a>
+    			</div>
+    		</li>
+		</ul>
+	</ion-list>
+	<div class="row responsive-sm">
+		<div class="col footer_list" style="margin-bottom: 0px;">
+			<ul>
+				<li><a href="#">HOME</a></li>
+				<li><a href="#">HELP</a></li>
+				<li class="track_order"><a href="#">TRACK ORDER</a></li>
+				<li ng-click="logOut()"><i class="ion ion-power" style="font-size: 20px; color: #ea3a3c; font-size:15px;"></i><span style="color: #ea3a3c;">Log out </span></li>
+			</ul>
+		</div>
+	</div>
+		<div class="col" style="margin-bottom: 0px;">
+			<center>
+				<p style="">Copyright @ 2016 Made With <i class="ion-heart"></i> By Arthvedi</p>
+			</center>	
+		</div>
+	<!-- 	<ion-footer-bar class="bar assertive bar-footer" ng-click="logOut()">
+  		<div class="title">
+    		<i class="ion ion-power" style="font-size: 20px;"></i><span class="">Log out </span>
+  		</div>
+  	</ion-footer-bar> -->
+</ion-content>
+

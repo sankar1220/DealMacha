@@ -1,0 +1,15 @@
+<div class="container dm_my_acct_page">
+    <div class="head1"> 
+        
+        <p class="subtitle fancy"><span>ACCOUNT SUMMARY</span></p>
+    </div>
+    <th:block th:replace="fragments/AccountSummaryFragment"></th:block>
+    <div class="tab-content dm_tab1">
+        <th:block th:replace="fragments/MyAccountOverviewFragment"></th:block>
+        <th:block th:replace="fragments/MyAccountActivityFragment"></th:block>
+        <th:block th:replace="fragments/MyAccountMyWalletFragment"></th:block>
+        <th:block th:replace="fragments/MyAccountSupportFragment"></th:block>
+        <th:block th:replace="fragments/MyAccountProfileFragment"></th:block>
+        <th:block th:replace="fragments/MyAccountDealsInputerFragment"></th:block>
+    </div>
+</div>

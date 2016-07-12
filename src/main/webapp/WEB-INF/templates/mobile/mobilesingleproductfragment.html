@@ -1,0 +1,110 @@
+<ion-content  ng-controller="LoginCtrl">
+	
+	<div class="row single_img_row">
+		<div class="col">
+			<ion-slide-box on-slide-changed="slideHasChanged($index)">
+				<ion-slide>
+					<div>
+						<a ui-sref="app.cartPage">
+						 <img th:src="${product.product_image_full[0]}" width="100px;" style="margin-left: 150px;margin-top: 30px;"/>
+						</a>
+					</div>
+				</ion-slide>
+				<ion-slide>
+					<div>
+						<img src="img/item_img.jpg" width="100px;" style="margin-left: 150px;margin-top: 30px;"/>
+					</div>
+				</ion-slide>
+				<ion-slide>
+					<div>
+						<img src="img/item_img.jpg" width="100px;" style="margin-left: 150px;margin-top: 30px;"/>
+					</div>
+				</ion-slide>
+			</ion-slide-box>
+		</div>
+	</div>
+	<div class="row single_img_dtl">
+		<div class="col">
+			<p class="ite_head" th:text="${product.product_name}"></p>
+			<p>
+				<span class="ion-android-star"></span>
+				<span class="ion-android-star"></span>
+				<span class="ion-android-star"></span>
+				<span class="ion-android-star"></span>
+				<span class="ion-android-star"></span>
+			</p>
+			<p class="del_price"><del th:text="${product.productStores[0].product_price}" >Rs.2999</del><span class="del_predcent">45% Off</span></p>
+			<p class="list_item_price" th:text="${product.productStores[0].product_price_after}">Rs.1650</p>
+		</div>
+	</div><hr/>
+	<div class="row responsive-sm single_item_deliv_div">
+		<div class="col deliv_head">
+			<h5 style="">PRICE COMPARISION</h5>
+		</div>
+	</div>
+	<div class="row single_item_compare_div" th:each="store:${product.productStores}">
+		<div class="col col-33">
+			<img th:src="${store.product_store_logo}" width="80px;"/>
+		</div>
+		<div class="col col-33">
+			<p th:text="${store.product_price_after}">Rs. 13,989</p>
+		</div>
+		<div class="col col-33">
+			<a target="_blank" th:href="'192.168.0.78:8085/gotostore?merchant='+${store.product_store}+'&amp;link='+${store.product_store_url}+'src=MOBILE'"><button class="button button-assertive ba_by">
+				BUY NOW
+			</button></a>
+		</div>
+	</div>
+   
+	<div class="row responsive-sm single_item_deliv_div">
+		<div class="col deliv_head">
+			<h5 style="">DELIVERY AND OTHER TERMS</h5>
+		</div>
+		<div class="col deliv_list">
+			<ul>
+				<li> <i class="ion-ios-arrow-thin-right"></i> &nbsp; Cash On Delivery</li>
+				<li> <i class="ion-ios-arrow-thin-right"></i> &nbsp; 7 Days Return</li>
+				<li> <i class="ion-ios-arrow-thin-right"></i> &nbsp; 100% Original Product</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row responsive-sm single_item_deliv_div">
+		<div class="col deliv_head">
+			<h5 style="">PRODUCT SPECIFICATIONS</h5>
+		</div>
+		<div class="col product_specific_div">
+			<table>
+				<tr>
+					<td class="mnth">size</td>
+					<td>34</td>
+				</tr>
+				<tr>
+					<td class="mnth">style</td>
+					<td>Faded</td>
+				</tr>
+				<tr>
+					<td class="mnth">fit</td>
+					<td>skinny</td>
+				</tr>
+				<tr>
+					<td class="mnth">color</td>
+					<td>Blue</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row responsive-sm">
+		<div class="col footer_list" style="margin-bottom: 0px;">
+			<ul>
+				<li><a href="#">HOME</a></li>
+				<li><a href="#">HELP</a></li>
+				<li class="track_order"><a href="#">TRACK ORDER</a></li>
+			</ul>
+		</div>
+		<div class="col" style="margin-bottom: 0px;">
+			<center>
+				<p style="">Copyright @ 2016 Made With <i class="ion-heart"></i> By Arthvedi</p>
+			</center>   
+		</div>
+	</div>
+</ion-content>

@@ -1,0 +1,104 @@
+ <div class="page_section3" th:with = "blocks =${#lists.toList(secondPageSection.cmsBlocks)} ">
+    <div class="container">
+        <div class="">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hot_heading hot_head_elec">
+                <div class="dm_head_bd">
+                    <h1 th:inline="text">[[${secondPageSection.sectionTitle}]] <small class="arow-after3"></small></h1>
+                </div>
+                <ul class="hidden-xs">
+                    <li th:each="block,blockIndex:${blocks}" th:if="${blockIndex.index}>2">  <a data-toggle="tab"  th:href="'#'+${block.id}" th:text="${block.blockTitle}">Top Sale</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content"  >
+            <div class="col-lg-2 col-md-3 hidden-sm  plr hot_cat_imgage">
+                <a  th:href="${#lists.toList(blocks[0].cmsPostses)[0].url}" class="hidden-xs">
+                    <img th:src="${#lists.toList(#lists.toList(blocks[0].cmsPostses)[0].cmsPostsImageses)[0].imageLocation}" class="img-responsive"/>
+                </a>
+                <div class="row" style="margin-left: 0px;margin-right: 0px;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 item_div1 ">   
+                        <div class="hot_cat_head">
+                            <h1 th:text="${blocks[2].blockTitle}"></h1>
+                        </div>
+                        <ul>
+                            <li th:each="post:${#lists.toList(#lists.toList(blocks[2].cmsPostses))}"> <a th:href="${post.url}" th:inline="text"><i class="fa fa-caret-right"></i> &nbsp;[[${post.postTitle}]]</a></li>
+                           
+                        </ul>      
+                    </div>
+                </div>
+                <!-- <div class="col-lg-12 visible-xs item_div1 item_div_hover">
+                    <select>
+                        
+                            <option value="top Sale" href="#top_sale1">Top Sale</option>
+                            <option data-toggle="tab" value="#sort_order1" href="#sort_order1">Sort Order</option>
+                            <option data-toggle="tab" href="#top_rating1">Top Rating</option>
+                            <option data-toggle="tab" href="#quantity1">Quantity</option>
+                            <option data-toggle="tab" href="#price1">Price</option>
+                           
+                    </select>
+                </div> -->
+                <div class="col-lg-12 visible-xs item_div1 item_div_hover" >
+                    <div class="select_cat_drop">
+                        <a href="#demo"  data-toggle="collapse">
+                            SELECT CATEGORIES<span class="cat_down_arrow">▼</span>
+                        </a> 
+                    </div>
+                    <ul id="demo" class="collapse">
+                    <li th:each="block,blockIndex:${blocks}" th:if="${blockIndex.index}>2">
+                    <a data-toggle="tab"  th:href="'#'+${block.id}" th:text="${block.blockTitle}">Top Sale</a>
+                    </li>
+                   
+                </ul>
+                </div>
+            </div>
+        
+            <div class="col-lg-8 col-md-6 col-sm-8 hidden-xs plr hot_cat_imgage1">
+                
+                <a th:href="${#lists.toList(blocks[1].cmsPostses)[0].url}">
+                    <img th:src="${#lists.toList(#lists.toList(blocks[1].cmsPostses)[0].cmsPostsImageses)[0].imageLocation}" class="img-responsive"/>
+                </a>
+               
+           
+          </div>
+            <div th:each ="block,blockIndex:${blocks}" th:id="${block.id}" th:if="${blockIndex.index}>2" th:classappend="(${blockIndex.index}==3)?'active':''" class="tab-pane fade in">
+                <div class=" elec_div1" th:with="posts = ${#lists.toList(block.cmsPostses)}">
+                    <div class="col-lg-2 col-md-3 col-sm-4 item_div1">
+                        <img th:src="${posts[0].cmsPostsImageses[0].imageLocation}" class="img-responsive"/>
+                        <div class="star_rate">
+                            <span class="rating r12"></span>
+                            <i style="width:81%"></i>
+                        </div>
+                        <h4><a th:href="${posts[0].url}" th:text="${posts[0].postsProductTitle}"></a></h4>
+                        <p class="price">
+                           <span class="price_new" th:text="${posts[0].postsProductAfterPrice}">£40.71</span>
+                            <span class="price_old" th:text="${posts[0].postsProductPrice}">£20.70</span>
+                         
+                        </p>
+                    </div>
+                </div>
+                <div th:with = "posts = ${#lists.toList(block.cmsPostses)}">
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1" th:each="post,postIndex:${posts}" th:if="${postIndex.index}>0">   
+                        <img th:src="${post.cmsPostsImageses[0].imageLocation}" class="img-responsive"/>
+                        <div class="star_rate">
+                            <span class="rating r12"></span>
+                            <i style="width:81%"></i>
+                        </div>
+                        <h4><a th:href="${post.url}"  th:text="${post.postsProductTitle}"></a></h4>
+                        <p class="price"> 
+                          <span class="price_new" th:text="${post.postsProductAfterPrice}">£40.71</span>
+                            <span class="price_old" th:text="${post.postsProductPrice}">£20.70</span>
+                         
+                        </p>        
+                    </div>
+                   
+               
+                
+                </div>
+            </div>
+         
+  
+
+        </div>
+    </div>
+</div>

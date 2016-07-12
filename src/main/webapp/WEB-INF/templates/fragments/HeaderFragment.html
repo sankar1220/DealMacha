@@ -1,0 +1,212 @@
+	<header th:fragment="HeaderFragment(menuStatus)" ng-controller="HeaderController">
+		<div class="header_top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-5 hidden-sm hidden-xs header_top_left">
+						<div class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner" role="listbox">
+								<div class="item active">
+									<p>
+										<a href="#">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>
+								<div class="item">
+									<p>
+										<a href="#">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>
+								<div class="item">
+									<p>
+										<a href="#">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit.
+									</p>
+								</div>
+								<div class="item">
+									<p>
+										<a href="#">Lorem ipsum</a> dolor sit amet, 	consectetur adipiscing elit.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-8 col-md-7 col-xs-12 header_top_right">
+						<div class="account hidden-xs">
+							<ul>
+								<li th:unless="${#authentication.principal}!='anonymousUser'">
+
+									<a href="/login">
+										<span class="flaticon-user-silhouette user"></span>Login
+										<span class="flaticon-down-arrow arrow_1"></span>
+										
+									</a>
+								</li>
+								<th:block th:if="${#authentication.principal}!='anonymousUser'">
+								<li>
+							
+							<input type="hidden" th:attr="ng-init='setSessionVariables(\''+${#authentication.principal.userName}+'\',\''+${#authentication.principal.id}+'\')'" />
+							
+							 <div class="dropdown" th:if="${#authentication.principal}!='anonymousUser'">
+  
+  <a class="back-none dropbtn"   th:href="@{/myaccount}"><span class="flaticon-user-silhouette user"></span><span  th:text="${#authentication.principal.userName}"></span> <span class="flaticon-down-arrow arrow_1"></span></a>
+ 
+  <div class="dropdown-content" style="left: -10px;top: 20px;">
+      <a class="text-l"  th:href="@{/myaccount}"><i class="fa fa-cog ltr-spacing-5" aria-hidden="true"></i><span>My Account</span></a>
+    <a class="text-l"  th:href="@{/logout}"><i class="fa fa-sign-out ltr-spacing-5"></i><span>Logout</span></a>
+    
+  </div>
+</div>
+ </li></th:block>
+
+						<li>
+									<a href="#">
+										<span class="flaticon-favorite-heart-button user"></span>Wish List 
+										<span class="flaticon-down-arrow arrow_1"></span>
+									</a>	
+								</li>
+								<li>
+									<a href="#">English <span class="flaticon-down-arrow arrow_1"></span></a>
+								</li>
+								<li class="list_bdr_rit">
+									<a href="#">Pounds <span class="flaticon-down-arrow arrow_1"></span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header_center">
+			<div class="container">
+				<div class="">
+					<div class="navbar_logo col-lg-2 col-md-3 col-sm-12 hidden-xs">
+						<a href="/">
+							<img src="/home/images/logo.png" class="img-responsive"/>
+						</a>
+					</div>
+					<div id="mySidenav" class="sidenav">
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+						<a href="#">FEATURES</a>   
+						<a href="#">ELECTRONIC</a>    
+						<a href="#">ACCESSORIES</a>   
+						<a href="#">BLOG</a>     
+					</div>
+					<div class="visible-xs hidden_search_main">
+						<div class="row hidden_search_div1" style="">
+							<div class="col-xs-12">
+								<div class="" style="float: left;">
+									<span style="font-size:30px;cursor:pointer" onclick="openNav()" class="flaticon-bars head_icons"></span>
+								</div>
+								<div class="" style="float: left;" >
+									<img src="/home/images/160x40_logo.png" class="img-responsive"/>
+								</div>
+								<div class="" style="float: right;">
+									<span class="flaticon-tool head_icons2"></span>
+								</div>
+								<div class="" style="float: right;">
+									<div class="dropdown">
+										<span onclick="myFunction()" class="flaticon-people head_icons1  dropbtn"></span> 
+										<div id="myDropdown" class="dropdown-content">
+											<a href="#">Register</a>
+											<a href="#">Login</a>
+										</div>
+									</div>
+							 	</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="input-group header_input_grp">
+									<input type="text" class="form-control head_xs_input" placeholder="Search Here...." name="srch-term" />
+
+									<div class="input-group-btn">
+										<button class="btn btn-default head_xs_btn" type="submit">Search</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-7 col-md-7 hidden-xs header_search">
+						<div class="input-group add-on">
+							<input type="text" class="form-control head_lg_input" placeholder="Search" name="srch-term" id="srch-term"/>
+							<div class="input-group-btn">
+								<button class="btn btn-default header_lg_search_btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class="header_center_right col-lg-3 col-md-2 hidden-sm hidden-xs">
+						<div style="float: left;">
+							<span class="flaticon-tool list_icon2"></span>
+						</div>
+						<div style="float: left;">
+							<p class="p1st">Wallet</p>
+							<p class="p2nd">Rs 0.00</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header_bottom hidden-xs">
+			<div class="container">
+				<div class="">
+					<div class="col-lg-3 col-md-3 col-sm-3 hidden-xs categories">
+						<h1>
+							<span class="flaticon-bars list_icon"></span> 
+								CATEGORIES 
+							<span class="flaticon-down-arrow arow_2"></span></h1>
+					</div>
+					<div class="col-lg-9 col-md-9 col-sm-9">
+						<nav class="navbar navbar-inverse">
+							<div class="container-fluid">
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>                        
+									</button>
+								</div>
+								<div class="collapse navbar-collapse" id="myNavbar">
+									<ul class="nav navbar-nav">
+										<li class="active"><a href="#">Home</a></li>
+										<li class="dropdown">
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#">Features <span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Page 1-1</a></li>
+												<li><a href="#">Page 1-2</a></li>
+												<li><a href="#">Page 1-3</a></li>
+											</ul>
+										</li>
+										<li class="dropdown">
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#">Electronics <span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Page 1-1</a></li>
+												<li><a href="#">Page 1-2</a></li>
+												<li><a href="#">Page 1-3</a></li>
+											</ul>
+										</li>
+										<li class="dropdown">
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#">Accessories <span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Page 1-1</a></li>
+												<li><a href="#">Page 1-2</a></li>
+												<li><a href="#">Page 1-3</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Blog</a></li>
+										<li class="dropdown hidden-sm">
+											<a class="dropdown-toggle" data-toggle="dropdown" href="#">Pages <span class="caret"></span></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Page 1-1</a></li>
+												<li><a href="#">Page 1-2</a></li>
+												<li><a href="#">Page 1-3</a></li>
+											</ul>
+										</li>
+										<li class="hidden-sm"><a href="#">Contact Us</a></li>
+									</ul>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div th:replace="fragments/MenuFragment"></div>
+	</header>

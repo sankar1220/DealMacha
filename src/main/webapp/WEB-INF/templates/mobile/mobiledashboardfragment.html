@@ -1,0 +1,336 @@
+<ion-content ng-controller="DashboardCtrl">
+	<div class="list" style="margin-top: 41px;margin-bottom: 0px;">
+		<div class="item-input-inset search_div">
+			<label class="item-input-wrapper search_hed_input">
+				<i class="icon ion-search placeholder-icon"></i>
+				<input type="text" placeholder="Search Here..."/>
+			</label>
+			<button class="button button-small button-assertive search_input_btn1">
+					Submit
+			</button>
+		</div>
+	</div>
+	<div class="">
+		<th:block th:each="prod,prodlength:${products}">
+		<div class="row" th:if="${prodlength.even}">
+		<div class="col-50 item_list_dtl">
+			<div class="item item-body">
+					<a th:attr="ng-click='singlePage(\''+${#strings.replace(products[prodlength.index].product_title,' ','_')}+'\')'">
+						<img class="full-image img-responsive fiir" th:src="${products[prodlength.index].product_image}" style="margin: auto;"/>
+					</a>
+					<!--<span class="offer" th:text="${#lists.size(products)}">Sankar</span>-->
+					<p style="color: #999" th:text="${products[prodlength.index].product_title}"></p>
+					<!--<p style="color: #3a734a">
+						<span class="ion-android-star"></span>
+						<span class="ion-android-star"></span>
+						<span class="ion-android-star"></span>
+						<span class="ion-android-star"></span>
+						<span class="ion-android-star"></span>
+					</p>-->
+					<!--<p style="color: #999"><del th:text="${products[prodlength.index].product_lowest_price}">Rs.2999</del></p>-->
+					<p class="list_item_price" th:text="${products[prodlength.index].product_lowest_price}">Rs.1650</p>
+				</div>
+		</div>
+		<div class="col-50 item_list_dtl">
+			<div class="item item-body">
+					<a th:attr="ng-click='singlePage(\''+${products[prodlength.index+1].product_title}+'\')'">
+						<img class="full-image img-responsive fiir" th:src="${products[prodlength.index+1].product_image}" style="margin: auto;"/>
+					</a>
+					<!--<span class="offer" th:text="${#lists.size(products)}">Sankar</span>-->
+					<p style="color: #999" th:text="${products[prodlength.index+1].product_title}"></p>
+					<!--<p style="color: #3a734a">
+						<span class="ion-android-star"></span>
+						<span class="ion-android-star"></span>
+						<span class="ion-android-star"></span>
+						<span class="ion-android-star"></span>
+						<span class="ion-android-star"></span>
+					</p>-->
+					<p style="color: #999"><del th:text="${products[prodlength.index+1].product_lowest_price}">Rs.2999</del></p>
+					<p class="list_item_price" th:text="${products[prodlength.index+1].product_lowest_price}">Rs.1650</p>
+				</div>
+		</div>
+		</div>
+		</th:block>
+	</div>
+	<div class="row">
+		<div class="col best_head">
+			<h4>Best Selling Products</h4>
+		</div>
+	</div>
+			<div class="row">
+			
+			<div class="col">
+				<a class="item item-thumbnail-left" href="#">
+      				<img src="img/item_img.jpg"/>
+      				<p>Jhon Players Blue Slim Fit Jeans</p>
+      				<!-- <p>(Buy 3 Get 1 Free)</p> -->
+      				<p>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      				</p>
+      				<p class="item_price"><strong>Rs.1020</strong></p>
+    			</a>
+    			<a class="item item-thumbnail-left" href="#">
+      				<img src="img/Maxel-NV-3935-Trimmers-Black-SDL897386858-1-55107.jpg"/>
+      				<p>Maxel NV-3935 Trimmer</p>
+      				<!-- <p>(Buy 3 Get 1 Free)</p> -->
+      				<p>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      				</p>
+      				<p class="item_price"><strong>Rs.345</strong></p>
+    			</a>
+    			<a class="item item-thumbnail-left" href="#">
+      				<img src="img/Highway-Craze-Black-Aviator-Sunglasses-SDL297755387-1-372db.jpg"/>
+      				<p>High way Craze Black Aviator Sunglasses</p>
+      				<!-- <p>(Buy 3 Get 1 Free)</p> -->
+      				<p>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      				</p>
+      				<p class="item_price"><strong>Rs.299</strong></p>
+    			</a>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 20px;">
+			<div class="col">
+				<img src="img/deal_img.jpg" width="100%"/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col best_head">
+				<h4>Top Deals</h4>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 0px;">
+			<div class="col">
+				<ion-slide-box on-slide-changed="slideHasChanged($index)">
+					<ion-slide>
+						<div class="row">
+							<div class="col col-33" style="text-align: center;">
+								<div style="border:1px solid #2a3b45;background-color: #fff;padding-bottom: 25px;">
+									<img src="img/Sony-Micro-Vault-Classic-16GB-1078364-1-23a9a.jpg"/>
+									<span class="offer">60%off</span>
+									<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Sony Micro Vault 16Gb (Black)</p>
+									<p>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      				</p>
+				      				<p class="item_price"><strong>Rs.289</strong></p>
+								</div>
+							</div>
+							<div class="col col-33" style="text-align: center;">
+								<div style="border:1px solid #2a3b45;background-color: #fff;padding-bottom: 25px;">
+									<img src="img/Globalepartner-Ratchet-Screwdriver-Tool-Kit-SDL234541429-1-4e631.jpg"/>
+									<span class="offer">60%off</span>
+									<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Screwdriver Toolkit Set of</p>
+									<p>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      				</p>
+				      				<p class="item_price"><strong>Rs.333</strong></p>
+								</div>
+							</div>
+							<div class="col col-33" style="text-align: center;">
+								<div style="border:1px solid #2a3b45;background-color: #fff;padding-bottom: 25px;">
+									<img src="img/MP16D_0-6039f.jpg"/>
+									<span class="offer">60%off</span>
+									<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Samsung Micro SDHC 16Gb</p>
+									<p>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      				</p>
+				      				<p class="item_price"><strong>Rs.257</strong></p>
+								</div>
+							</div>
+						</div>
+					</ion-slide>
+					<ion-slide>
+						<div class="row">
+							<div class="col col-33" style="text-align: center;">
+								<div style="border:1px solid #2a3b45;background-color: #fff;padding-bottom: 25px;">
+									<img src="img/Rosra-Black-Analog-Watch-SDL118741068-1-013c4.jpg"/>
+									<span class="offer">60%off</span>
+									<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Rosra Black Digital Watch</p>
+									<p>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      				</p>
+				      				<p class="item_price"><strong>Rs.156</strong></p>
+								</div>
+							</div>
+							<div class="col col-33" style="text-align: center;">
+								<div style="border:1px solid #2a3b45;background-color: #fff;padding-bottom: 25px;">
+									<img src="img/Kissan-Berry-Blast-Jam-320-SDL420609617-1-a253c.jpg"/>
+									<span class="offer">60%off</span>
+									<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Kissan Berry Blast Jam 320g</p>
+									<p>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      				</p>
+				      				<p class="item_price"><strong>Rs.97</strong></p>
+								</div>
+							</div>
+							<div class="col col-33" style="text-align: center;">
+								<div style="border:1px solid #2a3b45;background-color: #fff;padding-bottom: 25px;">
+									<img src="img/SanDisk-Ultra-Dual-2-32-SDL089197120-1-c2a79.jpg"/>
+									<span class="offer">60%off</span>
+									<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">SANDISK ULTRA DUAL 32GB</p>
+									<p>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      				</p>
+				      				<p class="item_price"><strong>Rs.620</strong></p>
+								</div>
+							</div>
+						</div>
+					</ion-slide>
+					<ion-slide>
+						<div class="row">
+							<div class="col col-33" style="text-align: center;">
+								<div style="border:1px solid #2a3b45;background-color: #fff;padding-bottom: 25px;">
+									<img src="img/Lenovo-Ideapad-100-15IBY-Notebook-SDL738610195-1-62368.jpg" width="79px;"/>
+									<span class="offer">60%off</span>
+									<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Lenovo ideapad 100-151By Notebook</p>
+									<p>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      				</p>
+				      				<p class="item_price"><strong>Rs.20,799</strong></p>
+								</div>
+							</div>
+							<div class="col col-33" style="text-align: center;">
+								<div style="border:1px solid #2a3b45;background-color: #fff;padding-bottom: 25px;">
+									<img src="img/HTC-828-32GB-Gray-SDL309225003-1-6de4c.jpg"/>
+									<span class="offer">60%off</span>
+									<p  style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">HTC 828 (32GB Grey)</p>
+									<p>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      				</p>
+				      				<p class="item_price"><strong>Rs.19,460</strong></p>
+								</div>
+							</div>
+							<div class="col col-33" style="text-align: center;">
+								<div style="border:1px solid #2a3b45;background-color: #fff;padding-bottom: 25px;">
+									<img src="img/111Untitled-8c60e.jpg"/>
+									<span class="offer">60%off</span>
+									<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">iphone SE(64GB) </p>
+									<p>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      					<span class="ion-android-star"></span>
+				      				</p>
+				      				<p class="item_price"><strong>Rs.49,000</strong></p>
+								</div>
+							</div>
+						</div>
+					</ion-slide>
+				</ion-slide-box>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col best_head">
+				<h4>BEST SELLERS</h4>
+			</div>
+		</div>
+		<div class="row">
+			
+			<div class="col list item_dtl">
+    			<a class="item item-thumbnail-left" href="#">
+      				<img src="img/Gillette.jpg"/>
+      				<p>Gillete Presto Razer</p>
+      				<!-- <p>(Buy 3 Get 1 Free)</p> -->
+      				<p>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      				</p>
+      				<p class="item_price"><strong>Rs.60</strong></p>
+    			</a>
+    			<a class="item item-thumbnail-left" href="#">
+      				<img src="img/Bentag_BHd001_Hair_Dryer_Pink_SDL001196595_1_6c1fe-3c3f3.jpg"/>
+      				<p>Bentag BHD1209 Hair Dryer</p>
+      				<!-- <p>(Buy 3 Get 1 Free)</p> -->
+      				<p>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      				</p>
+      				<p class="item_price"><strong>Rs.239</strong></p>
+    			</a>
+    			<a class="item item-thumbnail-left" href="#">
+      				<img src="img/Apple-iPhone-5S-16-GB-SDL218647224-1-a4b59.jpg"/>
+      				<p>iphone 5s(16GB, Space Grey)</p>
+      				<!-- <p>(Buy 3 Get 1 Free)</p> -->
+      				<p>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      				</p>
+      				<p class="item_price"><strong>Rs.21500</strong></p>
+    			</a>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 10px;">
+			<div class="col">
+				<img src="img/dailyneedsbaaner27thapr.jpg" width="100%"/>
+			</div>
+		</div>
+	<div class="row responsive-sm">
+				<div class="col footer_list" style="margin-bottom: 0px;">
+						<ul>
+								<li><a href="#">HOME</a></li>
+								<li><a href="#">HELP</a></li>
+								<li class="track_order"><a href="#">TRACK ORDER</a></li>
+						</ul>
+				</div>
+				<div class="col" style="margin-bottom: 0px;">
+						<center>
+								<p style="">Copyright @ 2016 Made With <i class="ion-heart"></i> By Arthvedi</p>
+						</center>   
+				</div>
+		</div>
+</ion-content>

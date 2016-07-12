@@ -1,0 +1,11 @@
+	<!DOCTYPE html>
+	<html lang="en">
+<th:block th:replace="fragments/PortalHeadFragment"></th:block>
+	<body ng-app="DealMachaTerminal">
+	
+<header th:replace="fragments/HeaderFragment::HeaderFragment('hide')"></header>
+<th:block th:replace="fragments/RegisterFragment"></th:block>
+<footer th:replace = "fragments/FooterFragment"></footer>
+<th:block th:replace="fragments/PortalScriptsFragment"></th:block>
+	</body>
+	</html>

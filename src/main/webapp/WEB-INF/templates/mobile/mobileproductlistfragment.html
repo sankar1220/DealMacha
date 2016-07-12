@@ -1,0 +1,66 @@
+<ion-content ng-controller="ListCtrl">
+	<div class="list" style="margin-top: 41px;margin-bottom: 0px;">
+		<!-- <div class="item-input-inset search_div">
+			<label class="item-input-wrapper search_hed_input">
+				<i class="icon ion-search placeholder-icon"></i>
+				<input type="text" placeholder="Search Here..."/>
+			</label>
+		</div> -->
+	</div>
+	<div class="">
+		<th:block th:each="prod,prodlength:${products}">
+		<div class="row" th:if="${prodlength.even}">
+		<div class="col-50 item_list_dtl">
+			<div class="item item-body">
+    			<a th:attr="ng-click='singlePage(\''+${#strings.replace(products[prodlength.index].product_title,' ','_')}+'\')'">
+    				<img class="full-image img-responsive fiir" th:src="${products[prodlength.index].product_image}" style="margin: auto;"/>
+    			</a>
+    			<!--<span class="offer" th:text="${#lists.size(products)}">Sankar</span>-->
+    			<p style="color: #999" th:text="${products[prodlength.index].product_title}"></p>
+  				<!--<p style="color: #3a734a">
+  					<span class="ion-android-star"></span>
+  					<span class="ion-android-star"></span>
+  					<span class="ion-android-star"></span>
+  					<span class="ion-android-star"></span>
+  					<span class="ion-android-star"></span>
+  				</p>-->
+  				<!--<p style="color: #999"><del th:text="${products[prodlength.index].product_lowest_price}">Rs.2999</del></p>-->
+  				<p class="list_item_price" th:text="${products[prodlength.index].product_lowest_price}">Rs.1650</p>
+  			</div>
+		</div>
+		<div class="col-50 item_list_dtl">
+			<div class="item item-body">
+    			<a th:attr="ng-click='singlePage(\''+${products[prodlength.index+1].product_title}+'\')'">
+    				<img class="full-image img-responsive fiir" th:src="${products[prodlength.index+1].product_image}" style="margin: auto;"/>
+    			</a>
+    			<!--<span class="offer" th:text="${#lists.size(products)}">Sankar</span>-->
+    			<p style="color: #999" th:text="${products[prodlength.index+1].product_title}"></p>
+  				<!--<p style="color: #3a734a">
+  					<span class="ion-android-star"></span>
+  					<span class="ion-android-star"></span>
+  					<span class="ion-android-star"></span>
+  					<span class="ion-android-star"></span>
+  					<span class="ion-android-star"></span>
+  				</p>-->
+  				<p style="color: #999"><del th:text="${products[prodlength.index+1].product_lowest_price}">Rs.2999</del></p>
+  				<p class="list_item_price" th:text="${products[prodlength.index+1].product_lowest_price}">Rs.1650</p>
+  			</div>
+		</div>
+		</div>
+		</th:block>
+	</div>
+	<div class="row responsive-sm">
+        <div class="col footer_list" style="margin-bottom: 0px;">
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">HELP</a></li>
+                <li class="track_order"><a href="#">TRACK ORDER</a></li>
+            </ul>
+        </div>
+        <div class="col" style="margin-bottom: 0px;">
+            <center>
+                <p style="">Copyright @ 2016 Made With <i class="ion-heart"></i> By Arthvedi</p>
+            </center>   
+        </div>
+    </div>
+</ion-content>
