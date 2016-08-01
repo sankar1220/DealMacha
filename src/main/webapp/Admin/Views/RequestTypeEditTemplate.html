@@ -1,0 +1,51 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">RequestType EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemform" name="ItemForm">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Request Type</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<!-- <input type="text" class="form-control" name="requestType" ng-model="RequestTypeEditData.requestType" /> -->
+						{{RequestTypeEditData.requestType}}
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class="form-control" name="status" ng-model="RequestTypeEditData.requestStatus" style="width:100%;" required>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Request Description</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<textarea type="text" class="form-control" name="requestDescription" ng-model="RequestTypeEditData.requestDescription"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">RequestType Attribute</label>
+				<div class="col-sm-7">
+					<div class="form-control-static" ng-repeat="requestModels in RequestTypeEditData.requestTypeAttributesModels">
+						<!-- <input type="text" class="form-control" name="requestTypeAttribute" ng-model="requestModels.requestTypeAttribute" /> -->
+						{{requestModels.requestTypeAttribute}}
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary btn-primary:hover" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="RequestTypeEditDetails(RequestTypeEditData)">Save changes</button>
+	</div>
+</div>
+

@@ -39,13 +39,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/Angular/**").access("hasRole('ROLE_ADMIN')").antMatchers("/seller/**")
                 .access("hasRole('ROLE_SELLER_ADMIN')")
-                .antMatchers("/", "/register/**", "/users/**","/fonts/**", "/_media/**", "/home/**","/mobile/**", "/offers/**", "/merchant/**",
+                .antMatchers("/", "/register/**","/admin/**","/users/**","/fonts/**", "/_media/**", "/home/**","/mobile/**", "/offers/**", "/merchant/**",
                         "/product/**", "/common/**", "/products/**", "/cmsSection/**", "/cmsBlock/**", "/merchantCategory/**",
                         "/merchantCategoryMargin/**","/home/**","/cashbackTransaction/**","/mobileProductsList/**","/mobileSingleProduct/**","/account/**", "/uploadPostsWithImage/**", "/merchantForm/**", "/delete/**", "/transaction/**",
                         "/uploadForm.html")
                 .permitAll().anyRequest().authenticated().and().formLogin().loginPage("/login").successHandler(authenticationSuccessHandler)
-                .failureHandler(authenticationFailureHandler)/*.defaultSuccessUrl("/", false).failureUrl("/login?error")*/
-                .usernameParameter("username").passwordParameter("password").permitAll().and().logout().logoutSuccessUrl("/").and()
+                .failureHandler(authenticationFailureHandler)/*.defaultSuccessUrl("/", false)*/./*failureUrl("/login?error").*/
+                usernameParameter("username").passwordParameter("password").permitAll().and().logout().logoutSuccessUrl("/").and()
                 .exceptionHandling().accessDeniedPage("/403").and().csrf().disable();
 
     }

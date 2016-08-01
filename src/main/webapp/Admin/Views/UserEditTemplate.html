@@ -1,0 +1,98 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">USER EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemform" name="ItemForm">
+			<div class="form-group">
+				<label class="col-sm-4 control-label">User Name</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="userName" ng-model="UserEditData.userName" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Age</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="age" ng-model="UserEditData.age" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Email Id</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="email" class="form-control" name="emailId" ng-model="UserEditData.emailId" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Mobile Number</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="mobileNo" ng-model="UserEditData.mobileNo" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">User Code</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="userCode" ng-model="UserEditData.userCode" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Status</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<select class="form-control" name="status" ng-model="UserEditData.status" style="width:100%;" required>
+							<!-- <option value=""></option> -->
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">User Type</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="userType" ng-model="UserEditData.userType" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Alternate Mobile Number</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="alternateMobileNo" ng-model="UserEditData.alternateMobileNo" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Created Date</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="createdDate" ng-model="UserEditData.createdDate" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">User Count</label>
+				<div class="col-sm-7">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="userCount" ng-model="UserEditData.userCount" />
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary btn-primary:hover" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="UserEdit(UserEditData)">Save changes</button>
+	</div>
+</div>
+

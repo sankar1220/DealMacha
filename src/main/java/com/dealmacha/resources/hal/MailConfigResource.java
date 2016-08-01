@@ -1,7 +1,5 @@
 package com.dealmacha.resources.hal;
 
-import java.util.Date;
-
 import org.springframework.hateoas.core.Relation;
 
 @Relation(value="mailConfig",collectionRelation="mailConfig")

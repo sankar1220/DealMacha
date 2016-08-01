@@ -13,13 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.dealmacha.businessdelegate.domain.IKeyBuilder;
 import com.dealmacha.domain.Account;
-import com.dealmacha.domain.Transaction;
-import com.dealmacha.domain.Users;
 import com.dealmacha.model.AccountModel;
-import com.dealmacha.model.AddressModel;
-import com.dealmacha.model.TransactionModel;
 import com.dealmacha.service.IAccountService;
-import com.dealmacha.service.IAddressService;
 
 @Service
 public class AccountBusinessDelegate implements IBusinessDelegate<AccountModel, AccountContext, IKeyBuilder<String>, String> {
@@ -43,14 +38,21 @@ public class AccountBusinessDelegate implements IBusinessDelegate<AccountModel, 
 	}
 	@Override
 	public AccountModel edit(IKeyBuilder<String> keyBuilder, AccountModel model) {
-		// TODO Auto-generated method stub
-		return null;
+		Account account = accountService.getAccount(keyBuilder.build().toString());
+		BigDecimal cashBackAmount = new BigDecimal(0.00);
+		account.setCashbackAmount(cashBackAmount);
+		account.setUsers(account.getUsers());
+		account = accountService.updateAccount(account);
+		
+		model.setId(account.getId());
+		return model;
 	}
 	@Override
 	public AccountModel getByKey(IKeyBuilder<String> keyBuilder,
 			AccountContext context) {
-		// TODO Auto-generated method stub
-		return null;
+		Account account = accountService.getAccount(keyBuilder.build().toString());
+		AccountModel accountModel = conversionService.convert(account, AccountModel.class);
+	        return accountModel;
 	}
 	@Override
 	public Collection<AccountModel> getCollection(AccountContext context) {
@@ -58,6 +60,7 @@ public class AccountBusinessDelegate implements IBusinessDelegate<AccountModel, 
 		 if (context.getUsersId() != null) {
 			 account= accountService.getUsersAccount(context.getUsersId());
 	        }
+		 
 		 List<AccountModel> accountModels = (List<AccountModel>) conversionService.convert(account,
 	                TypeDescriptor.forObject(account),
 	                TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(AccountModel.class)));

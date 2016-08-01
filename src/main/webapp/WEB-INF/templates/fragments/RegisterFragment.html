@@ -1,67 +1,77 @@
-       <div class="page_section_reg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 pi-div">
-                        <h2>USER INFORMATION</h2>
-                        <form role="form">
-                            <div class="form-group">
-                                <label >User Name:</label>
-                                <input type="text" class="form-control" placeholder="Name"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Mobile Number:</label>
-                                <input type="text" class="form-control" placeholder="Mobile Number"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Email Id:</label>
-                                <input type="email" class="form-control" placeholder="Email"/>
-                            </div>
-                            
-                            <!-- <div class="checkbox">
-                                <label><input type="checkbox"/> Sign Up for Newsletter</label>
-                            </div> -->
-                            <div class="form-group">
-                                <label>Password:</label>
-                                <input type="password" class="form-control" placeholder="password"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Confirm Password:</label>
-                                <input type="password" class="form-control" placeholder="Confirm password"/>
-                            </div>
-                            <button type="submit" class="btn btn-default">REGISTER</button>
-                        </form>
-                    </div>
-                    <div class="col-md-6 col-sm-6 li-div">
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                            </ol>
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox" style="margin-top: 100px;">
-                                <div class="item active">
-                                    <img src="/home/images/monsoonweb.jpg"/>
-                                </div>
-                                <div class="item">
-                                    <img src="/home/images/wardrobeweb.jpg"/>
-                                </div>
-                                <div class="item">
-                                    <img src="/home/images/20160601_150351_730x300_image-730-300.jpg"/>
-                                </div>
-                            </div>
-                            <!-- Left and right controls -->
-                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="page_section_reg" ng-controller='RegistrationUserController'>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 pi-div">
+				<h2>USER INFORMATION</h2>
+
+
+					<form role="form" name="registerForm">
+							<div class="form-group" ng-class="{'has-error':registerForm.userName.$invalid &amp;&amp; !registerForm.userName.$pristine}">
+								<label>User Name:</label>
+									<input type="text" class="form-control" placeholder="User Name" ng-model="register.userName" name="userName" required="required" />
+									 <span ng-show="registerForm.userName.$invalid &amp;&amp; !registerForm.userName.$pristine" class="help-block">You name is required.</span>
+							</div>
+
+				
+							<div class="form-group" ng-class="{'has-error':registerForm.mobileNo.$invalid &amp;&amp; !registerForm.mobileNo.$pristine}">
+								<label>Mobile Number:</label>
+									<input type="number" class="form-control" placeholder="Mobile Number" ng-minlength="10" ng-maxlength="10" ng-model="register.mobileNo" name="mobileNo" required="required" />
+
+									 <p ng-show="registerForm.mobileNo.$error.minlength" class="help-block">MobileNo is too short. Must be 10 digits</p>
+            						<p ng-show="registerForm.mobileNo.$error.maxlength" class="help-block">MobileNo is too long. Must be 10 digits</p>
+							</div>
+
+
+							<div class="form-group" ng-class="{'has-error':registerForm.emailId.$invalid &amp;&amp; !registerForm.emailId.$pristine}">
+								<label>Email Id:</label>
+									<input type="email" class="form-control" placeholder="Email" ng-model="register.emailId" name="emailId" required="required" />
+									<p ng-show="registerForm.emailId.$invalid &amp;&amp; !registerForm.emailId.$pristine" class="help-block">Enter a valid email.</p>
+							</div>
+							
+							<!-- <div class="checkbox">
+									<label><input type="checkbox"/> Sign Up for Newsletter</label>
+							</div> -->
+
+							<div class="form-group" ng-class="{'has-error':registerForm.password.$invalid &amp;&amp; !registerForm.password.$pristine}">
+									<label>Password:</label>
+										<input type="password" class="form-control" placeholder="password"   ng-model="register.password" name="password" id="password" required="required"/>
+							</div>
+							<div class="form-group" ng-class="{'has-error':registerForm.confirmPassword.$invalid &amp;&amp; !registerForm.confirmPassword.$pristine}">
+									<label>Confirm Password:</label>
+										<input type="password" class="form-control" placeholder="Confirm password" ng-model="register.confirmPassword" name="confirmPassword" id="confirmPassword" required="required" ng-keyup="getPasswordMatch($event)"/>
+										 <p id="wrg_pass" class="help-block hide">Please enter confirm Password same as Password!</p>
+
+							</div>
+							<a ng-click="userRegistration(register)" ng-disabled="registerForm.$invalid" class="btn btn-danger">REGISTER</a>
+					</form>
+				</div>
+			<div class="col-md-6 col-sm-6 li-div">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+					<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+					</ol>
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox" style="margin-top: 100px;">
+						<div class="item" th:each="post,postIndex:${registerPageSliderSection.cmsBlocks[0].cmsPostses}" th:classappend = "${postIndex.index==0}?'active':''">
+							<a th:href="${post.url}" th:target="${post.urlTargetLocation}">
+								<img th:src = "${post.cmsPostsImageses[0].imageLocation}" th:alt="${post.cmsPostsImageses[0].imageAlt}"/></a>
+						</div>
+						
+					</div>
+					<!-- Left and right controls -->
+						<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+						</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

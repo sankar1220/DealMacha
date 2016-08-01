@@ -44,7 +44,6 @@ public class OffersBusinessDelegate implements IBusinessDelegate<OffersModel, Of
          offers.setImageType(model.getImageType());
         offers.setOfferCommissionAmount(Double.parseDouble(model.getOfferCommissionAmount()));
         offers.setOfferCommissionAmountType(model.getOfferCommissionAmountType());
-        offers.setOfferCommissionType(model.getOfferCommissionType());
         offers.setOfferName(model.getOfferName());
         offers.setOfferSource(model.getOfferSource());
     	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -112,7 +111,6 @@ public class OffersBusinessDelegate implements IBusinessDelegate<OffersModel, Of
           BigDecimal offerMarginAmount = new BigDecimal(value.replaceAll(",", " "));*/
         offers.setOfferCommissionAmount(Double.parseDouble(model.getOfferCommissionAmount()));
         offers.setOfferCommissionAmountType(model.getOfferCommissionAmountType());
-        offers.setOfferCommissionType(model.getOfferCommissionType());
         offers.setOfferName(model.getOfferName());
         offers.setOfferSource(model.getOfferSource());
         offers.setOfferStatus(model.getOfferStatus());

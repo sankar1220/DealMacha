@@ -1,0 +1,107 @@
+<div ng-controller="SingleMerchantController" style="margin-top: -20px;">
+ <div class="wrapper wrapper-content animated fadeIn">
+	<div class="row border-bottom white-bg m-t-sm">
+		<h3 style="margin-left: 20px;"><b>SingleMerchant View</b></h3>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="tabs-container">
+				<tabset>
+					<tab heading="Information">
+						<div class="panel-body">
+							<div class="form-group">
+								<label class="control-label col-md-4">Merchant Name</label>
+								<div class="col-md-8">
+									<div class="form-control-static">{{singleMerchantDetails.merchantName}}</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-4">Affliate Id</label>
+								<div class="col-md-8">
+									<div class="form-control-static">{{singleMerchantDetails.affliateId}}</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-md-4">Merchant Token</label>
+									<div class="col-md-8">
+										<div class="form-control-static">{{singleMerchantDetails.merchantToken}}</div>
+									</div>
+							</div>
+								<!-- <a href="javascript:;" ng-click="MerchantEdit()" class="btn btn-success ng- untouched ng-valid active ng-dirty ng-valid-parse" style="margin-left: 107px;">
+											EDIT
+									</a> -->
+						</div>
+					</tab>
+					<tab heading="Commission">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-12">
+									<table class="table OrderCommTable table-bordered">
+										<thead>
+											<tr class="primeth">
+													<th rowspan="2">Category</th>
+													<th rowspan="2">Category Code</th>
+													<th colspan="2">Desktop / Mobile Website</th>
+													<th colspan="2">Mobile Apps</th>
+											</tr>
+											<tr>
+												<th>New Customer Order<span class="supIcon">*</span></th>
+												<th>Existing Customer Order</th>
+												<th>New Customer Order<span class="supIcon">*</span></th>
+												<th>Existing Customer Order</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="merchantCategoryMarginData in singleMerchantCategoryDetails">
+												<td>{{merchantCategoryMarginData.categoryName}}</td>
+												<td>{{merchantCategoryMarginData.merchantCategoryCode}}</td>
+												<td ng-repeat="merchantMarginData in merchantCategoryMarginData.marginDetails" ng-if="merchantMarginData.channel == 'WEB' ">{{merchantMarginData.commission}}</td>
+												<td ng-repeat="merchantMarginData in merchantCategoryMarginData.marginDetails" ng-if="merchantMarginData.channel == 'WEB' ">{{merchantMarginData.dealmachaCommission}}</td>
+												<td ng-repeat="merchantMarginData in merchantCategoryMarginData.marginDetails" ng-if="merchantMarginData.channel == 'Mobile' ">{{merchantMarginData.commission}}</td>
+												<td ng-repeat="merchantMarginData in merchantCategoryMarginData.marginDetails" ng-if="merchantMarginData.channel == 'Mobile' ">{{merchantMarginData.dealmachaCommission}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</tab>
+					<tab heading="Transaction">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-xs-12">
+									<table class=" footable table table-bordered table-stripped toggle-arrow-tiny" id="merchantTable" data-page-size="2">
+										<thead>
+											<tr class="primeth" my-directive>
+												<th>Transaction Code</th>
+												<th>User Name</th>
+												<th>Status</th>
+												<th>Target Url</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr  ng-repeat="merchantTransactionData in singleMerchantDetails._embedded.transaction">
+												<td class="col-lg-2" data->{{merchantTransactionData.code}}</td>
+												<td class="col-lg-2">{{merchantTransactionData.userName}}</td>
+												<td class="col-lg-2">{{merchantTransactionData.orderStatus}}</td>
+												<td class="col-lg-6" ><button class="btn btn-primary" data-toggle="collapse" data-target="#demo">view</button><br/><a id="demo" class="collapse">{{merchantTransactionData.targetUrl}}</a></td>
+											</tr>
+										</tbody>
+										<!-- <tfoot>
+											<tr>
+												<td colspan="4">
+												  <ul class="pagination pull-right"></ul>
+												</td>
+											</tr>
+										</tfoot> -->
+									</table>
+								</div>
+							</div>
+						</div>
+					</tab>
+				</tabset>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

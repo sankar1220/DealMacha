@@ -3,6 +3,25 @@
  */
 package com.dealmacha.controller;
 
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.hateoas.ExposesResourceFor;
+import org.springframework.hateoas.config.EnableHypermediaSupport;
+import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.dealmacha.businessdelegate.domain.IKeyBuilder;
 import com.dealmacha.businessdelegate.domain.SimpleIdKeyBuilder;
 import com.dealmacha.businessdelegate.service.IBusinessDelegate;
@@ -10,19 +29,6 @@ import com.dealmacha.businessdelegate.service.PayoomOfferContext;
 import com.dealmacha.model.PayoomOfferModel;
 import com.dealmacha.resources.assemblers.PayoomOfferResourceAssembler;
 import com.dealmacha.resources.hal.PayoomOfferResource;
-
-import javax.annotation.Resource;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.hateoas.config.EnableHypermediaSupport;
-import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 /**
  * @author mohan
@@ -90,8 +96,9 @@ public class PayoomOfferController {
         keyBuilderFactory = factory;
     }
 
-    @Resource(name = "payoomOfferBusinessDelegate")
-    public void setPayoomOfferBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("payoomOfferBusinessDelegate")
+    public void setPayoomOfferBusinessDelegate(final IBusinessDelegate<PayoomOfferModel, PayoomOfferContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

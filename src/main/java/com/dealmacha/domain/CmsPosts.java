@@ -15,149 +15,170 @@ import javax.persistence.*;
 @Table(name = "cms_posts", catalog = "dealmacha_app")
 public class CmsPosts extends AbstractDomain implements java.io.Serializable {
 
-    private CmsBlock cmsBlock;
-    private String postTitle;
-    private String postName;
-    private Date postsExpiryTime;
-    private String postsProductTitle;
-    private String postsProductPrice;
-    private String postsProductAfterPrice;
-    private Integer orderOfPlace;
-    private String url;
-    private Integer postsImageWidth;
-    private Integer postsImageHeight;
-    private Set<CmsPostsImages> cmsPostsImageses = new HashSet<CmsPostsImages>(0);
+	private CmsBlock cmsBlock;
+	private String postTitle;
+	private String postName;
+	private Date postsExpiryTime;
+	private String postsProductTitle;
+	private String postsProductPrice;
+	private String postsProductAfterPrice;
+	private Integer orderOfPlace;
+	private String description;
+	private String url;
+	private String urlTargetLocation;
+	private Integer postsImageWidth;
+	private Integer postsImageHeight;
+	private Set<CmsPostsImages> cmsPostsImageses = new HashSet<CmsPostsImages>(0);
 
-    public CmsPosts() {
-    }
+	public CmsPosts() {
+	}
 
-    public CmsPosts(final String id, final CmsBlock cmsBlock, final String postTitle, final String postName, final Date postsExpiryTime,
-            final String postsProductTitle, final String postsProductPrice, final String postsProductAfterPrice, final Integer orderOfPlace,
-            final String url, final Integer postsImageWidth, final Integer postsImageHeight, final Set<CmsPostsImages> cmsPostsImageses) {
-        this.id = id;
-        this.cmsBlock = cmsBlock;
-        this.postTitle = postTitle;
-        this.postName = postName;
-        this.postsExpiryTime = postsExpiryTime;
-        this.postsProductTitle = postsProductTitle;
-        this.postsProductPrice = postsProductPrice;
-        this.postsProductAfterPrice = postsProductAfterPrice;
-        this.orderOfPlace = orderOfPlace;
-        this.url = url;
-        this.postsImageWidth = postsImageWidth;
-        this.postsImageHeight = postsImageHeight;
-        this.cmsPostsImageses = cmsPostsImageses;
-    }
+	public CmsPosts(final String id, final CmsBlock cmsBlock, final String postTitle, final String postName,
+			final Date postsExpiryTime, final String postsProductTitle, final String postsProductPrice,
+			final String postsProductAfterPrice, final Integer orderOfPlace, final String url,
+			final Integer postsImageWidth, final String urlTargetLocation, final Integer postsImageHeight,
+			final Set<CmsPostsImages> cmsPostsImageses) {
+		this.id = id;
+		this.cmsBlock = cmsBlock;
+		this.postTitle = postTitle;
+		this.postName = postName;
+		this.postsExpiryTime = postsExpiryTime;
+		this.postsProductTitle = postsProductTitle;
+		this.postsProductPrice = postsProductPrice;
+		this.postsProductAfterPrice = postsProductAfterPrice;
+		this.orderOfPlace = orderOfPlace;
+		this.url = url;
+		this.urlTargetLocation = urlTargetLocation;
+		this.postsImageWidth = postsImageWidth;
+		this.postsImageHeight = postsImageHeight;
+		this.cmsPostsImageses = cmsPostsImageses;
+	}
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cms_block_id")
-    public CmsBlock getCmsBlock() {
-        return cmsBlock;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cms_block_id")
+	public CmsBlock getCmsBlock() {
+		return cmsBlock;
+	}
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cmsPosts")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cmsPosts")
+	public Set<CmsPostsImages> getCmsPostsImageses() {
+		return cmsPostsImageses;
+	}
 
-    public Set<CmsPostsImages> getCmsPostsImageses() {
-        return cmsPostsImageses;
-    }
+	@Column(name = "order_of_place")
+	public Integer getOrderOfPlace() {
+		return orderOfPlace;
+	}
 
-    @Column(name = "order_of_place")
-    public Integer getOrderOfPlace() {
-        return orderOfPlace;
-    }
+	@Column(name = "post_name", length = 100)
+	public String getPostName() {
+		return postName;
+	}
 
-    @Column(name = "post_name", length = 100)
-    public String getPostName() {
-        return postName;
-    }
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "posts_expiry_time", length = 19)
+	public Date getPostsExpiryTime() {
+		return postsExpiryTime;
+	}
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "posts_expiry_time", length = 19)
-    public Date getPostsExpiryTime() {
-        return postsExpiryTime;
-    }
+	@Column(name = "posts_image_height")
+	public Integer getPostsImageHeight() {
+		return postsImageHeight;
+	}
 
-    @Column(name = "posts_image_height")
-    public Integer getPostsImageHeight() {
-        return postsImageHeight;
-    }
+	@Column(name = "posts_image_width")
+	public Integer getPostsImageWidth() {
+		return postsImageWidth;
+	}
 
-    @Column(name = "posts_image_width")
-    public Integer getPostsImageWidth() {
-        return postsImageWidth;
-    }
+	@Column(name = "posts_product_after_price", length = 100)
+	public String getPostsProductAfterPrice() {
+		return postsProductAfterPrice;
+	}
 
-    @Column(name = "posts_product_after_price", length = 100)
-    public String getPostsProductAfterPrice() {
-        return postsProductAfterPrice;
-    }
+	@Column(name = "posts_product_price", length = 100)
+	public String getPostsProductPrice() {
+		return postsProductPrice;
+	}
 
-    @Column(name = "posts_product_price", length = 100)
-    public String getPostsProductPrice() {
-        return postsProductPrice;
-    }
+	@Column(name = "posts_product_title", length = 100)
+	public String getPostsProductTitle() {
+		return postsProductTitle;
+	}
 
-    @Column(name = "posts_product_title", length = 100)
-    public String getPostsProductTitle() {
-        return postsProductTitle;
-    }
+	@Column(name = "post_title", length = 100)
+	public String getPostTitle() {
+		return postTitle;
+	}
 
-    @Column(name = "post_title", length = 100)
-    public String getPostTitle() {
-        return postTitle;
-    }
+	@Column(name = "url", length = 200)
+	public String getUrl() {
+		return url;
+	}
 
-    @Column(name = "url", length = 200)
-    public String getUrl() {
-        return url;
-    }
+	public void setCmsBlock(final CmsBlock cmsBlock) {
+		this.cmsBlock = cmsBlock;
+	}
 
-    public void setCmsBlock(final CmsBlock cmsBlock) {
-        this.cmsBlock = cmsBlock;
-    }
+	public void setCmsPostsImageses(final Set<CmsPostsImages> cmsPostsImageses) {
+		this.cmsPostsImageses = cmsPostsImageses;
+	}
 
-    public void setCmsPostsImageses(final Set<CmsPostsImages> cmsPostsImageses) {
-        this.cmsPostsImageses = cmsPostsImageses;
-    }
+	public void setOrderOfPlace(final Integer orderOfPlace) {
+		this.orderOfPlace = orderOfPlace;
+	}
 
-    public void setOrderOfPlace(final Integer orderOfPlace) {
-        this.orderOfPlace = orderOfPlace;
-    }
+	public void setPostName(final String postName) {
+		this.postName = postName;
+	}
 
-    public void setPostName(final String postName) {
-        this.postName = postName;
-    }
+	public void setPostsExpiryTime(final Date postsExpiryTime) {
+		this.postsExpiryTime = postsExpiryTime;
+	}
 
-    public void setPostsExpiryTime(final Date postsExpiryTime) {
-        this.postsExpiryTime = postsExpiryTime;
-    }
+	public void setPostsImageHeight(final Integer postsImageHeight) {
+		this.postsImageHeight = postsImageHeight;
+	}
 
-    public void setPostsImageHeight(final Integer postsImageHeight) {
-        this.postsImageHeight = postsImageHeight;
-    }
+	public void setPostsImageWidth(final Integer postsImageWidth) {
+		this.postsImageWidth = postsImageWidth;
+	}
 
-    public void setPostsImageWidth(final Integer postsImageWidth) {
-        this.postsImageWidth = postsImageWidth;
-    }
+	public void setPostsProductAfterPrice(final String postsProductAfterPrice) {
+		this.postsProductAfterPrice = postsProductAfterPrice;
+	}
 
-    public void setPostsProductAfterPrice(final String postsProductAfterPrice) {
-        this.postsProductAfterPrice = postsProductAfterPrice;
-    }
+	public void setPostsProductPrice(final String postsProductPrice) {
+		this.postsProductPrice = postsProductPrice;
+	}
 
-    public void setPostsProductPrice(final String postsProductPrice) {
-        this.postsProductPrice = postsProductPrice;
-    }
+	public void setPostsProductTitle(final String postsProductTitle) {
+		this.postsProductTitle = postsProductTitle;
+	}
 
-    public void setPostsProductTitle(final String postsProductTitle) {
-        this.postsProductTitle = postsProductTitle;
-    }
+	public void setPostTitle(final String postTitle) {
+		this.postTitle = postTitle;
+	}
 
-    public void setPostTitle(final String postTitle) {
-        this.postTitle = postTitle;
-    }
+	public void setUrl(final String url) {
+		this.url = url;
+	}
 
-    public void setUrl(final String url) {
-        this.url = url;
-    }
+	@Column(name = "url_target_location")
+	public String getUrlTargetLocation() {
+		return urlTargetLocation;
+	}
+
+	public void setUrlTargetLocation(String urlTargetLocation) {
+		this.urlTargetLocation = urlTargetLocation;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }

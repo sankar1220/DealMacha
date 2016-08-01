@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.ExposesResourceFor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 import org.springframework.http.HttpStatus;
@@ -27,9 +27,8 @@ import com.dealmacha.resources.assemblers.RequestsResourceAssembler;
 import com.dealmacha.resources.hal.RequestsResource;
 
 @RestController
-@ExposesResourceFor(value = RequestsResource.class)
 @EnableHypermediaSupport(type = { HypermediaType.HAL })
-@RequestMapping(value = "/requests", produces = { MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(value = "/admin/requests", produces = { MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
 public class RequestsController {
     private static final Logger LOGGER = Logger.getLogger(RequestsController.class);
 
@@ -81,8 +80,17 @@ public class RequestsController {
     public ResponseEntity<Iterable<RequestsResource>> getAllRequests() {
     	RequestsContext requestsContext = requestsContextFactory.getObject();
     	requestsContext.setAll("all");
-        /* Collection<UsersModel> usersModels = businessDelegate.getCollection(usersContext);
-        usersResourceAssembler.toResources(usersModels);*/
+        Iterable<RequestsModel> requestsModels = businessDelegate.getCollection(requestsContext);
+        final Iterable<RequestsResource> resources = requestsResourceAssembler.toResources(requestsModels);
+        return new ResponseEntity<Iterable<RequestsResource>>(resources, HttpStatus.OK);
+    }
+    
+
+    @RequestMapping(method = RequestMethod.GET, value = "/users/{usersId}", consumes = { MediaType.ALL_VALUE })
+    @ResponseBody
+    public ResponseEntity<Iterable<RequestsResource>> getRequestsByUsers(@PathVariable(value="usersId") final String usersId) {
+    	RequestsContext requestsContext = requestsContextFactory.getObject();
+    	requestsContext.setUsersId(usersId);
         Iterable<RequestsModel> requestsModels = businessDelegate.getCollection(requestsContext);
         final Iterable<RequestsResource> resources = requestsResourceAssembler.toResources(requestsModels);
         return new ResponseEntity<Iterable<RequestsResource>>(resources, HttpStatus.OK);
@@ -101,8 +109,9 @@ public class RequestsController {
         keyBuilderFactory = factory;
     }
 
-    @Resource(name = "requestsBusinessDelegate")
-    public void setRequestsBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("requestsBusinessDelegate")
+    public void setRequestsBusinessDelegate(final IBusinessDelegate<RequestsModel, RequestsContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
@@ -105,8 +106,9 @@ public class UserAddressController {
         keyBuilderFactory = factory;
     }
 
-    @Resource(name = "userAddressBusinessDelegate")
-    public void setUserAddressBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("userAddressBusinessDelegate")
+    public void setUserAddressBusinessDelegate(final IBusinessDelegate<UserAddressModel, UserAddressContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

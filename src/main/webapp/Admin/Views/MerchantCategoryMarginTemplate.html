@@ -1,0 +1,39 @@
+<div class="row" ng-controller="MerchantCategoryMarginController">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5 class="text-uppercase fontpro">AVAILABLE {{$state.current.data.pageTitle}}</h5>
+				<div class="ibox-tools">
+					<a class="tools-p myButton" ui-sref="Merchants.MerchantCategoryMarginCreation"><i class="fa fa-plus"></i> Merchant Category Margin</a>
+				</div>
+			</div>
+			<div class="ibox-content">
+			 <table class="table table-striped table-bordered table-hover dataTables-example" id="merchantCategoryMarginTable">
+					<thead>
+						<tr>
+							<th>CustomerType</th>
+							<th>Channel</th>
+							<th>Commission</th>
+							<th>CommissionType</th>
+							<th>dealmachaCommission</th>
+							<th>dealmachaCommissionType</th>
+							<th> </th>
+						</tr> 
+					</thead>
+					<tbody>
+					<!-- <tr ng-repeat="userData in usersData  | filter:deliverSearch" ng-click="toggleItem(userData.userId)">
+							<td>{{userData.userCode}}</td>
+							<td>{{userData.userName}}</td>
+							<td>{{userData.mobileNo}}</td>
+							<td>{{userData.emailId}}</td>
+							<td>{{userData.status}}</td>
+							<td><button class="btn-xs btn-primary"><a href="#/Users/SingleUserTemplate/{{data.userId}}">View</a></button></td>
+					</tr> -->
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

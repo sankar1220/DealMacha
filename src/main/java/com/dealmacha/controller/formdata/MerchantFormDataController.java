@@ -49,8 +49,8 @@ public class MerchantFormDataController {
             @RequestParam("description") final String description, @RequestParam("merchantToken") final String merchantToken,
             @RequestParam("status") final String status, @RequestParam("url") final String targetUrl,
             @RequestParam("merchantImage") final MultipartFile file) {
-        UUID uniqueName = UUID.randomUUID();
-
+      
+    	UUID uniqueName = UUID.randomUUID();
         String contentType = file.getContentType();
         String webAppPath = (req.getServletContext().getRealPath("/"));
         int imageWidth = 0, imageHeight = 0;

@@ -87,9 +87,14 @@ public interface IUsersService {
 
     Users updateUsers(Users users);
 
-	Users addAccount(Users users, Set<Account> accounts);
 
 	List<Users> getActivatedUsers();
+
+	Users getUsersByEmailId(String emailId);
+
+	Users getByResetPassword(String userId, String confirmPassword, String newPassword);
+
+	Users getUserResetPassword(Users user);
 
 
 

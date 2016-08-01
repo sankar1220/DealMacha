@@ -1,15 +1,11 @@
 package com.dealmacha.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import com.dealmacha.domain.Account;
 
 @Component("usersModel")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)

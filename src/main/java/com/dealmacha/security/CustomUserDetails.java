@@ -1,7 +1,5 @@
 package com.dealmacha.security;
 
-import com.dealmacha.domain.Users;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -10,9 +8,13 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
+import com.dealmacha.domain.Users;
+
 public class CustomUserDetails extends Users implements UserDetails {
 
-    private static final long serialVersionUID = 1L;
+  
+
+	private static final long serialVersionUID = 1L;
     private List<String> userRoles;
 
     public CustomUserDetails(final Users user, final List<String> userRoles) {
@@ -65,5 +67,5 @@ public class CustomUserDetails extends Users implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
+  
 }

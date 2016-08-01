@@ -1,0 +1,147 @@
+<div class="ibox-title">
+	<h5 class="text-uppercase">AVAILABLE {{$state.current.data.pageTitle}}</h5>
+	<!-- <div class="ibox-tools">
+		<a class="tools-p" ng-click="AuctionFull()"><i class="fa fa-expand"></i> Full Screen</a>
+	</div> -->
+</div>
+<div ng-controller="SingleUserController">
+	<form class="form-horizontal profile_view">
+		<div class="form-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">User Name</label>
+							<div class="col-md-6">
+								<div class="form-control-static">{{singleUserDetails.userName}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+				 <div class="form-group">
+						<label class="control-label col-md-4">Age</label>
+							<div class="col-md-6">
+								<div class="form-control-static">{{singleUserDetails.age}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Mobile No</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleUserDetails.mobileNo}}</div>
+						</div>
+					</div>
+			 </div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">userCode</label>
+							<div class="col-md-8">
+								<div class="form-control-static">{{singleUserDetails.userCode}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		 <div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">User Type</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleUserDetails.userType}}</div>
+						</div>
+						</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Status</label>
+							<div class="col-md-8">
+								<div class="form-control-static">{{singleUserDetails.status}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Alternate MobileNo</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleUserDetails.alternateMobileNo}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					 <div class="form-group">
+						<label class="control-label col-md-4">Email Id</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleUserDetails.emailId}}</div>
+						</div>
+						</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Email Status</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleUserDetails.emailStatus}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+				 <div class="form-group">
+						<label class="control-label col-md-4">Authenticate Status</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleUserDetails.authenticateStatus}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					 <div class="form-group">
+						<label class="control-label col-md-4">Created Date</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleUserDetails.createdDate}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					 <div class="form-group">
+						<label class="control-label col-md-4">User Count</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleUserDetails.userCount}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6" style="margin-left: 275px;">
+					<div class="form-group" style="color: red;
+    				margin-top: 20px;">
+						<label class="control-label col-md-4">Cashback Amount</label>
+					 	<div class="col-md-8">
+							<div class="form-control-static">{{singleUserDetails.accountModels[0].cashbackAmount}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+		<div class="form-actions">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-offset-9 col-md-9">
+						 <!--  <button class="btn green-haze edit_back profile_edit">Edit</button> -->
+						 <a href="javascript:;" ng-click="editUser(singleUserDetails)" class="btn btn-outline btn-primary">
+								EDIT
+							</a>
+							<a href="" class="btn default hide_Cancel hide">Cancel</a>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+		</div>
+</div>

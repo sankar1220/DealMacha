@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="CHITS">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- <Page title set in pageTitle directive> -->
+		<title page-title></title>
+		<!-- <Bootstrap link> -->
+		<link href="/CHITS/common/css/bootstrap.min.css" rel="stylesheet">
+		<!-- <Font-awesome link> -->
+		<link href="/CHITS/common/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<!-- <Main css files> -->
+		<link href="/CHITS/common/css/animate.css" rel="stylesheet">
+		<link href="/CHITS/common/css/roboto.css" rel="stylesheet">
+		<link href="/CHITS/common/css/open+sans.css" rel="stylesheet">
+		<link href="/CHITS/common/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css">
+		<link id="loadBefore" href="/CHITS/common/css/style.css" rel="stylesheet">
+</head>
+<!-- <Main Controller with serveral data used in theme on different View> -->
+	<!-- <body ng-controller="MainCtrl" style="background-color: #f0f0f0;"> -->
+	<body ng-controller="MainCtrl" class="{{$state.current.data.specialClass}} mini-navbar" landing-scrollspy id="page-top"  style="background-color: #f0f0f0;">
+	<!-- <Main View> -->
+	<div ui-view></div>
+	<!-- <jquery & Bootstrap> -->
+	<script src="/CHITS/common/jquery/jquery-2.1.1.min.js"></script>
+	<script src="/CHITS/common/plugins/jquery-ui/jquery-ui.js"></script>
+	<script src="/CHITS/common/bootstrap/bootstrap.min.js"></script>
+	<!-- <Metis Menu> -->
+	<script src="/CHITS/common/plugins/metisMenu/jquery.metismenu.js"></script>
+	<!-- <Slimscroll>
+ --> 
+ <script src="/CHITS/common/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<!--  <pace Js> -->
+<script src="/CHITS/common/plugins/pace/pace.min.js"></script>
+<!-- <Custom & Plugin Javascript> -->
+<!-- <script src="js/inspinia.js"></script> -->
+
+<!-- <Main Angular Scripts> -->
+<script src="/CHITS/common/angular/angular.min.js"></script>
+<script src="/CHITS/common/ui-router/angular-ui-router.min.js"></script>
+<script src="/CHITS/common/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script src="/CHITS/common/angular-translate/angular-translate.min.js"></script>
+<script src="/CHITS/common/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+<script src="/CHITS/common/plugins/angular-idle/angular-idle.js"></script>
+<script src="/CHITS/common/angular/angular-sanitize.js"></script>
+
+<!-- <Angular App Script> -->
+<script src="js/app.js"></script>
+<script src="js/config.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/chits.js"></script>
+<script src="js/script.js"></script>
+
+
+	</body>
+</html>

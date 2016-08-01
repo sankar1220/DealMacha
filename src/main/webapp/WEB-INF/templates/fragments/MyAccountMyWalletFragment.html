@@ -1,17 +1,88 @@
-<div id="mywallet" class="tab-pane fade">
-    <p class="dm_tab_para1">In My Wallet, you can check your balance or redeem your cashback by clicking on the "Redeem Now" button. It also shows the detailed summary of your transactions.</p>
-    <div class="row">
-        <div class="col-sm-6">
-            <h3>CASHBACK SUMMARY</h3>
-            <p class="dm_tab_para2">Pending Cashback <span class="pull-right">Rs.0.00</span></p>
-            <p class="dm_tab_para3">Pending Rewards <span class="pull-right">Rs.0.00</span></p>
-            <p class="dm_tab_para2">Availabel+Referral Cashback <span class="pull-right">Rs.0.00</span></p>
-            <p class="dm_tab_para3">Availabel rewards <span class="pull-right">Rs.0.00</span></p>
-            <p class="dm_tab_para2">Lifetime Cashback <span class="pull-right">Rs.0.00</span></p>
-            <p class="dm_tab_para3">Cashout Requested <span class="pull-right">Rs.0.00</span></p>
-            <p class="dm_tab_para2">Admin Fee <span class="pull-right">Rs.0.00</span></p>
-            <p class="dm_tab_para3">Cashout Processed <span class="pull-right">Rs.0.00</span></p>
-            <p class="dm_tab_para2">Lifetime Cashback <span class="pull-right">Rs.0.00</span></p>
+<div id="mywallet" class="tab-pane fade" ng-controller="MyAccountWalletController">
+	<p class="dm_tab_para1">In My Wallet, you can check your balance or redeem your cashback by clicking on the "Redeem Now" button. It also shows the detailed summary of your transactions.</p>
+	<div class="row">
+		<div class="col-sm-6">
+			<h3>CASHBACK SUMMARY</h3>
+			<p class="dm_tab_para2">Pending Cashback <span class="pull-right">Rs.0.00</span></p>
+			<p class="dm_tab_para3">Pending Rewards <span class="pull-right">Rs.0.00</span></p>
+			<p class="dm_tab_para2">Availabel+Referral Cashback <span class="pull-right">Rs.0.00</span></p>
+			<p class="dm_tab_para3">Availabel rewards <span class="pull-right">Rs.0.00</span></p>
+			<p class="dm_tab_para2">Lifetime Cashback <span class="pull-right">Rs.0.00</span></p>
+			<p class="dm_tab_para3">Cashout Requested <span class="pull-right">Rs.0.00</span></p>
+			<p class="dm_tab_para2">Admin Fee <span class="pull-right">Rs.0.00</span></p>
+			<p class="dm_tab_para3">Cashout Processed <span class="pull-right">Rs.0.00</span></p>
+			<p class="dm_tab_para2">Lifetime Cashback <span class="pull-right">Rs.0.00</span></p>
+			<!-- <button class="btn btn-primary" style="float:right;margin-top: 8px;" ng-click="redeem()">Redeem Now</button> -->
+			<button type="button" class="btn btn-primary" style="float:right;margin-top: 8px;" ng-click="getRedeemCashbackAmount($event)">Redeem Now</button>
+		</div>
+	</div>
+
+<div class="modal fade" id="walletModal" tabindex="-1" >
+    <div class="modal-dialog" style="width:45%;">
+      <div class="modal-content">
+				 <div class="modal-header">
+          	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          	<h4 class="modal-title caps"><strong>Redeem Request</strong></h4>
         </div>
+        <div class="modal-body" style="height:250px;">
+        	<div class="row">
+						<label class="col-sm-4">Amount</label>
+							<div class="form-group col-sm-7">
+							<a href="">{{cashBack}}</a>
+								<!-- <input type="text" class="form-control" name="Amount"/> -->
+							</div>
+					</div>
+						<div class="row">
+							<label class="col-sm-4">Redeem Request Types</label>
+							<div class="form-group col-sm-7">
+									<!-- <select class="form-control">
+										<option value=""></option>
+										<option>{{requestTypes}}</option>
+										<option>{{requestTypes}}</option>
+										<option>{{requestTypes}}</option>
+									</select> -->
+									<select class="form-control" data-display="requestType" ng-model="request.requestTypesId" ng-change="requestType(request.requestTypesId)">
+								 	<option value=""></option>
+	                <option value="{{requestType.requestTypesId}}" ng-repeat="requestType in requestDetails">{{requestType.requestType}}</option>
+               </select>
+							</div>
+						</div>
+					<!-- 	<div>
+							<label class="col-sm-4">Request</label>
+							<div class="form-group col-sm-7">
+								<div class="form-control-static">
+									<input type="text" class="form-control"/>
+								</div>
+							</div>
+						</div> -->
+						<div class="row">
+							<div ng-repeat="attribute in attributes">
+							<label class="col-sm-2">{{attribute.requestTypeAttribute}}</label>
+
+							<div class="form-group col-md-2">
+								<div>
+									<input type="text" ng-model="request.requestAttributes[attribute.requestTypeAttribute]" class="form-control"/>
+								</div>
+							</div>
+						</div>
+							
+							
+						</div>
+						<div class="row">
+							<label class="col-sm-4 control-label" style="margin-top: 25px;">Description</label>
+							<div class="form-group col-sm-7">
+								<div class="form-control-static">
+									<textarea type="text" class="form-control" ng-model="request.requestComments"></textarea>
+								</div>
+							</div>
+						</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-primary" ng-click="saveRequest(request)">Save</button>
+        </div>
+      </div>
+      
     </div>
-</div>
+  </div>
+  </div>

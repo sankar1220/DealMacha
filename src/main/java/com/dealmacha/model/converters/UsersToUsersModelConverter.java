@@ -89,6 +89,13 @@ public class UsersToUsersModelConverter implements Converter<Users, UsersModel> 
             usersModel.getAccountModels().addAll(converted);
 
         }
+        if (CollectionUtils.isNotEmpty(source.getRequests())) {
+            List<RequestsModel> converted = (List<RequestsModel>) conversionService.convert(source.getRequests(),
+                    TypeDescriptor.forObject(source.getRequests()),
+                    CollectionTypeDescriptor.forType(TypeDescriptor.valueOf(List.class), RequestsModel.class));
+            usersModel.getRequestsModels().addAll(converted);
+
+        }
         return usersModel;
     }
 

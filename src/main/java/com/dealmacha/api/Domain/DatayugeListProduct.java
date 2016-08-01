@@ -7,11 +7,10 @@ public class DatayugeListProduct {
     private String product_category;
     private String product_sub_cate;
     private String product_image;
-    private String can_compare;
+    private String product_id;
+    private boolean can_compare;
 
-    public String getCan_compare() {
-        return can_compare;
-    }
+   
 
     public String getProduct_category() {
         return product_category;
@@ -37,9 +36,7 @@ public class DatayugeListProduct {
         return product_title;
     }
 
-    public void setCan_compare(final String can_compare) {
-        this.can_compare = can_compare;
-    }
+   
 
     public void setProduct_category(final String product_category) {
         this.product_category = product_category;
@@ -64,4 +61,20 @@ public class DatayugeListProduct {
     public void setProduct_title(final String product_title) {
         this.product_title = product_title;
     }
+
+	public boolean isCan_compare() {
+		return can_compare;
+	}
+
+	public void setCan_compare(boolean can_compare) {
+		this.can_compare = can_compare;
+	}
+
+	public String getProduct_id() {
+		return product_id;
+	}
+
+	public void setProduct_id(String product_id) {
+		this.product_id = product_id;
+	}
 }

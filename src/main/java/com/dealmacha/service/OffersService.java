@@ -70,7 +70,6 @@ public class OffersService implements IOffersService {
 	        
 			ct.setOfferCommissionAmount(cbt.getOfferCommissionAmount());
 			ct.setOfferCommissionAmountType(cbt.getOfferCommissionAmountType());
-			ct.setOfferCommissionType(cbt.getOfferCommissionType());
 			ct.setOfferName(cbt.getOfferName());
 			ct.setOfferSource(cbt.getOfferSource());
 			ct.setOfferStartDate(cbt.getOfferStartDate());

@@ -15,6 +15,7 @@ public class TransactionModel extends AbstractModel {
     private String amount;
     private String paymentType;
     private String transactionFor;
+    private String transactionCode;
     private String transactionErrorCode;
     private String transactionMerchantErrorCode;
     private String transactionMerchantMsg;
@@ -178,5 +179,13 @@ public class TransactionModel extends AbstractModel {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+	public String getTransactionCode() {
+		return transactionCode;
+	}
+
+	public void setTransactionCode(String transactionCode) {
+		this.transactionCode = transactionCode;
+	}
 
 }

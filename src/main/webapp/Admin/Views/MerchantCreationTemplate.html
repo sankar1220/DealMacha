@@ -1,0 +1,88 @@
+<div class="ibox float-e-margins" ng-controller="MerchantCreationController">
+	<div class="ibox-title">
+		<h5 class="text-uppercase fontpro">{{$state.current.data.pageTitle}}</h5>
+	</div>
+	<div class="ibox-content">
+		<form action="#" class="form-horizontal customer_entry_form" id="merchantCreateForm" name="merchantsForm">
+			<div class="form-body">
+				<div class="form-group">
+					<label class="control-label col-md-2">Merchant Name 
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':merchantsForm.merchantName.$invalid && !merchantsForm.merchantName.$pristine}">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control" ng-model="merchant.merchantName" required name="merchantName">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Status
+						<span class="required">*</span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':merchantsForm.status.$invalid && !merchantsForm.status.$pristine}">
+							<span class="input-group-addon"><i class="fa fa-check"></i></span>
+							<select class="form-control" ng-model="merchant.status" required name="status">
+								<option value=""></option>
+								<option value="ACTIVE" ng-selected="merchant.status == 'ACTIVE' ">ACTIVE</option>
+								<option value="INACTIVE" ng-selected="merchant.status == 'INACTIVE' ">INACTIVE</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" style= "margin-top: 13px;">
+					<label class="control-label col-md-2">Image Upload<span class="required">*</span></label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':merchantsForm.merchantImage.$invalid && !merchantsForm.merchantImage.$pristine}">
+							<span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+							<input type="file" class="form-control" onchange='angular.element(this).scope().ImageUpload(this)' required name="merchantImage" multiple />
+						</div>
+					</div>
+					<label class="control-label col-md-2">Url<span class="required" aria-required="true">* </span></label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':merchantsForm.merchantUrl.$invalid && !merchantsForm.merchantUrl.$pristine}">
+							<input type="text" class="form-control" ng-model="merchant.url" required name="merchantUrl">
+						</div>
+					</div>
+				</div>
+				<div class="form-group" style= "margin-top: 13px;">
+					<label class="control-label col-md-2">Affiliate Id<span class="required">*</span></label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':merchantsForm.id.$invalid && !merchantsForm.id.$pristine}">
+							<span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
+							<input type="text" class="form-control" name="Id" ng-model="merchant.affiliateId" required name="id">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Merchant Token<span class="required">*</span></label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':merchantsForm.token.$invalid && !merchantsForm.token.$pristine}">
+							<!-- <span class="input-group-addon"><i class="fa fa-picture-o" aria-hidden="true"></i></span> -->
+							<input type="text" class="form-control" name="token" ng-model="merchant.merchantToken" required name="token">
+						</div>
+					</div>
+					
+			</div>
+			<div class="form-group" style= "margin-top: 13px;">
+					<label class="control-label col-md-2">Description 
+						<span class="required">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':merchantsForm.description.$invalid && !merchantsForm.description.$pristine}">
+							<textarea type="text" class="form-control" name="description" ng-model="merchant.description" required name="description"></textarea>
+						</div>
+				</div>
+			</div>
+			<div class="form-actions" style="margin-top: 45px;">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="text-center">
+								<a ng-click="merchantCreate(merchant)" class="btn green" style="background-color:green; color:#fff" ng-disabled="merchantsForm.$invalid">Submit</a>
+								<a class="btn btn-default">Cancel</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

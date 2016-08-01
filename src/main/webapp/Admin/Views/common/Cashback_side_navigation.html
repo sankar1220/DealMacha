@@ -1,0 +1,47 @@
+<!-- Wrapper-->
+<div id="wrapper" class="top-navigation">
+	<!-- Navigation -->
+	<div ng-include="'Views/HeaderTemplate.html'"></div>
+	<!-- Page wraper -->
+	<!-- ng-class with current state name give you the ability to extended customization your view -->
+	<div class="{{$state.current.name}}">
+		<div class="border-bottom white-bg">
+			<ol class="breadcrumb p-xs col-lg-12 gray-bg ">
+				<li>
+					<a href="index.html"><i class="fa fa-home"></i> Home</a>
+				</li>
+				<li>
+					<a ui-sref="{{$state.$current.url.source}}" class="{{$state.current.url}}"> Cashbacks</a>
+				</li>
+				<li>
+					<a> {{$state.current.data.pageTitle}}</a>
+				</li>
+			</ol>
+		</div>
+		<div class="container-fuild animated fadeInRight m-t-sm">
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="ibox-title font-green-sharp fontpro border-bottom">
+						<h3 style="margin-bottom: 3px;">CASHBACK BOARD</h3>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item no-border" ui-sref-active="active">
+							<a ui-sref="Cashbacks.Cashback"><i class="fa fa-group"></i> Cashbacks</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-10">
+					<!-- Main view  -->
+					<div ui-view></div>
+
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div ng-include="'Views/FooterTemplate.html'"></div>
+
+	</div>
+	<!-- End page wrapper-->
+
+</div>
+<!-- End wrapper-->

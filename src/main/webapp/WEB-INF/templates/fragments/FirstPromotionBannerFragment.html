@@ -2,7 +2,7 @@
             <div class="container">
                 <div class="">
                     <div class="col-lg-12 plr" th:each="post,postIndex:${firstPromotionBannerPageSection.cmsBlocks[0].cmsPostses}">
-                        <a th:href="${post.url}">
+                        <a th:href="${post.url}" th:target="${post.urlTargetLocation}">
                             <img th:src="${post.cmsPostsImageses[0].imageLocation}" class="img-responsive"/>
                         </a>
                     </div>

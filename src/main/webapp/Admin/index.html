@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="DEALMACHA">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- <Page title set in pageTitle directive> -->
+		<title page-title></title>
+		<!-- <Bootstrap link> -->
+		<link href="../common/css/bootstrap.min.css" rel="stylesheet">
+		<!-- <Font-awesome link> -->
+		<link href="../common/font-awesome/css/font-awesome.css" rel="stylesheet">
+		<!-- <Main css files> -->
+		<link href="../common/css/animate.css" rel="stylesheet">
+		<link href="../common/css/roboto.css" rel="stylesheet">
+		<link href="../common/css/open+sans.css" rel="stylesheet">
+		<link href="../common/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css">
+		<link id="loadBefore" href="../common/css/custom.css" rel="stylesheet">
+		<link id="loadBefore" href="../common/css/style.css" rel="stylesheet">
+		<link id="loadBefore" href="../common/css/hover.css" rel="stylesheet">
+	</head>
+	<body ng-controller="MainCtrl" class="{{$state.current.data.specialClass}} mini-navbar" landing-scrollspy id="page-top">
+		<!-- <Main View> -->
+		<div ui-view></div>
+		<!-- <jquery & Bootstrap> -->
+			<script src="../common/jquery/jquery-2.1.1.min.js"></script>
+			<script src="../common/plugins/jquery-ui/jquery-ui.js"></script>
+			<script src="../common/bootstrap/bootstrap.min.js"></script>
+			<!-- <Metis Menu> -->
+			<script src="../common/plugins/metisMenu/jquery.metismenu.js"></script>
+			<!-- <Slimscroll>
+		 --> 
+		 <script src="../common/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<!--  <pace Js> -->
+		<script src="../common/plugins/pace/pace.min.js"></script>
+		<!-- <Custom & Plugin Javascript> -->
+		<!-- <script src="js/inspinia.js"></script> -->
+
+		<!-- <Main Angular Scripts> -->
+		<script src="../common/angular/angular.min.js"></script>
+		<script src="../common/ui-router/angular-ui-router.min.js"></script>
+		<script src="../common/plugins/oclazyload/dist/ocLazyLoad.min.js"></script>
+		<script src="../common/angular-translate/angular-translate.min.js"></script>
+		<script src="../common/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+		<script src="../common/plugins/angular-idle/angular-idle.js"></script>
+		<script src="../common/angular/angular-sanitize.js"></script>
+
+		<!-- <Angular App Script> -->
+		<script src="js/app.js"></script>
+		<script src="js/config.js"></script>
+		<script src="js/directives.js"></script>
+		<script src="js/controllers.js"></script>
+	</body>
+</html>

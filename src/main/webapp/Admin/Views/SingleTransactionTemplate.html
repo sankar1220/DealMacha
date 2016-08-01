@@ -1,0 +1,162 @@
+<div class="ibox-title">
+	<h5 class="text-uppercase">AVAILABLE {{$state.current.data.pageTitle}}</h5>
+</div>
+<div ng-controller="SingleTransactionController">
+	<form class="form-horizontal profile_view">
+		<div class="form-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Transaction Code</label>
+							<div class="col-md-8">
+								<div class="form-control-static">{{singleTransactionDetails.code}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					 <div class="form-group">
+						<label class="control-label col-md-4">Transaction Amount</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleTransactionDetails.amount}}</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+				 <div class="form-group">
+						<label class="control-label col-md-4">Payment Type</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleTransactionDetails.paymentType}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Transaction For</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleTransactionDetails.transactionFor}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Transaction ErrorCode</label>
+							<div class="col-md-8">
+								<div class="form-control-static">{{singleTransactionDetails.transactionErrorCode}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Transaction MerchantErrorCode</label>
+							<div class="col-md-8">
+								<div class="form-control-static">{{singleTransactionDetails.transactionMerchantErrorCode}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Transaction MerchantMsg</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleTransactionDetails.transactionMerchantMsg}}</div>
+						</div>
+						</div>
+					</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Created Date</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleTransactionDetails.createdDate}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Target Url</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleTransactionDetails.targetUrl}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Transaction Count</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleTransactionDetails.transactionCount}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Order Status</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleTransactionDetails.orderStatus}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+						<div class="form-group">
+						<label class="control-label col-md-4">source</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleTransactionDetails.source}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Target Url</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleTransactionDetails.targetUrl}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+						<div class="form-group">
+						<label class="control-label col-md-4">Cashback Amount</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleTransactionDetails.cashbackAmount}}</div>
+							</div>
+					</div>
+				</div>
+			</div> -->
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Refund Status</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleTransactionDetails.refundStatus}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+						
+				</div>
+			</div>
+		</div>
+		<!-- <div class="form-actions">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-offset-9 col-md-9">
+							<button class="btn green-haze edit_back profile_edit" ng-click="OfferEdit()">Edit</button>
+							<a href="" class="btn default hide_Cancel hide">Cancel</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div> -->
+	</form>
+</div>

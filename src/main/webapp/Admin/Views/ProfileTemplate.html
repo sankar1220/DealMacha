@@ -1,0 +1,92 @@
+<div ng-controller="ProfileController">
+		<form class="form-horizontal" name="profileForm" novalidate>
+			<div class="form-body">
+				<div class="form-group m-t-sm">
+					<label class="control-label col-md-2">First Name 
+						<span class="required" aria-required="true">*</span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{{'has-error':profileForm.firstName.$invalid && !profileForm.firstName.$pristine}}">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control" placeholder="First Name" name="firstName" required="firstName"/>
+						</div>
+					</div>
+					<label class="control-label col-md-2">Last Name 
+						<span class="required" aria-required="true">*</span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control" placeholder="Last Name"/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-t-sm">
+					<label class="control-label col-md-2">DOB 
+						<span class="required" aria-required="true">*</span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							<input type="text" class="form-control" placeholder="DD/MM/YYYY" />
+						</div>
+					</div>
+						<label class="control-label col-md-2">Gender 
+						<span class="required" aria-required="true">*</span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-globe"></i></span>
+							<select class="form-control" name="gender"data-name="gender">
+								<option value="default">Select</option>
+								<option value="MALE">MALE</option>
+								<option value="FEMALE">FEMALE</option>
+							</select>
+						</div>
+				</div>
+				</div>
+				<div class="form-group m-t-sm">
+					<label class="control-label col-md-2">Email Id 
+						<span class="required" aria-required="true">*</span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-at"></i></span>
+							<input type="email" class="form-control" placeholder="emailId"/>
+						</div>
+					</div>
+						<label class="control-label col-md-2">Mobile No. 
+						<span class="required" aria-required="true">*</span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+							<input type="text" class="form-control" placeholder="mobileNo"/>
+						</div>
+					</div>
+				</div>
+			<div class="form-actions m-t-md">
+				<div class="row">
+					<div class="col-md-offset-6 col-md-6" style="margin-top: 55px;margin-left: 565px;">
+						<input type="submit" class="btn btn-primary" value="Save Profile" ng-disabled="form.$invalid" />
+						<a ui-sref="Profile.Profile" class="btn btn-danger btn-outline">Cancel </a>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+							
+<style type="text/css">
+	.p_act{
+		cursor: pointer;
+		text-align: right;
+	}
+	.p_act.active{
+		cursor: pointer;
+		border-bottom: 3px solid #F3565D;
+		color: #F3565D !important;
+		text-align: right;
+		min-height: 31px;
+	}
+</style>

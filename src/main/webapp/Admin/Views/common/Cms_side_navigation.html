@@ -1,0 +1,1831 @@
+<div id="wrapper" class="top-navigation" ng-controller="CmsController">
+	<div ng-include="'Views/HeaderTemplate.html'"></div>
+		<div class="{{$state.current.name}}" name="cmsView">
+			<div class="border-bottom">
+				<ol class="breadcrumb p-xs col-lg-12 gray-bg">
+					<li>
+						<a href="index.html"><i class="fa fa-home"></i> Home</a>
+					</li>
+					<li>
+						<a class="{{$state.current.url}}"> Cms</a>
+					</li>
+					<li>
+						<a> {{$state.current.data.pageTitle}}</a>
+					</li>
+				</ol>
+			</div>
+		<div class="container-fuild animated fadeInRight">
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="ibox-title font-green-sharp fontpro border-bottom">
+						<h3 style="margin-bottom: 3px;">CMS BOARD</h3>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item" ng-click="tab = 1" ng-init="tab = 1" ng-class="{'active' : tab == 1}">
+							<a ui-sref="Cms.CmsTemplate"> Main Slider</a>
+						</li>
+						<li class="list-group-item">
+							<a data-toggle="collapse" data-target="#collapse1">Page Sections</a>
+							<ul class="nav_n collapse" id="collapse1">
+								<li class="list-group-internal" ng-click="tab = 2" ng-class="{'active' : tab == 2}">First Page Left Section</li>
+								<li class="list-group-internal" ng-click="tab = 3" ng-class="{'active' : tab == 3}">First Page Right Section</li>
+								<li class="list-group-internal" ng-click="tab = 4" ng-class="{'active' : tab == 4}">Second Page Section</li>
+								<li class="list-group-internal" ng-click="tab = 5" ng-class="{'active' : tab == 5}">Third Page Section</li>
+								<li class="list-group-internal" ng-click="tab = 6" ng-class="{'active' : tab == 6}">Fourth Page Section</li>
+							</ul>
+						</li>
+						<li class="list-group-item">
+							<a data-toggle="collapse" data-target="#collapse">Promotion Banners</a>
+							<ul class="nav_n collapse" id="collapse">
+								<li class="list-group-internal" ng-click="tab = 7" ng-class="{'active' : tab == 7}">First Banner</li>
+								<li class="list-group-internal" ng-click="tab = 8" ng-class="{'active' : tab == 8}">Second Banner</li>
+								<li class="list-group-internal" ng-click="tab = 9" ng-class="{'active' : tab == 9}">Third Banner</li>
+							</ul>
+						</li>
+						<li class="list-group-item" ng-click="tab = 10" ng-class="{'active' : tab == 10}">
+							<a>Four Grid Promotion</a>
+						</li>
+						<li class="list-group-item" ng-click="tab = 11" ng-class="{'active' : tab == 11}">
+							<a>Full Page Stores Slider</a>
+						</li>
+						<li class="list-group-item" ng-click="tab = 12" ng-class="{'active' : tab == 12}">
+							<a>Single Product Page</a>
+						</li>
+						<li class="list-group-item" ng-click="tab = 13" ng-class="{'active' : tab == 13}">
+							<a>Top Title</a>
+						</li>
+						<li class="list-group-item">
+							<a data-toggle="collapse" data-target="#collapse2">Side Menu</a>
+							<ul class="nav_n collapse" id="collapse2">
+								<li class="list-group-internal" ng-click="tab = 14" ng-class="{'active' : tab == 14}">Laptops & Peripherals Block</li>
+								<li class="list-group-internal" ng-click="tab = 15" ng-class="{'active' : tab == 15}">Mens Fashion Block</li>
+								<li class="list-group-internal" ng-click="tab = 16" ng-class="{'active' : tab == 16}">Kids Block</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-10">
+					<!-- <div ui-view></div> -->
+					<div class="ibox tab-pane active" style="overflow:auto;height:560px;" ng-show="tab == 1">
+						<div class="ibox-content">
+							<carousel interval="main.slideInterval">
+							  <slide ng-repeat="DataimageObj in ImageData| limitTo : 6">
+								<img ng-src="{{DataimageObj.postsImageUrl}}" ng-if="DataimageObj.orderOfPlace == $index+1" style="margin:auto;width:848px;height:310px;">
+								  <div class="carousel-caption">
+								  </div>
+							  </slide>
+							  <!-- <slide ng-repeat="imageObjata in ImageData">
+							   <img ng-src="{{ImageData.postsImageUrl}}" ng-if="ImageData.orderOfPlace == 2" style="margin:auto;width:848px;height:310px;">
+								  <div class="carousel-caption">
+								  </div>
+							  </slide>
+							  <slide>
+								<img ng-src="{{ImageData.postsImageUrl}}" ng-if="ImageData.orderOfPlace == 3" style="margin:auto;width:848px;height:310px;">
+									<div class="carousel-caption">
+								  </div>
+							  </slide>
+							  <slide>
+								<img ng-src="{{ImageData.postsImageUrl}}" ng-if="ImageData.orderOfPlace == 4" style="margin:auto;width:848px;height:310px;">
+								  <div class="carousel-caption">
+								  </div>
+							  </slide>
+							  <slide>
+							   <img ng-src="{{ImageData.postsImageUrl}}" ng-if="ImageData.orderOfPlace == 5" style="margin:auto;width:848px;height:310px;">
+								  <div class="carousel-caption">
+								  </div>
+							  </slide>
+							  <slide>
+								<img ng-src="{{ImageData.postsImageUrl}}" ng-if="ImageData.orderOfPlace == 6" style="margin:auto;width:848px;height:310px;">
+									<div class="carousel-caption">
+								  </div>
+							  </slide> -->
+							</carousel>
+							<div class="text-center text-danger">{{errorAlert}}</div>
+							<div class="row m-t-md">
+								<div class="col-lg-2"> 
+									<div class="file_upload" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+								  <img src="" id="image1" style="width: 100%;height: 99%;"/>
+										<div class="custom-title text-center image1">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileNameChanged(this,1)"  required name="image"/>
+									</div> 
+									<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.Title.$invalid && !cmsView.Title.$pristine}">
+										<input class="form-control" placeholder="Image Title" ng-model="ImageIndividualData.imgData1.imageAlt" required name="Title"/>
+									</div>
+									<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.url.$invalid && !cmsView.url.$pristine}">
+										<input class="form-control" placeholder="Image URL" ng-model="ImageIndividualData.imgData1.imageLocation" required name="url"/>
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-click="ImageUpload(ImageIndividualData.imgData1,1)" ng-show="MAINBANNERBLOCK1" ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-success btn-block" ng-click="ImageDelete(ImageIndividualData.imgData1,ImageIndividualData.imgData1.cmsPostsId,1)" ng-hide="MAINBANNERBLOCK1">DELETE</button>
+									</div>
+								</div>
+								<div class="col-lg-2"> 
+									<div class="file_upload" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+								  <img src="" id="image2" style="width: 100%;height: 99%;"/>
+										<div class="custom-title text-center image2">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileNameChanged(this,2)" required name="image"/>
+									</div> 
+									<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.title.$invalid && !cmsView.title.$pristine}">
+										<input class="form-control" placeholder="Image Title" ng-model="ImageIndividualData.imgData2.imageAlt" required name="title"/>
+									</div>
+									<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.url.$invalid && !cmsView.url.$pristine}">
+										<input class="form-control" placeholder="Image URL" ng-model="ImageIndividualData.imgData2.imageLocation" required name="url"/>
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-click="ImageUpload(ImageIndividualData.imgData2,2)" ng-show="MAINBANNERBLOCK2" ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-success btn-block" ng-click="ImageDelete(ImageIndividualData.imgData2,ImageIndividualData.imgData2.cmsPostsId,2)" ng-hide="MAINBANNERBLOCK2">DELETE</button>
+									</div>
+								</div>
+								<div class="col-lg-2"> 
+									<div class="file_upload" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+								  <img src="" id="image3" style="width: 100%;height: 99%;"/>
+										<div class="custom-title text-center image3">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileNameChanged(this,3)" required name="image"/>
+									</div> 
+									<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.title.$invalid && !cmsView.title.$pristine}">
+										<input class="form-control" placeholder="Image Title" ng-model="ImageIndividualData.imgData3.imageAlt" required name="title"/>
+									</div>
+									<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.url.$invalid && !cmsView.url.$pristine}">
+										<input class="form-control" placeholder="Image URL" ng-model="ImageIndividualData.imgData3.imageLocation" required name="url"/>
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="MAINBANNERBLOCK3" ng-click="ImageUpload(ImageIndividualData.imgData3,3)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-success btn-block" ng-hide="MAINBANNERBLOCK3" ng-click="ImageDelete(ImageIndividualData.imgData3,ImageIndividualData.imgData3.cmsPostsId,3)">DELETE</button>
+									</div>
+								</div>
+								<div class="col-lg-2"> 
+									<div class="file_upload" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+								  <img src="" id="image4" style="width: 100%;height: 99%;"/>
+								  <div class="custom-title text-center image4">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileNameChanged(this,4)" ng-disabled="cmsView.$invalid"/>
+									</div> 
+									<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.title.$invalid && !cmsView.title.$pristine}">
+										<input class="form-control" placeholder="Image Title" ng-model="ImageIndividualData.imgData4.imageAlt" required name="title"/>
+									</div>
+									<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.url.$invalid && !cmsView.url.$pristine}">
+										<input class="form-control" placeholder="Image URL" ng-model="ImageIndividualData.imgData4.imageLocation" required name="url"/>
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="MAINBANNERBLOCK4" ng-click="ImageUpload(ImageIndividualData.imgData4,4)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-success btn-block" ng-hide="MAINBANNERBLOCK4" ng-click="ImageDelete(ImageIndividualData.imgData4,ImageIndividualData.imgData4.cmsPostsId,4)">DELETE</button>
+									</div>
+								</div>
+								<div class="col-lg-2"> 
+									<div class="file_upload" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+								  <img src="" id="image5" style="width: 100%;height: 99%;"/>
+								  <div class="custom-title text-center image5">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileNameChanged(this,5)" required name="image"/>
+									</div> 
+									<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.title.$invalid && !cmsView.title.$pristine}">
+										<input class="form-control" placeholder="Image Title" ng-model="ImageIndividualData.imgData5.imageAlt" required name="title"/>
+									</div>
+									<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.url.$invalid && !cmsView.url.$pristine}">
+										<input class="form-control" placeholder="Image URL" ng-model="ImageIndividualData.imgData5.imageLocation" required name="url"/>
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="MAINBANNERBLOCK5" ng-click="ImageUpload(ImageIndividualData.imgData5,5)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-success btn-block" ng-hide="MAINBANNERBLOCK5" ng-click="ImageDelete(ImageIndividualData.imgData5,ImageIndividualData.imgData5.cmsPostsId,5)">DELETE</button>
+									</div>
+								</div>
+								<div class="col-lg-2"> 
+									<div class="file_upload" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+								  <img src="" id="image6" style="width: 100%;height: 99%;"/>
+								  <div class="custom-title text-center image6">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileNameChanged(this,6)" required name="image"/>
+									</div> 
+									<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.title.$invalid && !cmsView.title.$pristine}">
+										<input class="form-control" placeholder="Image Title" ng-model="ImageIndividualData.imgData6.imageAlt" required name="title"/>
+									</div>
+									<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.url.$invalid && !cmsView.url.$pristine}">
+										<input class="form-control" placeholder="Image URL" ng-model="ImageIndividualData.imgData6.imageLocation" required name="url"/>
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="MAINBANNERBLOCK6" ng-click="ImageUpload(ImageIndividualData.imgData6,6)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-success btn-block" ng-hide="MAINBANNERBLOCK6" ng-click="ImageDelete(ImageIndividualData.imgData6,ImageIndividualData.imgData6.cmsPostsId,6)">DELETE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" ng-show="tab == 2">
+						<!-- First Page Left Section -->
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Left Page Section</h5>
+						</div>
+						<div class="row m-t-lg">
+							<div class="col-lg-12">
+								<div class="tabs-container">
+									<tabset class="tabs-left">
+										<tab heading="New Items">
+											<form role="form" class="form-inline" name="cmsView" novalidate>
+												<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.pageTitle.$invalid && !cmsView.pageTitle.$pristine}">
+													<input class="form-control" placeholder="Page Section Title" style="width:350px;" required name="pageTitle" ng-model="leftTitleData.sectionTitle"/>
+												</div>
+												<a class="btn btn-primary m-t-xs" ng-disabled="cmsView.$invalid" ng-click="leftPageSectionTitle(leftTitleData,'FIRSTPAGELEFTSIDESECTION')" >Save</a>
+												<!-- <a class="btn btn-primary m-t-xs" ng-disabled="cmsView.$invalid" ng-show="leftSectionShow" ng-click="leftPageSectionTitle(leftTitleData,'FIRSTPAGELEFTSIDESECTION')" >Save</a> -->
+												<!-- <a class="btn btn-danger m-t-xs" ng-disabled="cmsView.$invalid" ng-hide="leftSectionShow" ng-click="leftPageSectionEdit(leftTitleData,'FIRSTPAGELEFTSIDESECTION')" >Edit</a> -->
+												<!-- <a class="btn btn-primary m-t-xs">Cancel</a> -->
+											</form>
+											<!-- <div class="col-lg-6"></div> -->
+											<div class="row m-t-md">
+												<div class="col-lg-3">
+													<div class="left_page" style="height: 329px;">
+														<img src="" id="leftPage1" style="width: 100%;height: 99%;"/>
+														<div class="custom-title text-center leftPage1" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">Choose a file</div>
+										  			<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileLeftPageChanged(this,1)" required name="image"/>
+													</div>
+												</div>
+												<div class="col-lg-4" id="postItem">
+													<!-- <div class="input-group" clock-picker data-autoclose="true">
+													<input type="text" class="form-control" ng-model="leftSectionData.postExpiryTime" />
+													<span class="input-group-addon">
+												  	<span class="fa fa-clock-o"></span>
+													</span>
+													</div> -->
+													<div class="input-group date" ng-class="{'has-error':cmsView.date.$invalid && !cmsView.date.$pristine}">
+														<input type="datetime" class="form-control" date-time ng-model="sampleDate.postExpiryTime" view="date" auto-close="true" format="yyyy-MM-dd HH:mm:ss" onchange="angular.element(this).scope().changeDate(sampleDate.postExpiryTime)" required name="date">
+														<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.productTitle.$invalid && !cmsView.productTitle.$pristine}">
+														<input class="form-control" placeholder="Product Title" ng-model="leftSectionData.postsProductTitle" required name="productTitle"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.discountPrice.$invalid && !cmsView.discountPrice.$pristine}">
+														<input class="form-control" placeholder="Product Discount Price" ng-model="leftSectionData.postsProductDiscountedPrice"required name="discountPrice"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.productPrice.$invalid && !cmsView.productPrice.$pristine}">
+														<input class="form-control" placeholder="Product Price" ng-model="leftSectionData.postsProductPrice" required name="productPrice"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.alt.$invalid && !cmsView.alt.$pristine}">
+														<input class="form-control" placeholder="Image Alt" ng-model="leftSectionData.imageAlt" required name="alt"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.url.$invalid && !cmsView.url.$pristine}">
+														<input class="form-control" placeholder="Product URL" ng-model="leftSectionData.imageLocation" required name="url"/>
+													</div>
+													<div class="form-group m-t-xs">
+														<button class="btn btn-primary btn-block" ng-click="LeftSectionUpload(leftSectionData,leftSectionBlockData.length)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+													</div>
+												</div>
+											</div>
+											<div class="text-center text-danger">{{leftSectionAlert}}</div>
+										</tab>
+										<tab heading="Exit Items">
+											<div class="panel-body">
+												<div class="col-lg-2 left_section_posts" ng-repeat="sectionLeftData in leftSectionBlockData" style="padding:5px;margin-bottom: 10px;">
+													<img ng-src="{{sectionLeftData.postsImageUrl}}" class="img-preview" alt="{{sectionLeftData.postsImageAlt}}"/>
+													<div class="text-center" style="word-wrap: break-word;">{{sectionLeftData.postsProductTitle}}</div>
+													<div class="text-center m-t-sm">{{sectionLeftData.postsExpiryTime}}</div>
+													<div class="text-center m-t-md">
+														<del>{{sectionLeftData.postsProductPrice}}</del>
+														<strong>{{sectionLeftData.postsProductAfterPrice}}</strong>
+													</div>
+													<span class="cancel_left_item" ng-click="leftSectionImageRemove(sectionLeftData)">REMOVE</span>
+												</div>
+											</div>
+										</tab>
+									</tabset>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" ng-show="tab == 3">
+						<!-- First Page Right Section -->
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Right Page Section</h5>
+						</div>
+						<div class="row m-t-lg">
+							<div class="col-lg-12">
+								<div class="tabs-container">
+									<tabset class="tabs-left">
+										<tab heading="New Items">
+											<form role="form" class="form-inline">
+												<div class="form-group m-t-xs col-lg-4"  ng-class="{'has-error':cmsView.pageTitle.$invalid && !cmsView.pageTitle.$pristine}">
+													<input class="form-control" placeholder="Page Section Title" style="width:350px;" required name="pageTitle" ng-model="rightTitleData.sectionTitle"/>
+												</div>
+												<a class="btn btn-primary m-t-xs" ng-disabled="cmsView.$invalid" ng-click="rightPageSectionTitle(rightTitleData,'FIRSTPAGERIGHTSIDESECTION')">Save</a>
+												<!-- <a class="btn btn-primary m-t-xs" ng-disabled="cmsView.$invalid" ng-show="rightSectionShow" ng-click="rightPageSectionTitle(rightTitleData,'FIRSTPAGERIGHTSIDESECTION')">Save</a> -->
+												<!-- <a class="btn btn-danger m-t-xs" ng-disabled="cmsView.$invalid" ng-hide="rightSectionShow" ng-click="rightPageSectionEdit(rightTitleData,'FIRSTPAGERIGHTSIDESECTION')">Edit</a> -->
+												<!-- <a class="btn btn-primary m-t-xs">Cancel</a> -->
+											</form>
+											<!-- <div class="col-lg-6"></div> -->
+											<div class="row m-t-md">
+												<div class="col-lg-3">
+													<div class="right_page" style="height: 120px;">
+														<img src="" id="rightPage1" style="width: 100%;height: 99%;"/>
+														<div class="custom-title text-center rightPage1" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">Choose a file</div>
+										  			<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileRightPageChanged(this,1)" required name="image"/>
+													</div>
+												</div>
+												<div class="col-lg-4">
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.productTitle.$invalid && !cmsView.productTitle.$pristine}">
+														<input class="form-control" placeholder="Product Title" ng-model="rightSectionData.postsProductTitle" required name="productTitle"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.discountPrice.$invalid && !cmsView.discountPrice.$pristine}">
+														<input class="form-control" placeholder="Product Discount Price" ng-model="rightSectionData.postsProductDiscountedPrice" required name="discountPrice"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.productPrice.$invalid && !cmsView.productPrice.$pristine}">
+														<input class="form-control" placeholder="Product Price" ng-model="rightSectionData.postsProductPrice" required name="productPrice"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.alt.$invalid && !cmsView.alt.$pristine}">
+														<input class="form-control" placeholder="Image Alt" ng-model="rightSectionData.imageAlt" required name="alt"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.url.$invalid && !cmsView.url.$pristine}">
+														<input class="form-control" placeholder="Product URL" ng-model="rightSectionData.imageLocation" required name="url"/>
+													</div>
+													<div class="form-group m-t-xs">
+														<button class="btn btn-primary btn-block" ng-click="RightSectionUpload(rightSectionData,rightSectionBlockData.length)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+													</div>
+												</div>
+											</div>
+											<div class="text-center text-danger">{{rightSectionAlert}}</div>
+										</tab>
+										<tab heading="Exit Items">
+											<div class="panel-body">
+												<div class="col-lg-4 right_section_posts" ng-repeat="sectionRightData in rightSectionBlockData" style="padding:5px;margin-bottom: 10px;">
+													<div class="col-lg-6">
+														<img ng-src="{{sectionRightData.postsImageUrl}}" class="img-preview" alt="{{sectionRightData.postsImageAlt}}"/>
+													</div>
+													<div class="col-lg-6">
+														<div class="text-center m-t-md" style="word-wrap: break-word;">{{sectionRightData.postsProductTitle}}</div>
+														<div class="text-center m-t-md"><del>{{sectionRightData.postsProductPrice}}</del>
+														<strong>{{sectionRightData.postsProductAfterPrice}}</strong></div>
+														<span class="cancel_left_item" ng-click="rightSectionImageRemove(sectionRightData)">REMOVE</span>
+													</div>
+												</div>
+											</div>
+										</tab>
+									</tabset>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" ng-show="tab == 4" style="overflow:auto;height:560px;margin-bottom: 30px;">
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Second Page Section</h5>
+						</div>
+						<div class="tabs-container">
+							<tabset class="">
+								<tab heading="Titles">
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-6" ng-class="{'has-error':cmsView.pageTitle.$invalid && !cmsView.pageTitle.$pristine}">
+											<input class="form-control pull-right" placeholder="Page Section Title" style="width:300px;" required name="pageTitle" ng-model="secondTitleData.sectionTitle" />
+										</div>
+										<a class="btn btn-primary m-t-xs" ng-disabled="cmsView.$invalid" ng-click="secondPageSectionTitle(secondTitleData,'SECONDPAGESECTION')">SAVE</a>
+										<!-- <a class="btn btn-primary m-t-xs" ng-disabled="cmsView.$invalid" ng-click="secondPageSectionTitle(secondTitleData,'SECONDPAGESECTION')" ng-show="secondSectionShow">SAVE</a> -->
+										<!-- <a class="btn btn-danger m-t-xs" ng-hide="secondSectionShow">EDIT</a> -->
+									</form>
+									<div class="col-lg-12 m-t-lg">
+										<div class="col-lg-3" style="border-right: 1px solid #DFDFDF;">
+											<div class="form-group m-t-xs col-lg-12 no-padding" ng-class="{'has-error':cmsView.pageBlockTitle.$invalid && !cmsView.pageBlockTitle.$pristine}">
+												<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="tabsMenuData.secondPageTab4.blockTitle" required name="pageBlockTitle"/>
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs" ng-show="tabsMenuData.tab4" ng-click="SecondPageSectionTabs(tabsMenuData.secondPageTab4,'SECONDPAGESECTIONFIRSTTABBLOCK',4)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-sm btn-danger pull-right m-t-xs" ng-hide="tabsMenuData.tab4" ng-click="SecondPageSectionTabs(tabsMenuData.secondPageTab4,'SECONDPAGESECTIONFIRSTTABBLOCK',4)">EDIT</a>
+										</div>
+										<div class="col-lg-3" style="border-right: 1px solid #DFDFDF;">
+											<div class="form-group m-t-xs col-lg-12 no-padding" ng-class="{'has-error':cmsView.pageBlockTitle.$invalid && !cmsView.pageBlockTitle.$pristine}">
+												<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="tabsMenuData.secondPageTab5.blockTitle" required name="pageBlockTitle"/>
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs" ng-show="tabsMenuData.tab5" ng-click="SecondPageSectionTabs(tabsMenuData.secondPageTab5,'SECONDPAGESECTIONSECONDTABBLOCK',5)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-sm btn-danger pull-right m-t-xs" ng-hide="tabsMenuData.tab5" ng-click="SecondPageSectionTabs(tabsMenuData.secondPageTab5,'SECONDPAGESECTIONSECONDTABBLOCK',5)">EDIT</a>
+										</div>
+										<div class="col-lg-3" style="border-right: 1px solid #DFDFDF;">
+											<div class="form-group m-t-xs col-lg-12 no-padding" ng-class="{'has-error':cmsView.pageBlockTitle.$invalid && !cmsView.pageBlockTitle.$pristine}">
+												<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="tabsMenuData.secondPageTab6.blockTitle" required name="pageBlockTitle"/>
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs" ng-show="tabsMenuData.tab6" ng-click="SecondPageSectionTabs(tabsMenuData.secondPageTab6,'SECONDPAGESECTIONTHIRDTABBLOCK',6)"ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-sm btn-danger pull-right m-t-xs" ng-hide="tabsMenuData.tab6" ng-click="SecondPageSectionTabs(tabsMenuData.secondPageTab6,'SECONDPAGESECTIONTHIRDTABBLOCK',6)">EDIT</a>
+										</div>
+										<!-- <div class="col-lg-3">
+													<div class="form-group m-t-xs col-lg-12 no-padding">
+														<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="categoryMenuData.catBlockData1.blockTitle" />
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs">Save</a>
+										</div> -->
+									</div>
+								</tab>
+								<tab heading="Category Entry">
+									<form role="form" class="form-inline m-t-md">
+										<label class='col-lg-4'>Category Title</label><label class='col-lg-4'>URL</label><label class='col-lg-4'></label>
+										<div class="clearfix"></div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="categoryMenuData.catBlockData1.postTitle" required name="categoryTitle"/>
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="categoryMenuData.catBlockData1.url" required name="categoryUrl"/>
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="categoryMenuData.categoryButShow1" ng-click="categoryCreation(categoryMenuData.catBlockData1,1)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-danger" ng-hide="categoryMenuData.categoryButShow1" ng-click="secondCategoryDelete(categoryMenuData.catBlockData1,1)">Delete</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="categoryMenuData.catBlockData2.postTitle" required name="categoryTitle"/>
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="categoryMenuData.catBlockData2.url" required name="categoryUrl"/>
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="categoryMenuData.categoryButShow2" ng-click="categoryCreation(categoryMenuData.catBlockData2,2)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-danger" ng-hide="categoryMenuData.categoryButShow2" ng-click="secondCategoryDelete(categoryMenuData.catBlockData2,2)">Delete</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="categoryMenuData.catBlockData3.postTitle" required name="categoryTitle"/>
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="categoryMenuData.catBlockData3.url" required name="categoryUrl"/>
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="categoryMenuData.categoryButShow3" ng-click="categoryCreation(categoryMenuData.catBlockData3,3)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-danger" ng-hide="categoryMenuData.categoryButShow3" ng-click="secondCategoryDelete(categoryMenuData.catBlockData3,3)">Delete</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">											
+											<input class="form-control" placeholder="Category Title" ng-model="categoryMenuData.catBlockData4.postTitle" required name="categoryTitle"/>
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="categoryMenuData.catBlockData4.url" required name="categoryUrl"/>
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="categoryMenuData.categoryButShow4" ng-click="categoryCreation(categoryMenuData.catBlockData4,4)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-danger" ng-hide="categoryMenuData.categoryButShow4" ng-click="secondCategoryDelete(categoryMenuData.catBlockData4,4)">Delete</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="categoryMenuData.catBlockData5.postTitle" required name="categoryTitle" />
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="categoryMenuData.catBlockData5.url" required name="categoryUrl"/>
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="categoryMenuData.categoryButShow5" ng-click="categoryCreation(categoryMenuData.catBlockData5,5)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-danger" ng-hide="categoryMenuData.categoryButShow5" ng-click="secondCategoryDelete(categoryMenuData.catBlockData5,5)">Delete</a>
+										</div>
+									</form>
+								</tab>
+								<tab heading="Image Entry">
+									<!-- <div class="ibox-content"> -->
+										<div class="row m-t-md">
+											<div class="col-lg-3">
+												<div class="short_Image_section" style="height: 250px;width:189px;" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+													<img src="" id="secondShortImage1" style="width: 190px;height: 255px;"/>
+													<div class="custom-title text-center secondShortImage1">Choose a file</div>
+											  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileShortImageChanged(this,1)" required name="image"/>
+												</div>
+												<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+													<input class="form-control" placeholder="Image Title" ng-model="shortImageData1.imageAlt" required name="imageTitle" />
+												</div>
+												<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+													<input class="form-control" placeholder="Image URL" ng-model="shortImageData1.imageLocation" required name="imageUrl" />
+												</div>
+												<div class="form-group m-t-sm">
+													<button class="btn btn-primary btn-block" ng-show="shortImageBlock1" ng-click="shortBannerBlockImageUpload(shortImageData1,1)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+													<button class="btn btn-danger btn-block" ng-hide="shortImageBlock1" ng-click="shortBannerBlockImageDelete(shortImageData1,1)">DELETE</button>
+												</div>
+											</div>
+											<div class="col-lg-8">
+												<div class="short_Image_section" style="height: 250px;width:760px;" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+													<img src="" id="middleBanner1" style="width: 760px;height: 255px;"/>
+													<div class="custom-title text-center middleBanner1">Choose a file</div>
+											  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileMiddleImageChanged(this,1)" required name="image" />
+												</div>
+												<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+													<input class="form-control" placeholder="Image Title" ng-model="middleImageData1.imageAlt" required name="imageTitle"/>
+												</div>
+												<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+													<input class="form-control" placeholder="Image URL" ng-model="middleImageData1.imageLocation" required name="imageUrl" />
+												</div>
+												<div class="form-group m-t-sm">
+													<button class="btn btn-primary btn-block" ng-show="middleImageBlock1" ng-click="middleBannerBlockImageUpload(middleImageData1,1)"  ng-disabled="cmsView.$invalid">SUBMIT</button>
+													<button class="btn btn-danger btn-block" ng-hide="middleImageBlock1" ng-click="middleBannerBlockImageDelete(middleImageData1,1)">DELETE</button>
+												</div>
+											</div>
+										</div>
+									<!-- </div>  -->
+								</tab>
+								<tab heading="Items Entry">
+									<tabset class="tabs-left">
+										<tab heading="{{tabJsonData.blockTitle}}" class="m-t-sm" ng-repeat="tabJsonData in TabsBlockJsonData | orderBy:'orderOfPlace'">
+											<div class="col-lg-8 m-t-lg" style="margin-bottom:20px;">
+												<div class="col-lg-4 m-t-md" ng-repeat="num in [0, 1, 2, 3, 4, 5]"> 
+													<div class="file_upload" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+												  <img ng-src="{{IndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsImageUrl}}" id="tabImage{{tabJsonData.orderOfPlace+num}}" style="width: 100%;height: 99%;"/>
+														<!-- <div class="custom-title text-center tabImage{{tabJsonData.orderOfPlace+num}}">Choose a file{{tabJsonData.orderOfPlace+num}}</div> -->
+												  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileSecondSectionImageChanged(this,event)" id="{{tabJsonData.orderOfPlace+num}}" required name="image" />
+													</div> 
+													<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+														<input class="form-control" placeholder="Product Title" ng-model="IndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsProductTitle" required name="imageTitle"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+														<input class="form-control" placeholder="Image URL" ng-model="IndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].imageLocation" required name="imageUrl"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.discountPrice.$invalid && !cmsView.discountPrice.$pristine}">
+														<input class="form-control" placeholder="Item Discount Price" ng-model="IndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsProductDiscountedPrice" required name="discountPrice"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.itemPrice.$invalid && !cmsView.itemPrice.$pristine}">
+														<input class="form-control" placeholder="Item Price" ng-model="IndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsProductPrice" required name="itemPrice"/>
+													</div>
+													<div class="form-group m-t-sm">
+														<button class="btn btn-primary btn-block" ng-show="ChangeableTabs['showTabs'+tabJsonData.orderOfPlace+num]" ng-click="TabImageUpload(IndividualTabs['tabsData'+tabJsonData.orderOfPlace+num],tabJsonData.orderOfPlace+num,tabJsonData.blockName)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+														<button class="btn btn-danger btn-block" ng-hide="ChangeableTabs['showTabs'+tabJsonData.orderOfPlace+num]" ng-click="secondPagePostImageDelete(IndividualTabs['tabsData'+tabJsonData.orderOfPlace+num],tabJsonData.orderOfPlace+num,tabJsonData.blockName)">DELETE</button>
+													</div>
+												</div>
+											</div>
+										</tab>
+									</tabset>
+								</tab>
+								<tab heading="Preview">
+									<div class="page_section3">
+									  <!-- <div class="container"> -->
+										<div class="">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hot_heading hot_head_elec">
+												<div>
+													<h1>{{secondTitleData.sectionTitle}} <small class="arow-after3"></small></h1>
+												</div>
+												<ul class="hidden-xs">
+													<li ng-repeat="tabJsonData in TabsBlockJsonData | orderBy:'orderOfPlace'"><a data-toggle="tab" data-target="#top_sale{{tabJsonData.orderOfPlace}}">{{tabJsonData.blockTitle}}</a></li>
+													<!-- <li><a data-toggle="tab" data-target="#sort_order1">Sort Order</a></li>
+													<li><a data-toggle="tab" data-target="#top_rating1">Top Rating</a></li>
+													<li><a data-toggle="tab" data-target="#quantity1">Quantity</a></li>
+													<li><a data-toggle="tab" data-target="#price1">Price</a></li> -->
+												</ul>
+											</div>
+										</div>
+										<div class="tab-content">
+											<div class="col-lg-2 col-md-3 hidden-sm no-padding">
+												<a href="#" class="hidden-xs">
+													<img src="" id="secondShortImage2" class="img-responsive"/>
+												</a>
+												<div class="row" style="margin-left: 0px;margin-right: 0px;">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 item_div1 ">   
+														<div class="hot_cat_head">
+															<h1>HOT CATEGORIES</h1>
+														</div>
+														<ul>
+															<li ng-repeat="categoryDetails in categoryJsonData"><a href="#"><i class="fa fa-caret-right"></i> &nbsp;{{categoryDetails.postTitle}}</a></li>
+															<!-- <li><a href="#"><i class="fa fa-caret-right"></i> &nbsp;Smartphone</a></li>
+															<li><a href="#"><i class="fa fa-caret-right"></i> &nbsp;Memory Card</a></li>
+															<li><a href="#"><i class="fa fa-caret-right"></i> &nbsp;Mobile Accessories</a></li>
+															<li><a href="#"><i class="fa fa-caret-right"></i> &nbsp;Mobiles</a></li>
+															<li><a href="#"><i class="fa fa-caret-right"></i> &nbsp;TVS</a></li> -->
+														</ul>      
+													</div>
+												</div>
+												<div class="col-lg-12 visible-xs item_div1 item_div_hover" >
+													<div class="select_cat_drop">
+														<a href="#demo"  data-toggle="collapse">
+															SELECT CATEGORIES<span class="cat_down_arrow">▼</span>
+														</a> 
+													</div>
+													<ul id="demo" class="collapse">
+													<li ng-repeat="tabJsonData in TabsBlockJsonData | orderBy:'orderOfPlace' "><a data-toggle="tab" data-target="#top_sale{{tabJsonData.orderOfPlace}}">{{tabJsonData.blockTitle}}</a></li>
+													<!-- <li><a data-toggle="tab" data-target="#sort_order1">Sort Order</a></li>
+													<li><a data-toggle="tab" data-target="#top_rating1">Top Rating</a></li>
+													<li><a data-toggle="tab" data-target="#quantity1">Quantity</a></li>
+													<li><a data-toggle="tab" data-target="#price1">Price</a></li> -->
+												</ul>
+												</div>
+											</div>
+											<div class="col-lg-8 col-md-6 col-sm-8 hidden-xs no-padding">
+												<a href="#">
+													<img src="" id="middleBanner2" class="img-responsive"/>
+												</a>
+											</div>
+											<div id="top_sale{{tabJsonData.orderOfPlace}}" class="tab-pane fade"  ng-repeat="tabJsonData in TabsBlockJsonData" ng-class="{'in active' : $index==0}">
+												<!-- <div> -->
+													<div class="elec_div1">
+														<a class="col-lg-2 col-md-3 col-sm-4 item_div1" ng-repeat="tabPostData in tabJsonData._embedded.cmsPosts" ng-if="$index==0" target="_blank" href="{{'http://'+tabPostData.url}}">
+															<img ng-src="{{tabPostData.postsImageUrl}}" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4>{{tabPostData.postsProductTitle}}</h4>
+															<p class="price">
+																<span class="price_new">{{tabPostData.postsProductAfterPrice}}</span>
+																<del>{{tabPostData.postsProductPrice}}</del>
+															</p>
+														</a>
+													</div>
+													<div>
+														<a class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1" ng-repeat="tabPostData in tabJsonData._embedded.cmsPosts" ng-if="$index>0" target="_blank" href="{{'http://'+tabPostData.url}}">   
+															<img ng-src="{{tabPostData.postsImageUrl}}" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4>{{tabPostData.postsProductTitle}}</h4>
+															<p class="price">
+																<span class="price_new">{{tabPostData.postsProductAfterPrice}}</span>
+																<del>{{tabPostData.postsProductPrice}}</del>
+															</p>        
+														</a>
+														<!-- <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/3-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Coffee Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/4-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Oven</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/5-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Electric Stove</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/6-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Juice Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div> -->
+													</div>
+												<!-- </div> -->
+											</div>
+											<!-- <div id="sort_order1" class="tab-pane fade">
+													<div class=" elec_div1">
+														<div class="col-lg-2 col-md-3 col-sm-4 item_div1">
+															<img src="/home/imageindex/2-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Electric Cookers</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>
+														</div>
+													</div>
+													<div class="">
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/1-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Bread Toaster</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/3-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Coffee Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/4-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Oven</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/5-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Electric Stove</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/6-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Juice Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+													</div>
+												</div>
+												<div id="top_rating1" class="tab-pane fade">
+													<div class=" elec_div1">
+														<div class="col-lg-2 col-md-3 col-sm-4 item_div1">
+															<img src="/home/imageindex/1-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Electric Cookers</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>
+														</div>
+													</div>
+													<div class="">
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/2-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Bread Toaster</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/3-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Coffee Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/4-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Oven</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/5-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Electric Stove</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/6-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Juice Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+													</div>
+												</div>
+												<div id="quantity1" class="tab-pane fade">
+													<div class=" elec_div1">
+														<div class="col-lg-2 col-md-3 col-sm-4 item_div1">
+															<img src="/home/imageindex/1-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Electric Cookers</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>
+														</div>
+													</div>
+													<div class="">
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/2-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Bread Toaster</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/3-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Coffee Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/4-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Oven</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/5-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Electric Stove</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/6-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Juice Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+													</div>
+												</div>
+												<div id="price1" class="tab-pane fade">
+													<div class=" elec_div1">
+														<div class="col-lg-2 col-md-3 col-sm-4 item_div1">
+															<img src="/home/imageindex/1-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Electric Cookers</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>
+														</div>
+													</div>
+													<div class="">
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/2-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Bread Toaster</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/3-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Coffee Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/4-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Oven</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/5-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Electric Stove</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+														<div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1">   
+															<img src="/home/imageindex/6-200x200.png" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4><a href="#">Juice Maker</a></h4>
+															<p class="price">
+																<span class="price_new">£20.70</span>
+																<span class="price_old">£40.71</span>
+															</p>        
+														</div>
+													</div>
+												</div> -->
+										</div>
+									  <!-- </div> -->
+									</div>
+								</tab>
+							</tabset>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" ng-show="tab == 5" style="overflow:auto;height:560px;margin-bottom: 30px;">						
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Third Page Section</h5>
+						</div>
+						<div class="tabs-container">
+							<tabset class="">
+								<tab heading="Titles">
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-6" ng-class="{'has-error':cmsView.pageTitle.$invalid && !cmsView.pageTitle.$pristine}">
+											<input class="form-control pull-right" placeholder="Page Section Title" style="width:300px;" required name="pageTitle" ng-model="titleData.sectionTitle" />
+										</div>
+										<a class="btn btn-primary m-t-xs" ng-disabled="cmsView.$invalid" ng-click="thirdPageSectionTitle(titleData,'THIRDPAGESECTION')">SAVE</a>
+										<!-- <a class="btn btn-primary m-t-xs" ng-disabled="cmsView.$invalid" ng-click="thirdPageSectionTitle(titleData,'THIRDPAGESECTION')" ng-show="thirdSectionShow">Save</a> -->
+										<!-- <a class="btn btn-primary m-t-xs" ng-hide="thirdSectionShow">Cancel</a> -->
+									</form>
+									<div class="col-lg-12 m-t-lg">
+										<div class="col-lg-3" style="border-right: 1px solid #DFDFDF;">
+											<div class="form-group m-t-xs col-lg-12 no-padding" ng-class="{'has-error':cmsView.pageBlockTitle.$invalid && !cmsView.pageBlockTitle.$pristine}">
+												<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="thirdSectionTabsMenuData.thirdPageTab4.blockTitle" required name="pageBlockTitle" />
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs" ng-show="thirdSectionTabsMenuData.tab4" ng-click="ThirdPageSectionTabs(thirdSectionTabsMenuData.thirdPageTab4,'THIRDPAGESECTIONFIRSTTABBLOCK',4)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-sm btn-danger pull-right m-t-xs" ng-hide="thirdSectionTabsMenuData.tab4" ng-click="ThirdPageSectionTabs(thirdSectionTabsMenuData.thirdPageTab4,'THIRDPAGESECTIONFIRSTTABBLOCK',4)">Edit</a>
+										</div>
+										<div class="col-lg-3" style="border-right: 1px solid #DFDFDF;">
+											<div class="form-group m-t-xs col-lg-12 no-padding" ng-class="{'has-error':cmsView.pageBlockTitle.$invalid && !cmsView.pageBlockTitle.$pristine}">
+												<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="thirdSectionTabsMenuData.thirdPageTab5.blockTitle" required name="pageBlockTitle" />
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs" ng-show="thirdSectionTabsMenuData.tab5" ng-click="ThirdPageSectionTabs(thirdSectionTabsMenuData.thirdPageTab5,'THIRDPAGESECTIONSECONDTABBLOCK',5)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-sm btn-danger pull-right m-t-xs" ng-hide="thirdSectionTabsMenuData.tab5" ng-click="ThirdPageSectionTabs(thirdSectionTabsMenuData.thirdPageTab5,'THIRDPAGESECTIONSECONDTABBLOCK',5)">Edit</a>
+										</div>
+										<div class="col-lg-3" style="border-right: 1px solid #DFDFDF;">
+											<div class="form-group m-t-xs col-lg-12 no-padding" ng-class="{'has-error':cmsView.pageBlockTitle.$invalid && !cmsView.pageBlockTitle.$pristine}">
+												<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="thirdSectionTabsMenuData.thirdPageTab6.blockTitle" required name="pageBlockTitle" />
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs" ng-show="thirdSectionTabsMenuData.tab6" ng-click="ThirdPageSectionTabs(thirdSectionTabsMenuData.thirdPageTab6,'THIRDPAGESECTIONTHIRDTABBLOCK',6)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-sm btn-danger pull-right m-t-xs" ng-hide="thirdSectionTabsMenuData.tab6" ng-click="ThirdPageSectionTabs(thirdSectionTabsMenuData.secondPageTab6,'THIRDPAGESECTIONTHIRDTABBLOCK',6)">Edit</a>
+										</div>
+										<!-- <div class="col-lg-3">
+													<div class="form-group m-t-xs col-lg-12 no-padding">
+														<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="categoryMenuData.catBlockData1.blockTitle" />
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs">Save</a>
+										</div> -->
+									</div>
+								</tab>
+								<tab heading="Category Entry">
+									<form role="form" class="form-inline m-t-md">
+										<label class='col-lg-4'>Category Title</label><label class='col-lg-4'>URL</label><label class='col-lg-4'></label>
+										<div class="clearfix"></div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="thirdSectionCategoryMenuData.catBlockData1.postTitle" required name="categoryTitle"/>
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="thirdSectionCategoryMenuData.catBlockData1.url" required name="categoryUrl"/>
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="thirdSectionCategoryMenuData.categoryButShow1" ng-click="thirdSectionCategoryCreation(thirdSectionCategoryMenuData.catBlockData1,1)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-danger" ng-hide="thirdSectionCategoryMenuData.categoryButShow1" ng-click="thirdSectionCategoryDelete(thirdSectionCategoryMenuData.catBlockData1,1)">DELETE</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="thirdSectionCategoryMenuData.catBlockData2.postTitle" required name="categoryTitle" />
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="thirdSectionCategoryMenuData.catBlockData2.url" required name="categoryUrl" />
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="thirdSectionCategoryMenuData.categoryButShow2" ng-click="thirdSectionCategoryCreation(thirdSectionCategoryMenuData.catBlockData2,2)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-danger" ng-hide="thirdSectionCategoryMenuData.categoryButShow2" ng-click="thirdSectionCategoryDelete(thirdSectionCategoryMenuData.catBlockData2,2)">DELETE</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="thirdSectionCategoryMenuData.catBlockData3.postTitle" required name="categoryTitle" />
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="thirdSectionCategoryMenuData.catBlockData3.url" required name="categoryUrl" />
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="thirdSectionCategoryMenuData.categoryButShow3" ng-click="thirdSectionCategoryCreation(thirdSectionCategoryMenuData.catBlockData3,3)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-danger" ng-hide="thirdSectionCategoryMenuData.categoryButShow3" ng-click="thirdSectionCategoryDelete(thirdSectionCategoryMenuData.catBlockData3,3)">DELETE</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">											
+											<input class="form-control" placeholder="Category Title" ng-model="thirdSectionCategoryMenuData.catBlockData4.postTitle" required name="categoryTitle" />
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="thirdSectionCategoryMenuData.catBlockData4.url" required name="categoryUrl" />
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="thirdSectionCategoryMenuData.categoryButShow4" ng-click="thirdSectionCategoryCreation(thirdSectionCategoryMenuData.catBlockData4,4)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-danger" ng-hide="thirdSectionCategoryMenuData.categoryButShow4" ng-click="thirdSectionCategoryDelete(thirdSectionCategoryMenuData.catBlockData4,4)">DELETE</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="thirdSectionCategoryMenuData.catBlockData5.postTitle" required name="categoryTitle"/>
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="thirdSectionCategoryMenuData.catBlockData5.url" required name="categoryUrl"/>
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="thirdSectionCategoryMenuData.categoryButShow5" ng-click="thirdSectionCategoryCreation(thirdSectionCategoryMenuData.catBlockData5,5)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-danger" ng-hide="thirdSectionCategoryMenuData.categoryButShow5" ng-click="thirdSectionCategoryDelete(thirdSectionCategoryMenuData.catBlockData5,5)">DELETE</a>
+										</div>
+									</form>
+								</tab>
+								<tab heading="Image Entry">
+									<!-- <div class="ibox-content"> -->
+									<div class="row m-t-md">
+										<div class="col-lg-3">
+											<div class="short_Image_section" style="height: 250px;width:189px;" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+												<img src="" id="thirdShortImage1" style="width: 190px;height: 255px;"/>
+												<div class="custom-title text-center thirdShortImage1">Choose a file</div>
+										  	<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileThirdShortImageChanged(this,1)" required name="image"/>
+											</div>
+											<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+												<input class="form-control" placeholder="Image Title" ng-model="thirdShortImageData1.imageAlt" required name="imageTitle"/>
+											</div>
+											<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+												<input class="form-control" placeholder="Image URL" ng-model="thirdShortImageData1.imageLocation" required name="imageUrl"/>
+											</div>
+											<div class="form-group m-t-sm">
+												<button class="btn btn-primary btn-block" ng-show="thirdShortImageBlock1" ng-click="thirdSectionShortBlockImageUpload(thirdShortImageData1,1)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+												<button class="btn btn-danger btn-block" ng-hide="thirdShortImageBlock1" ng-click="thirdSectionShortBlockImageDelete(thirdShortImageData1,1)">DELETE</button>
+											</div>
+										</div>
+										<div class="col-lg-8">
+											<div class="short_Image_section" style="height: 250px;width:760px;" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+												<img src="" id="thirdMiddleBanner1" style="width: 760px;height: 255px;"/>
+												<div class="custom-title text-center thirdMiddleBanner1">Choose a file</div>
+										  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileThirdMiddleImageChanged(this,1)" required name="image"/>
+											</div>
+											<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+												<input class="form-control" placeholder="Image Title" ng-model="thirdMiddleImageData1.imageAlt" required name="imageTitle" />
+											</div>
+											<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+												<input class="form-control" placeholder="Image URL" ng-model="thirdMiddleImageData1.imageLocation" required name="imageUrl"/>
+											</div>
+											<div class="form-group m-t-sm">
+												<button class="btn btn-primary btn-block" ng-show="thirdMiddleImageBlock1" ng-click="ThirdSectionMiddleBlockImageUpload(thirdMiddleImageData1,1)"  ng-disabled="cmsView.$invalid">SUBMIT</button>
+												<button class="btn btn-danger btn-block" ng-hide="thirdMiddleImageBlock1" ng-click="ThirdSectionMiddleBlockImageDelete(thirdMiddleImageData1,1)">DELETE</button>
+											</div>
+										</div>
+									</div>
+									<!-- </div>  -->
+								</tab>
+								<tab heading="Items Entry">
+									<tabset class="tabs-left">
+										<tab heading="{{tabJsonData.blockTitle}}" class="m-t-sm" ng-repeat="tabJsonData in thirdSectionTabsBlockJsonData | orderBy:'orderOfPlace'">
+											<div class="col-lg-8 m-t-lg" style="margin-bottom:20px;">
+												<div class="col-lg-4 m-t-md" ng-repeat="num in [0, 1, 2, 3, 4, 5]"> 
+													<div class="file_upload" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+												  <img ng-src="{{thirdSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsImageUrl}}" id="thirdTabImage{{tabJsonData.orderOfPlace+num}}" style="width: 100%;height: 99%;"/>
+														<!-- <div class="custom-title text-center thirdTabImage{{tabJsonData.orderOfPlace+num}}">Choose a file{{tabJsonData.orderOfPlace+num}}</div> -->
+												  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileThirdSectionImageChanged(this,event)" id="{{tabJsonData.orderOfPlace+num}}" required name="image"/>
+													</div> 
+													<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+														<input class="form-control" placeholder="Product Title" ng-model="thirdSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsProductTitle" required name="imageTitle"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+														<input class="form-control" placeholder="Image URL" ng-model="thirdSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].imageLocation" required name="imageUrl"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.discountPrice.$invalid && !cmsView.discountPrice.$pristine}">
+														<input class="form-control" placeholder="Item Discount Price" ng-model="thirdSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsProductDiscountedPrice" required name="discountPrice"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.productPrice.$invalid && !cmsView.productPrice.$pristine}">
+														<input class="form-control" placeholder="Item Price" ng-model="thirdSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsProductPrice" required name="productPrice"/>
+													</div>
+													<div class="form-group m-t-sm">
+														<button class="btn btn-primary btn-block" ng-show="thirdChangeableTabs['showTabs'+tabJsonData.orderOfPlace+num]" ng-click="thirdSectionTabImageUpload(thirdSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num],tabJsonData.orderOfPlace+num,tabJsonData.blockName)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+														<button class="btn btn-danger btn-block" ng-hide="thirdChangeableTabs['showTabs'+tabJsonData.orderOfPlace+num]" ng-click="thirdSectionTabImageDelete(thirdSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num],tabJsonData.orderOfPlace+num,tabJsonData.blockName)">DELETE</button>
+													</div>
+												</div>
+											</div>
+										</tab>
+									</tabset>
+								</tab>
+								<tab heading="Preview">
+									<div class="page_section3">
+									  <!-- <div class="container"> -->
+										<div class="">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hot_heading hot_head_elec">
+												<div>
+													<h1>{{titleData.sectionTitle}} <small class="arow-after3"></small></h1>
+												</div>
+												<ul class="hidden-xs">
+													<li ng-repeat="thirdTabJsonData in thirdSectionTabsBlockJsonData | orderBy:'orderOfPlace'"><a data-toggle="tab" data-target="#third_sale{{thirdTabJsonData.orderOfPlace}}">{{thirdTabJsonData.blockTitle}}</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="tab-content">
+											<div class="col-lg-2 col-md-3 hidden-sm no-padding">
+												<a href="#" class="hidden-xs">
+													<img src="" id="thirdShortImage2" class="img-responsive"/>
+												</a>
+												<div class="row" style="margin-left: 0px;margin-right: 0px;">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 item_div1 ">   
+														<div class="hot_cat_head">
+															<h1>HOT CATEGORIES</h1>
+														</div>
+														<ul>
+															<li ng-repeat="categoryDetails in thirdSectionCategoryJsonData"><a href="#"><i class="fa fa-caret-right"></i> &nbsp;{{categoryDetails.postTitle}}</a></li>
+														</ul>      
+													</div>
+												</div>
+												<div class="col-lg-12 visible-xs item_div1 item_div_hover" >
+													<div class="select_cat_drop">
+														<a href="#demo"  data-toggle="collapse">
+															SELECT CATEGORIES<span class="cat_down_arrow">▼</span>
+														</a> 
+													</div>
+													<ul id="demo" class="collapse">
+														<li ng-repeat="thirdTabJsonData in thirdSectionTabsBlockJsonData | orderBy:'orderOfPlace' "><a data-toggle="tab" data-target="#third_sale{{thirdTabJsonData.orderOfPlace}}">{{thirdTabJsonData.blockTitle}}</a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="col-lg-8 col-md-6 col-sm-8 hidden-xs no-padding">
+												<a href="#">
+													<img src="" id="thirdMiddleBanner2" class="img-responsive"/>
+												</a>
+											</div>
+											<div id="third_sale{{thirdTabJsonData.orderOfPlace}}" class="tab-pane fade"  ng-repeat="thirdTabJsonData in thirdSectionTabsBlockJsonData" ng-class="{'in active' : $index==0}">
+												<!-- <div> -->
+													<div class="elec_div1">
+														<a class="col-lg-2 col-md-3 col-sm-4 item_div1" ng-repeat="tabPostData in thirdTabJsonData._embedded.cmsPosts" ng-if="$index==0" target="_blank" href="{{'http://' +tabPostData.url}}">
+															<img ng-src="{{tabPostData.postsImageUrl}}" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4>{{tabPostData.postsProductTitle}}</h4>
+															<p class="price">
+																<span class="price_new">{{tabPostData.postsProductAfterPrice}}</span>
+																<del>{{tabPostData.postsProductPrice}}</del>
+															</p>
+														</a>
+													</div>
+													<div>
+														<a class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1" ng-repeat="tabPostData in thirdTabJsonData._embedded.cmsPosts" ng-if="$index>0" target="_blank" href="{{'http://'+tabPostData.url}}">   
+															<img ng-src="{{tabPostData.postsImageUrl}}" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4>{{tabPostData.postsProductTitle}}</h4>
+															<p class="price">
+																<span class="price_new">{{tabPostData.postsProductAfterPrice}}</span>
+																<del>{{tabPostData.postsProductPrice}}</del>
+															</p>        
+														</a>
+													</div>
+											</div>
+										</div>
+									</div>
+								</tab>
+							</tabset>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" ng-show="tab == 6" style="overflow:auto;height:560px;margin-bottom: 30px;">
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Fourth Page Section</h5>
+						</div>
+						<div class="tabs-container">
+							<tabset class="">
+								<tab heading="Titles">
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-6" ng-class="{'has-error':cmsView.pageTitle.$invalid && !cmsView.pageTitle.$pristine}">
+											<input class="form-control pull-right" placeholder="Page Section Title" style="width:300px;" required name="pageTitle" ng-model="titleData.sectionTitle" />
+										</div>
+										<a class="btn btn-primary m-t-xs" ng-click="fourthPageSectionTitle(titleData,'FOURTHPAGESECTION')" ng-disabled="cmsView.$invalid" ng-show="fourthSectionShow">Save</a>
+										<a class="btn btn-primary m-t-xs" ng-hide="fourthSectionShow">Edit</a>
+									</form>
+									<div class="col-lg-12 m-t-lg">
+										<div class="col-lg-3" style="border-right: 1px solid #DFDFDF;">
+											<div class="form-group m-t-xs col-lg-12 no-padding" ng-class="{'has-error':cmsView.pageBlockTitle.$invalid && !cmsView.pageBlockTitle.$pristine}">
+												<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="fourthSectionTabsMenuData.fourthPageTab4.blockTitle" required name="pageBlockTitle" />
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs" ng-show="fourthSectionTabsMenuData.tab4" ng-click="FourthPageSectionTabs(fourthSectionTabsMenuData.fourthPageTab4,'FOURTHPAGESECTIONFIRSTTABBLOCK',4)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-sm btn-danger pull-right m-t-xs" ng-hide="fourthSectionTabsMenuData.tab4" ng-click="FourthPageSectionTabs(fourthSectionTabsMenuData.fourthPageTab4,'FOURTHPAGESECTIONFIRSTTABBLOCK',4)">Edit</a>
+										</div>
+										<div class="col-lg-3" style="border-right: 1px solid #DFDFDF;">
+											<div class="form-group m-t-xs col-lg-12 no-padding" ng-class="{'has-error':cmsView.pageBlockTitle.$invalid && !cmsView.pageBlockTitle.$pristine}">
+												<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="fourthSectionTabsMenuData.fourthPageTab5.blockTitle" required name="pageBlockTitle" />
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs" ng-show="fourthSectionTabsMenuData.tab5" ng-click="FourthPageSectionTabs(fourthSectionTabsMenuData.fourthPageTab5,'FOURTHPAGESECTIONSECONDTABBLOCK',5)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-sm btn-danger pull-right m-t-xs" ng-hide="fourthSectionTabsMenuData.tab5" ng-click="FourthPageSectionTabs(fourthSectionTabsMenuData.fourthPageTab5,'FOURTHPAGESECTIONSECONDTABBLOCK',5)">Edit</a>
+										</div>
+										<div class="col-lg-3" style="border-right: 1px solid #DFDFDF;">
+											<div class="form-group m-t-xs col-lg-12 no-padding" ng-class="{'has-error':cmsView.pageBlockTitle.$invalid && !cmsView.pageBlockTitle.$pristine}">
+												<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="fourthSectionTabsMenuData.fourthPageTab6.blockTitle" required name="pageBlockTitle" />
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs" ng-show="fourthSectionTabsMenuData.tab6" ng-click="FourthPageSectionTabs(fourthSectionTabsMenuData.fourthPageTab6,'FOURTHPAGESECTIONTHIRDTABBLOCK',6)" ng-disabled="cmsView.$invalid">Save</a>
+											<a class="btn btn-sm btn-danger pull-right m-t-xs" ng-hide="fourthSectionTabsMenuData.tab6" ng-click="FourthPageSectionTabs(fourthSectionTabsMenuData.fourthPageTab6,'FOURTHPAGESECTIONTHIRDTABBLOCK',6)">Edit</a>
+										</div>
+										<!-- <div class="col-lg-3">
+													<div class="form-group m-t-xs col-lg-12 no-padding">
+														<label>Block Title</label>
+												<input class="form-control" placeholder="Page Block Title" ng-model="categoryMenuData.catBlockData1.blockTitle" />
+											</div>
+											<a class="btn btn-sm btn-primary pull-right m-t-xs">Save</a>
+										</div> -->
+									</div>
+								</tab>
+								<tab heading="Category Entry">
+									<form role="form" class="form-inline m-t-md">
+										<label class='col-lg-4'>Category Title</label><label class='col-lg-4'>URL</label><label class='col-lg-4'></label>
+										<div class="clearfix"></div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="fourthSectionCategoryMenuData.catBlockData1.postTitle" required name="categoryTitle"/>
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="fourthSectionCategoryMenuData.catBlockData1.url" required name="categoryUrl"/>
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="fourthSectionCategoryMenuData.categoryButShow1" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData1,1)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-danger" ng-hide="fourthSectionCategoryMenuData.categoryButShow1" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData1,1)">DELETE</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="fourthSectionCategoryMenuData.catBlockData2.postTitle" required name="categoryTitle" />
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="fourthSectionCategoryMenuData.catBlockData2.url" required name="categoryUrl" />
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="fourthSectionCategoryMenuData.categoryButShow2" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData2,2)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-danger" ng-hide="fourthSectionCategoryMenuData.categoryButShow2" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData2,2)">DELETE</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="fourthSectionCategoryMenuData.catBlockData3.postTitle" required name="categoryTitle" />
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="fourthSectionCategoryMenuData.catBlockData3.url" required name="categoryUrl" />
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="fourthSectionCategoryMenuData.categoryButShow3" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData3,3)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-danger" ng-hide="fourthSectionCategoryMenuData.categoryButShow3" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData3,3)">DELETE</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">											
+											<input class="form-control" placeholder="Category Title" ng-model="fourthSectionCategoryMenuData.catBlockData4.postTitle" required name="categoryTitle" />
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="fourthSectionCategoryMenuData.catBlockData4.url" required name="categoryUrl" />
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="fourthSectionCategoryMenuData.categoryButShow4" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData4,4)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-danger" ng-hide="fourthSectionCategoryMenuData.categoryButShow4" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData4,4)">DELETE</a>
+										</div>
+									</form>
+									<div class="clearfix"></div>
+									<form role="form" class="form-inline m-t-md">
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryTitle.$invalid && !cmsView.categoryTitle.$pristine}">
+											<input class="form-control" placeholder="Category Title" ng-model="fourthSectionCategoryMenuData.catBlockData5.postTitle" required name="categoryTitle"/>
+										</div>
+										<div class="form-group m-t-xs col-lg-4" ng-class="{'has-error':cmsView.categoryUrl.$invalid && !cmsView.categoryUrl.$pristine}">
+											<input class="form-control" placeholder="Category Url" ng-model="fourthSectionCategoryMenuData.catBlockData5.url" required name="categoryUrl"/>
+										</div>
+										<div class="col-lg-4 m-t-xs">
+											<a class="btn btn-primary" ng-show="fourthSectionCategoryMenuData.categoryButShow5" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData5,5)" ng-disabled="cmsView.$invalid">SAVE</a>
+											<a class="btn btn-danger" ng-hide="fourthSectionCategoryMenuData.categoryButShow5" ng-click="fouthSectionCategoryCreation(fourthSectionCategoryMenuData.catBlockData5,5)">DELETE</a>
+										</div>
+									</form>
+								</tab>
+								<tab heading="Image Entry">
+									<!-- <div class="ibox-content"> -->
+									<div class="row m-t-md">
+										<div class="col-lg-3">
+											<div class="short_Image_section" style="height: 250px;width:189px;" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+												<img src="" id="fourthShortImage1" style="width: 190px;height: 255px;"/>
+												<div class="custom-title text-center fourthShortImage1">Choose a file</div>
+										  	<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileFouthShortImageChanged(this,1)" required name="image"/>
+											</div>
+											<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+												<input class="form-control" placeholder="Image Title" ng-model="fourthShortImageData1.imageAlt" required name="imageTitle"/>
+											</div>
+											<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+												<input class="form-control" placeholder="Image URL" ng-model="fourthShortImageData1.imageLocation" required name="imageUrl"/>
+											</div>
+											<div class="form-group m-t-sm">
+												<button class="btn btn-primary btn-block" ng-show="fourthShortImageBlock1" ng-click="fourthSectionShortBlockImageUpload(fourthShortImageData1,1)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+												<button class="btn btn-danger btn-block" ng-hide="fourthShortImageBlock1" ng-click="fourthSectionShortBlockImageUpload(fourthShortImageData1,1)">DELETE</button>
+											</div>
+										</div>
+										<div class="col-lg-8">
+											<div class="short_Image_section" style="height: 250px;width:760px;" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+												<img src="" id="fourthMiddleBanner1" style="width: 760px;height: 255px;"/>
+												<div class="custom-title text-center fourthMiddleBanner1">Choose a file</div>
+										  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileFourthMiddleImageChanged(this,1)" required name="image"/>
+											</div>
+											<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+												<input class="form-control" placeholder="Image Title" ng-model="fourthMiddleImageData1.imageAlt" required name="imageTitle" />
+											</div>
+											<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+												<input class="form-control" placeholder="Image URL" ng-model="fourthMiddleImageData1.imageLocation" required name="imageUrl"/>
+											</div>
+											<div class="form-group m-t-sm">
+												<button class="btn btn-primary btn-block" ng-show="fourthMiddleImageBlock1" ng-click="FourthSectionMiddleBlockImageUpload(fourthMiddleImageData1,1)"  ng-disabled="cmsView.$invalid">SUBMIT</button>
+												<button class="btn btn-danger btn-block" ng-hide="fourthMiddleImageBlock1" ng-click="FourthSectionMiddleBlockImageUpload(fourthMiddleImageData1,1)">DELETE</button>
+											</div>
+										</div>
+									</div>
+									<!-- </div>  -->
+								</tab>
+								<tab heading="Items Entry">
+									<tabset class="tabs-left">
+										<tab heading="{{tabJsonData.blockTitle}}" class="m-t-sm" ng-repeat="tabJsonData in fourthSectionTabsBlockJsonData | orderBy:'orderOfPlace'">
+											<div class="col-lg-8 m-t-lg" style="margin-bottom:20px;">
+												<div class="col-lg-4 m-t-md" ng-repeat="num in [0, 1, 2, 3, 4, 5]"> 
+													<div class="file_upload" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+												  <img ng-src="{{fourthSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsImageUrl}}" id="fourthTabImage{{tabJsonData.orderOfPlace+num}}" style="width: 100%;height: 99%;"/>
+														<!-- <div class="custom-title text-center fourthTabImage{{tabJsonData.orderOfPlace+num}}">Choose a file{{tabJsonData.orderOfPlace+num}}</div> -->
+												  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileFourthSectionImageChanged(this,event)" id="{{tabJsonData.orderOfPlace+num}}" required name="image"/>
+													</div> 
+													<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+														<input class="form-control" placeholder="Product Title" ng-model="fourthSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsProductTitle" required name="imageTitle"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+														<input class="form-control" placeholder="Image URL" ng-model="fourthSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].imageLocation" required name="imageUrl"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.discountPrice.$invalid && !cmsView.discountPrice.$pristine}">
+														<input class="form-control" placeholder="Item Discount Price" ng-model="fourthSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsProductDiscountedPrice" required name="discountPrice"/>
+													</div>
+													<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.productPrice.$invalid && !cmsView.productPrice.$pristine}">
+														<input class="form-control" placeholder="Item Price" ng-model="fourthSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num].postsProductPrice" required name="productPrice"/>
+													</div>
+													<div class="form-group m-t-sm">
+														<button class="btn btn-primary btn-block" ng-show="fourthChangeableTabs['showTabs'+tabJsonData.orderOfPlace+num]" ng-click="fourthSectionTabImageUpload(fourthSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num],tabJsonData.orderOfPlace+num,tabJsonData.blockName)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+														<button class="btn btn-danger btn-block" ng-hide="fourthChangeableTabs['showTabs'+tabJsonData.orderOfPlace+num]" ng-click="fourthSectionTabImageUpload(fourthSectionIndividualTabs['tabsData'+tabJsonData.orderOfPlace+num],tabJsonData.orderOfPlace+num,tabJsonData.blockName)">DELETE</button>
+													</div>
+												</div>
+											</div>
+										</tab>
+									</tabset>
+								</tab>
+								<tab heading="Preview">
+									<div class="page_section3">
+									  <!-- <div class="container"> -->
+										<div class="">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hot_heading hot_head_elec">
+												<div>
+													<h1>ELECTRONICS <small class="arow-after3"></small></h1>
+												</div>
+												<ul class="hidden-xs">
+													<li ng-repeat="fourthTabJsonData in fourthSectionTabsBlockJsonData | orderBy:'orderOfPlace'"><a data-toggle="tab" data-target="#fourth_sale{{fourthTabJsonData.orderOfPlace}}">{{fourthTabJsonData.blockTitle}}</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="tab-content">
+											<div class="col-lg-2 col-md-3 hidden-sm no-padding">
+												<a href="#" class="hidden-xs">
+													<img src="" id="fourthShortImage2" class="img-responsive"/>
+												</a>
+												<div class="row" style="margin-left: 0px;margin-right: 0px;">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 item_div1 ">   
+														<div class="hot_cat_head">
+															<h1>HOT CATEGORIES</h1>
+														</div>
+														<ul>
+															<li ng-repeat="categoryDetails in fourthSectionCategoryJsonData"><a href="#"><i class="fa fa-caret-right"></i> &nbsp;{{categoryDetails.postTitle}}</a></li>
+														</ul>      
+													</div>
+												</div>
+												<div class="col-lg-12 visible-xs item_div1 item_div_hover" >
+													<div class="select_cat_drop">
+														<a href="#demo"  data-toggle="collapse">
+															SELECT CATEGORIES<span class="cat_down_arrow">▼</span>
+														</a> 
+													</div>
+													<ul id="demo" class="collapse">
+														<li ng-repeat="fourthTabJsonData in fourthSectionTabsBlockJsonData | orderBy:'orderOfPlace' "><a data-toggle="tab" data-target="#fourth_sale{{fourthTabJsonData.orderOfPlace}}">{{fourthTabJsonData.blockTitle}}</a></li>
+													</ul>
+												</div>
+											</div>
+											<div class="col-lg-8 col-md-6 col-sm-8 hidden-xs no-padding">
+												<a href="#">
+													<img src="" id="fourthMiddleBanner2" class="img-responsive"/>
+												</a>
+											</div>
+											<div id="fourth_sale{{fourthTabJsonData.orderOfPlace}}" class="tab-pane fade"  ng-repeat="fourthTabJsonData in fourthSectionTabsBlockJsonData" ng-class="{'in active' : $index==0}">
+												<!-- <div> -->
+													<div class="elec_div1">
+														<a class="col-lg-2 col-md-3 col-sm-4 item_div1" ng-repeat="tabPostData in fourthTabJsonData._embedded.cmsPosts" ng-if="$index==0" target="_blank" href="{{'http://' +tabPostData.url}}">
+															<img ng-src="{{tabPostData.postsImageUrl}}" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4>{{tabPostData.postsProductTitle}}</h4>
+															<p class="price">
+																<span class="price_new">{{tabPostData.postsProductAfterPrice}}</span>
+																<del>{{tabPostData.postsProductPrice}}</del>
+															</p>
+														</a>
+													</div>
+													<div>
+														<a class="col-lg-2 col-md-4 col-sm-4 col-xs-12 item_div1" ng-repeat="tabPostData in fourthTabJsonData._embedded.cmsPosts" ng-if="$index>0" target="_blank" href="{{'http://'+tabPostData.url}}">   
+															<img ng-src="{{tabPostData.postsImageUrl}}" class="img-responsive"/>
+															<div class="star_rate">
+																<span class="rating r12"></span>
+																<i style="width:81%"></i>
+															</div>
+															<h4>{{tabPostData.postsProductTitle}}</h4>
+															<p class="price">
+																<span class="price_new">{{tabPostData.postsProductAfterPrice}}</span>
+																<del>{{tabPostData.postsProductPrice}}</del>
+															</p>        
+														</a>
+													</div>
+											</div>
+										</div>
+									</div>
+								</tab>
+							</tabset>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" ng-show="tab == 7">
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">First Promotion Banner</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="col-lg-12">
+								<div class="row m-t-md col-lg-8">
+									<div class="promotion_banner">
+										<img src="" id="first_banner1" style="width: 100%;height: 100px;"/>
+										<div class="custom-title text-center first_banner1" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">Choose a file</div>
+								  	<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().filePromotionMainBannerChanged(this,1)" required name="image"/>
+								  </div>
+							  	<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageAlt.$invalid && !cmsView.imageAlt.$pristine}">
+										<input class="form-control" placeholder="Image Alt" ng-model="firstBannerData.imageAlt" required name="imageAlt"/>
+									</div>
+									<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.url.$invalid && !cmsView.url.$pristine}">
+										<input class="form-control" placeholder="Product URL" ng-model="firstBannerData.imageLocation" required name="url"/>
+									</div>
+									<div class="form-group m-t-xs">
+										<button class="btn btn-primary btn-block" ng-show="FirstBannerShow" ng-click="FirstPromotionBannerUpload(firstBannerData,1)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-danger btn-block" ng-hide="FirstBannerShow" ng-click="FirstPromotionBannerDelete(firstBannerData,1)">REMOVE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" ng-show="tab == 8">
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Second Promotion Banner</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="col-lg-12">
+								<div class="row m-t-md col-lg-8">
+									<div class="promotion_banner">
+										<img src="" id="second_banner1" style="width: 100%;height: 100px;"/>
+										<div class="custom-title text-center second_banner1" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">Choose a file</div>
+								  	<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().filePromotionSecondBannerChanged(this,1)" required name="image"/>
+							  	</div>
+							  	<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageAlt.$invalid && !cmsView.imageAlt.$pristine}">
+										<input class="form-control" placeholder="Image Alt" ng-model="secondBannerData.imageAlt" required name="imageAlt"/>
+									</div>
+									<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+										<input class="form-control" placeholder="Product URL" ng-model="secondBannerData.imageLocation" required name="imageUrl"/>
+									</div>
+									<div class="form-group m-t-xs">
+										<button class="btn btn-primary btn-block" ng-show="SecondBannerShow" ng-click="SecondPromotionBannerUpload(secondBannerData,1)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-danger btn-block" ng-hide="SecondBannerShow" ng-click="SecondPromotionBannerDelete(secondBannerData,1)">REMOVE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" ng-show="tab == 9">
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Third Promotion Banner</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="col-lg-12">
+								<div class="row m-t-md col-lg-8">
+									<div class="promotion_banner">
+										<img src="" id="third_banner1" style="width: 100%;height: 100px;"/>
+										<div class="custom-title text-center third_banner1" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">Choose a file</div>
+								  	<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().filePromotionThirdBannerChanged(this,1)" required name="image"/>
+							  	</div>
+							  	<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageAlt.$invalid && !cmsView.imageAlt.$pristine}">
+										<input class="form-control" placeholder="Image Alt" ng-model="thirdBannerData.imageAlt" required name="imageAlt"/>
+									</div>
+									<div class="form-group m-t-xs" ng-class="{'has-error':cmsView.imageUrl.$invalid && !cmsView.imageUrl.$pristine}">
+										<input class="form-control" placeholder="Product URL" ng-model="thirdBannerData.imageLocation" required name="imageUrl"/>
+									</div>
+									<div class="form-group m-t-xs">
+										<button class="btn btn-primary btn-block" ng-show="ThirdBannerShow" ng-click="ThirdPromotionBannerUpload(thirdBannerData,1)" ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<!-- <button class="btn btn-danger btn-block" ng-hide="ThirdBannerShow" ng-click="ThirdPromotionBannerDelete(thirdBannerData,1)">REMOVE</button> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" style="overflow:auto;height:560px;" ng-show="tab == 10">
+						<div class="ibox-content">
+							<div class="row m-t-md">
+								<div class="col-lg-3" ng-repeat="promoObj in PromotionData">
+									<img ng-src="{{promoObj.postsImageUrl}}" class="img-preview" ng-if="promoObj.orderOfPlace == $index+1" />
+								</div>
+							</div>
+							<hr class="m-t-md" style="width:50%; border-color:#F44336;" />
+							<div class="row m-t-md">
+								<div class="col-lg-3 border_b"> 
+									<div class="file_upload">
+										<img src="" id="promo1" style="width: 100%;height: 99%;"/>
+										<div class="custom-title text-center promo1">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().filePromotionChanged(this,1)"/>
+									</div> 
+									<div class="form-group m-t-sm">
+										<input class="form-control" placeholder="Image Title" ng-model="PromotionIndividualData.PromoData1.imageAlt"/>
+									</div>
+									<div class="form-group m-t-xs">
+										<input class="form-control" placeholder="Image URL" ng-model="PromotionIndividualData.PromoData1.imageLocation" />
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="FOURGRIDPROMOTIONBLOCK1" ng-click="PromotionUpload(PromotionIndividualData.PromoData1,1)">SUBMIT</button>
+										<button class="btn btn-danger btn-block" ng-hide="FOURGRIDPROMOTIONBLOCK1" ng-click="PromotionDelete(PromotionIndividualData.PromoData1,1)">DELETE</button>
+									</div>
+								</div>
+								<div class="col-lg-3 border_b"> 
+									<div class="file_upload">
+										<img src="" id="promo2" style="width: 100%;height: 99%;"/>
+										<div class="custom-title text-center promo2">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().filePromotionChanged(this,2)"/>
+									</div> 
+									<div class="form-group m-t-sm">
+										<input class="form-control" placeholder="Image Title" ng-model="PromotionIndividualData.PromoData2.imageAlt" />
+									</div>
+									<div class="form-group m-t-xs">
+										<input class="form-control" placeholder="Image URL" ng-model="PromotionIndividualData.PromoData2.imageLocation" />
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="FOURGRIDPROMOTIONBLOCK2" ng-click="PromotionUpload(PromotionIndividualData.PromoData2,2)">SUBMIT</button>
+										<button class="btn btn-danger btn-block" ng-hide="FOURGRIDPROMOTIONBLOCK2" ng-click="PromotionDelete(PromotionIndividualData.PromoData2,2)">DELETE</button>
+									</div>
+								</div>
+								<div class="col-lg-3 border_b"> 
+									<div class="file_upload">
+										<img src="" id="promo3" style="width: 100%;height: 99%;"/>
+										<div class="custom-title text-center promo3">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().filePromotionChanged(this,3)"/>
+								  <!-- <img ng-src="../common/images/square.PNG" class="img-responsive" /> -->
+									</div> 
+									<div class="form-group m-t-sm">
+										<input class="form-control" placeholder="Image Title" ng-model="PromotionIndividualData.PromoData3.imageAlt" />
+									</div>
+									<div class="form-group m-t-xs">
+										<input class="form-control" placeholder="Image URL" ng-model="PromotionIndividualData.PromoData3.imageLocation" />
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="FOURGRIDPROMOTIONBLOCK3" ng-click="PromotionUpload(PromotionIndividualData.PromoData3,3)">SUBMIT</button>
+										<button class="btn btn-danger btn-block" ng-hide="FOURGRIDPROMOTIONBLOCK3" ng-click="PromotionDelete(PromotionIndividualData.PromoData3,3)">DELETE</button>
+									</div>
+								</div>
+								<div class="col-lg-3 border_b"> 
+									<div class="file_upload">
+										<img src="" id="promo4" style="width: 100%;height: 99%;"/>
+										<div class="custom-title text-center promo4">Choose a file</div>
+								  <input type="file" class='form-control inputfile' onchange="angular.element(this).scope().filePromotionChanged(this,4)"/>
+									</div> 
+									<div class="form-group m-t-sm">
+										<input class="form-control" placeholder="Image Title" ng-model="PromotionIndividualData.PromoData4.imageAlt" />
+									</div>
+									<div class="form-group m-t-xs">
+										<input class="form-control" placeholder="Image URL" ng-model="PromotionIndividualData.PromoData4.imageLocation" />
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="FOURGRIDPROMOTIONBLOCK4" ng-click="PromotionUpload(PromotionIndividualData.PromoData4,4)">SUBMIT</button>
+										<button class="btn btn-danger btn-block" ng-hide="FOURGRIDPROMOTIONBLOCK4" ng-click="PromotionDelete(PromotionIndividualData.PromoData4,4)">DELETE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" style="overflow:auto;height:560px;" ng-show="tab == 13">
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Top Tittle Banner</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="col-lg-12">
+								<div class="row m-t-md col-lg-8">
+						  		<div class="form-group m-t-xs col-lg-12 no-padding">
+										<input class="form-control" placeholder="Page Block Title" ng-model="topTitle.title"/>
+									</div>									
+									<div class="form-group m-t-md col-lg-12">
+										<button class="btn btn-primary btn-block" ng-show="TopTittleShow" ng-click="TopTittle(topTitle)">SUBMIT</button>
+										<!-- <button class="btn btn-danger btn-block" ng-hide="TopTittleShow" ng-click="TittleBannerDelete(topTitle)">REMOVE</button> -->
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<ul>
+									<li ng-repeat=""></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" style="overflow:auto;height:560px;" ng-show="tab == 14">
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Laptops & Peripherals</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="row m-t-md">
+								<div class="col-lg-3">
+									<div class="short_Image_section" style="height: 250px;width:189px;" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+										<img src="" id="" style="width: 263px;height: 202px;"/>
+											<div class="custom-title text-center ">Choose a file</div>
+												<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileShortImageChanged(this,1)" required name="image"/>
+									</div>
+									<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+										<input class="form-control" placeholder="Image Title" ng-model="" required name="imageTitle" />
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="shortImageBlock1" ng-click=" " ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-danger btn-block" ng-hide="shortImageBlock1" ng-click=" ">DELETE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" style="overflow:auto;height:560px;" ng-show="tab == 15">
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Men Fashion</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="row m-t-md">
+								<div class="col-lg-3">
+									<div class="short_Image_section" style="height: 360px;width:189px;" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+										<img src="" id="" style="width: 250px;height: 343px;"/>
+											<div class="custom-title text-center ">Choose a file</div>
+												<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileShortImageChanged(this,1)" required name="image"/>
+									</div>
+									<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+										<input class="form-control" placeholder="Image Title" ng-model="" required name="imageTitle" />
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="shortImageBlock1" ng-click=" " ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-danger btn-block" ng-hide="shortImageBlock1" ng-click=" ">DELETE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ibox" class="tab-pane active" style="overflow:auto;height:560px;" ng-show="tab == 16">
+						<div class="ibox-title">
+							<h5 class="text-uppercase fontpro">Baby & Kids</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="row m-t-md">
+								<div class="col-lg-3">
+									<div class="short_Image_section" style="height: 250px;width:189px;" ng-class="{'has-error':cmsView.image.$invalid && !cmsView.image.$pristine}">
+										<img src="" id="" style="width: 263px;height: 245px;"/>
+											<div class="custom-title text-center ">Choose a file</div>
+												<input type="file" class='form-control inputfile' onchange="angular.element(this).scope().fileShortImageChanged(this,1)" required name="image"/>
+									</div>
+									<div class="form-group m-t-sm" ng-class="{'has-error':cmsView.imageTitle.$invalid && !cmsView.imageTitle.$pristine}">
+										<input class="form-control" placeholder="Image Title" ng-model="" required name="imageTitle" />
+									</div>
+									<div class="form-group m-t-sm">
+										<button class="btn btn-primary btn-block" ng-show="shortImageBlock1" ng-click=" " ng-disabled="cmsView.$invalid">SUBMIT</button>
+										<button class="btn btn-danger btn-block" ng-hide="shortImageBlock1" ng-click=" ">DELETE</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div ng-include="'Views/FooterTemplate.html'"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.list-group-item').on('click','a',function(){
+			$('.nav_n.collapse.in').removeClass('in');
+			// $(this).next("ul").addClass('in');
+		})
+	})
+</script>
+
+<style type="text/css">
+	.file_upload{
+		background-color: #F5EEEE;
+		height: 150px;
+	}
+	.custom-title{
+		top: -86px;
+	position: relative;
+	}
+	.list-group-internal.active{
+		border-left: 3px solid #4DB3A2 !important;
+		color: #F44336 !important;
+	}
+	.carousel-control{
+		width: 26% !important;
+	}
+	.item_div1{
+		height: 250px;
+	}
+	.item_div1:hover{
+		border:1px solid #EA3A3C;
+	}
+</style>

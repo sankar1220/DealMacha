@@ -31,7 +31,6 @@ public class CmsBlockBusinessDelegate implements IBusinessDelegate<CmsBlockModel
 
     @Override
     public CmsBlockModel create(final CmsBlockModel model) {
-        // TODO Auto-generated method stub
         CmsBlock cmsBlock = new CmsBlock();
         cmsBlock.setBlockName(model.getBlockName());
         cmsBlock.setBlockTitle(model.getBlockTitle());
@@ -40,7 +39,9 @@ public class CmsBlockBusinessDelegate implements IBusinessDelegate<CmsBlockModel
         cmsBlock.setBlockPostsMax(model.getBlockPostsMax());
         cmsBlock.setPostsImageHeight(Integer.parseInt(model.getPostsImageHeight()));
         cmsBlock.setPostsImageWidth(Integer.parseInt(model.getPostsImageWidth()));
+        if(model.getOrderOfPlace()!=null){
         cmsBlock.setOrderOfPlace(Integer.parseInt(model.getOrderOfPlace()));
+        }
         CmsSection cmsSection = new CmsSection();
         cmsSection.setId(model.getCmsSectionId());
         cmsBlock.setCmsSection(cmsSection);

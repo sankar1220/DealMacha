@@ -1,7 +1,7 @@
-<div class="col-lg-9 col-md-8 col-sm-7 ">
+<div class="col-lg-9 col-md-8 col-sm-7 " ng-controller="ProductListController">
     <img src="/home/images/electronic-cat.png" class="img-responsive"/>
-    <div class="bars">
-        <div class="row ">
+    <!-- <div class="bars"> -->
+        <!-- <div class="row ">
             <div class="col-lg-12 col-xs-12">
                 <i class="fa fa-th hidden-xs" aria-hidden="true"></i>
                 <i class="fa fa-th-list hidden-xs" aria-hidden="true"></i>
@@ -28,22 +28,36 @@
                     </span>
                 </div>
             </div>
-        </div>    
-    </div>
-    <div class="row">
+        </div>   -->  
+    <!-- </div> -->
+    <div class="row prod-list">
         <th:block th:replace="fragments/ListProductFragment"></th:block>
     </div>
-    <div class="bars">
-        <div class=" ">
+    <div class="loading row text-center" ng-show="loadingShowStatus"><img src="/common/images/loading.gif"/></div>
+    <!-- <div class="bars"> -->
+        <!-- <div class=" ">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <i class="fa fa-th" aria-hidden="true"></i>
-                <i class="fa fa-th-list" aria-hidden="true"></i>
-                <div class="showing">
-                    <span >
-                    <a href="3">NEXT</a>
+                <i class="fa fa-th-list" aria-hidden="true"></i> -->
+                <!-- <hr/> -->
+                <!-- <div class="showing" ng-show="paginationStatus">
+                    <span style="margin-left: 793px;">
+                    <a  ng-click="nextPage()">NEXT</a>
+                </span>
+                </div> -->
+
+                <div class="input_box tac mgt20 mgb20" ng-show="paginationStatus">
+                                
+                               <a class="load_more" ng-click="nextPage()"><i class="fa fa-spinner ls5" aria-hidden="true"></i>Load More</a>
+                                <a class="hide load_more_div"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Thats All We Have!</a>
+                            </div>
+                 <div ng-show="!paginationStatus" class="showing">
+                    <span style="margin-left: 793px;">
+                    <a href="3">No products Available</a>
                 </span>
                 </div>
-            </div>
-        </div>
-    </div>
+                
+        <!--     </div>
+        </div> -->
+   <!--  </div> -->
 </div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="file" onchange="imageData(this)" />
+	<button onclick="merchantCreate()">IMage Upload</button>
+</body>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+	var imagObj = {};
+	function imageData(all){
+		imagObj={
+		   "imageName":all.files[0].name,
+		   "imageType" : all.files[0].type,
+		   "imageFileData":all.files[0]
+		}
+	}
+
+	function merchantCreate(){
+	   // var exdata = $("#image"+indexValue).attr('src');
+	  // loadingView.startLoading("show");
+	   // $scope.bytes = $scope.imgObj.imageFileData;
+	    var imageType=imagObj.imageType;
+	    var imgType=imageType.substring(0,5);
+	   //  console.log($scope.bytes);
+	   //  console.log(all.name);
+	    var formData = new FormData();
+	    // formData.append('file', $scope.bytes);
+	    formData.append('merchantImage', imagObj.imageFileData);
+	    formData.append('merchantName', 'flipkart');
+	    formData.append('affiliateId', '123456');
+	    formData.append('merchantToken', '123');
+	    formData.append('url', 'www.flipkart.com');
+	    formData.append('description', "flipkart");
+	    // formData.append('merchantImage', data.imageAlt);
+	    formData.append('status', "Active");
+	    // console.log(formData);
+	    if(imgType == "image"){
+	       $.ajax({
+	       type: "POST",
+	       url: 'http://192.168.0.73:8085/merchantForm/create',
+	       beforeSend: function(req) {
+	         req.setRequestHeader("Accept", "application/json");
+	         req.setRequestHeader("Content-Type", "application/json");
+	       },
+	       data:formData,
+	       processData: false,
+	       contentType: false,
+	       success: function(response) {
+	           //alert(response);
+	           // console.log(JSON.stringify(response));
+	           
+	           console.log(response);
+	           // if(response.postName[0]=="E"){
+	           //  var errorMsg = response.postName.split(":::")
+	           //  $scope.errorAlert = errorMsg[1];
+	           //  loadingView.startLoading("hide");
+	           // }else{
+	           //  $scope.errorAlert = '';
+	           //  $scope.ImageData.push(response);
+	           //  loadingView.startLoading("hide");
+	           //  $scope.$apply();
+	           // }
+	       },
+	       error:function(){
+	           alert("failure");
+	       }
+	     });
+	    }else{
+	      alert('Please Upload Image');
+	    }
+	  }
+
+
+</script>
+</html>

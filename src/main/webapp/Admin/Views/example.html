@@ -1,0 +1,241 @@
+<div id="page-wrapper" class="{{$state.current.name}}">
+	<div class="row border-bottom white-bg m-t-sm">
+		<ol class="breadcrumb p-xs col-lg-12 gray-bg ">
+			<li>
+				<a href="index.html"><i class="fa fa-home"></i> Home</a>
+			</li>
+			<li>
+				<a class="{{$state.current.url}}"> Profile</a>
+			</li>
+			<li>
+				<a> {{$state.current.data.pageTitle}}</a>
+			</li>
+		</ol>
+	</div>
+	<div class="container-fuild animated fadeInRight m-t-sm">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="ibox-title font-green-sharp fontpro border-bottom">
+					<h3 style="margin-bottom: 3px;">SETTINGS BOARD</h3>
+				</div>
+				<div class="ibox-content no-padding border-left-right">
+					<img alt="image" class="img-responsive" src="../common/images/karthikeya.png" style="width:200px;" />
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item no-border" ng-class="{'active':  tab == 1}">
+						<a ng-click="tab = 1" ng-init="tab = 1"><i class="fa fa-bullseye"></i> OverView</a>
+					</li>
+					<li class="list-group-item no-border" ng-class="{'active' : tab == 2 || tab == 3}">
+						<a ng-click="tab = 2"><i class="fa fa-gear"></i> Account Settings</a>
+					</li>
+					<li class="list-group-item no-border" ui-sref-active="active">
+						<a><i class="fa fa-user"></i> Log Out</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-9">
+				<div class="ibox">
+					<div class="tab-content">
+						<div id="tab-1" class="tab-pane active" ng-show="tab == 1">
+							<div class="ibox-title">
+						    <h5 class="text-uppercase fontpro">OverView</h5>
+						  </div>		
+							<div class="ibox-content">
+							</div>
+						</div>
+						<div id="tab-2" class="tab-pane active" ng-show="tab == 2">
+							<div class="ibox-title">
+					    	<h5 class="text-uppercase fontpro col-lg-8">{{$state.current.data.pageTitle}}</h5>
+					     	<span class="col-lg-2 p_act" ng-click="tab = 2" ng-class="{'active' : tab == 2}">Personal Info</span>
+					     	<span class="col-lg-2 p_act" ng-click="tab = 3" ng-class="{'active' : tab == 3}">Change Password</span>
+						  </div>		
+							<div class="ibox-content">
+								<form action="#" class="form-horizontal">
+									<div class="form-body">
+										<div class="form-group">
+											<label class="control-label col-md-2">Title 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<select class="form-control" name="validateselect1" ng-model="Customers.title" data-name="title">
+														<option value="default">Select</option>
+														<option value="mr">MR</option>
+														<option value="mrs">MRS</option>
+														<option value="miss">Miss</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-2">First Name 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input type="text" ng-model="user.firstName" class="form-control" placeholder="First Name"/>
+												</div>
+											</div>
+											<label class="control-label col-md-2">Last Name 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input type="text" ng-model="user.lastName" class="form-control" placeholder="Last Name"/>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-2">DOB 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input type="text" ng-model="user.dob" class="form-control" placeholder="DD/MM/YYYY"/>
+												</div>
+											</div>
+											<label class="control-label col-md-2">Father/Spouse Name 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input type="text" ng-model="user.fatherHusbandName" class="form-control" placeholder="Father's/Spouse Name"/>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-2">Mobile No. 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input type="text" ng-model="user.mobileNo" class="form-control" placeholder="mobileNo"/>
+												</div>
+											</div>
+											<label class="control-label col-md-2">Alternate Mobile No. 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input type="text" ng-model="user.alternateMobileNo" class="form-control" placeholder="Alternate Mobile No"/>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-2">Email Id 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input type="email" ng-model="user.emailId" class="form-control" placeholder="emailId"/>
+												</div>
+											</div>
+											<label class="control-label col-md-2">Alternate Email Id 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<input type="email" ng-model="user.alternateEmailId" class="form-control" placeholder="Alternate EmailId"/>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-2">Country 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span>
+													<select class="form-control" name="validateselect1" ng-model="Customers.title" data-name="title">
+														<option value="default">Select</option>
+														<option value="INDIA">INDIA</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div id="tab-3" class="tab-pane active" ng-show="tab == 3">
+							<div class="ibox-title">
+					    	<h5 class="text-uppercase fontpro col-lg-8">{{$state.current.data.pageTitle}}</h5>
+					     	<span class="col-lg-2 p_act" ng-click="tab = 2" ng-class="{'active' : tab == 2}">Personal Info</span>
+					     	<span class="col-lg-2 p_act" ng-click="tab = 3" ng-class="{'active' : tab == 3}">Change Password</span>
+						  </div>		
+							<div class="ibox-content">
+								<form action="#" class="form-horizontal">
+									<div class="form-body">
+										<div class="form-group">
+											<label class="control-label col-md-4">Current Password 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<!-- <div class="input-group">
+													<span  class="input-group-addon"><i class="fa fa-user"></i></span>-->
+													<input type="email" ng-model="user.alternateEmailId" class="form-control" placeholder="Current Password"/>
+												<!-- </div> -->
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-4">New Password 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<!-- <div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span> -->
+													<input type="email" ng-model="user.alternateEmailId" class="form-control" placeholder="New Password"/>
+												<!-- </div> -->
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-4">Confirm Password 
+												<span class="required" aria-required="true">*</span>
+											</label>
+											<div class="col-md-4">
+												<!-- <div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-user"></i></span> -->
+													<input type="email" ng-model="user.alternateEmailId" class="form-control" placeholder="Confirm Password"/>
+												<!-- </div> -->
+												<span class="help-block">Confirm password should be same as password </span>
+											</div>
+										</div>
+									</div>
+									<div class="form-actions">
+                  <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                      <button type="submit" class="btn btn-primary">Change Password</button>
+                      <a ui-sref="Profile.Profile" class="btn btn-danger btn-outline">Cancel </a>
+                    </div>
+                  </div>
+                </div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	.p_act{
+		cursor: pointer;
+		text-align: right;
+	}
+	.p_act.active{
+		cursor: pointer;
+		/*border-bottom: 3px solid #F3565D;*/
+		color: #F3565D !important;
+		text-align: right;
+	}
+</style>

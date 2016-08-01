@@ -22,7 +22,7 @@ public class Account extends AbstractDomain implements java.io.Serializable {
 	    }
 	 
 	 @ManyToOne(fetch = FetchType.LAZY)
-	    @JoinColumn(name = "users_id", nullable = false)
+	 @JoinColumn(name = "users_id", nullable = false)
 	public Users getUsers() {
 		return users;
 	}

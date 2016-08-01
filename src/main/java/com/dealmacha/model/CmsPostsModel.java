@@ -26,7 +26,9 @@ public class CmsPostsModel extends AbstractModel {
     private String postsProductAfterPrice;
     private String orderOfPlace;
     private String cmsBlockId;
+    private String description;
     private String url;
+    private String urlTargetLocation;
     private String postsImageWidth;
     private String postsImageHeight;
     private String postsImageUrl;
@@ -198,5 +200,21 @@ public class CmsPostsModel extends AbstractModel {
     public void setUrl(final String url) {
         this.url = url;
     }
+
+	public String getUrlTargetLocation() {
+		return urlTargetLocation;
+	}
+
+	public void setUrlTargetLocation(String urlTargetLocation) {
+		this.urlTargetLocation = urlTargetLocation;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }

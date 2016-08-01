@@ -1,0 +1,61 @@
+<div class="ibox float-e-margins" ng-controller="RequestsTypeCreationController">
+	<div class="ibox-title">
+		<h5 class="text-uppercase fontpro">RequestsType Creation</h5>
+	</div>
+	<div class="ibox-content">
+		<form class="form-horizontal" id="userCreateForm" name="requestsForm">
+			<div class="form-body">
+				<div class="form-group m-t-sm">
+					<label class="control-label col-md-2">Request Type
+					</label>
+					<div class="col-md-4">
+						<div>
+							 <input type="text" class="form-control" ng-model="requests.requestType" placeholder="request Type">
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-t-sm">
+					<label class="control-label col-md-2"> Request Description
+					</label>
+					<div class="col-md-4">
+						<div>
+							<textarea type="text" class="form-control" name="" ng-model="requests.requestDescription" required name="offerDescription"></textarea>
+						</div>
+					</div>
+				</div>
+				<div>
+					<span style="color:#F44336;">Attributes</span>
+						<label class="m-l-sm"><button class="btn btn-outline btn-primary dim" type="button" ng-click="addAttribute()" style="left: 588px;margin-top: 15px;"><i class="fa fa-plus"></i></button>
+						</label>
+				</div>
+				<div class="form-group m-t-sm" ng-repeat="attrJson in attributes track by $index">
+					<label class="control-label col-md-2">Attribute{{$index}}
+					</label>
+					<div class="col-md-4">
+						<div>
+							 <input type="text" class="form-control" ng-model="attrJson.requestTypeAttribute">
+						</div>
+					</div>
+						<div class="col-md-1">
+							<button class="btn btn-outline btn-danger dim" type="button" ng-click="removeattribute($index)"><i class="fa fa-minus"></i></button>
+						</div>
+				</div>
+				<div class="form-actions">
+					<div class="row">
+						<div class="col-md-12">
+						 <div class="row">
+							 <div class="text-center" style="margin-top: 50px;">
+									<a class="btn" ng-click="RequestsTypeCreate(requests,attrJson)" style=" color: #FFFFFF;background-color: #35aa47;">Submit</a>
+										<a ui-sref="Requests.RequestsType" class="btn default button_bckgrndclr">Cancel</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+					 
+
+

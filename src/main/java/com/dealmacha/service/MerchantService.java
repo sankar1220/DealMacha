@@ -11,73 +11,72 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MerchantService implements IMerchantService {
-    @Autowired
-    private MerchantRepository merchantRepository;
+	@Autowired
+	private MerchantRepository merchantRepository;
 
-    @Override
-    public Merchant create(final Merchant merchant) {
-        // TODO Auto-generated method stub
-        return merchantRepository.save(merchant);
-    }
+	@Override
+	public Merchant create(final Merchant merchant) {
+		// TODO Auto-generated method stub
+		return merchantRepository.save(merchant);
+	}
 
-    @Override
-    public void deleteMerchant(final String merchantId) {
-        // TODO Auto-generated method stub
+	@Override
+	public void deleteMerchant(final String merchantId) {
+		// TODO Auto-generated method stub
 
-    }
+	}
 
-    @Override
-    public List<Merchant> getAll() {
-      List<Merchant> merchant=(List<Merchant>) merchantRepository.findAll();
-      List<Merchant> merchants=new ArrayList<Merchant>();
-     
-      for(Merchant mercha:merchant){
-    	  Merchant merch=new Merchant();
-    	  merch.setId(mercha.getId());
-    	  merch.setAffiliateId(mercha.getAffiliateId());
-    	  merch.setAffiliateKey(mercha.getAffiliateKey());
-    	  merch.setDescription(mercha.getDescription());
-    	  merch.setMerchantImage(mercha.getMerchantImage());
-    	  merch.setMerchantName(mercha.getMerchantName());
-merch.setMerchantToken(mercha.getMerchantToken());
-merch.setUrl(mercha.getUrl());
-merchants.add(mercha);
+	@Override
+	public List<Merchant> getAll() {
+		List<Merchant> merchant = (List<Merchant>) merchantRepository.findAll();
+		List<Merchant> merchants = new ArrayList<Merchant>();
 
- 
-    }
-        return merchants;
-    }
+		for (Merchant mercha : merchant) {
+			Merchant merch = new Merchant();
+			merch.setId(mercha.getId());
+			merch.setAffiliateId(mercha.getAffiliateId());
+			merch.setAffiliateKey(mercha.getAffiliateKey());
+			merch.setDescription(mercha.getDescription());
+			merch.setMerchantImage(mercha.getMerchantImage());
+			merch.setMerchantName(mercha.getMerchantName());
+			merch.setMerchantToken(mercha.getMerchantToken());
+			merch.setUrl(mercha.getUrl());
+			merchants.add(mercha);
 
-    @Override
-    public Merchant getMerchant(final String merchantId) {
-Merchant merchant= merchantRepository.findOne(merchantId);
-Merchant mer=new Merchant();
-mer.setAffiliateId(merchant.getAffiliateId());
-mer.setAffiliateKey(merchant.getAffiliateKey());
-mer.setDescription(merchant.getDescription());
-mer.setId(merchant.getId());
-mer.setMerchantImage(merchant.getMerchantImage());
-mer.setMerchantName(merchant.getMerchantName());
-mer.setMerchantToken(merchant.getMerchantToken());
-mer.setUrl(merchant.getUrl());
-return merchant;
-    }
+		}
+		return merchants;
+	}
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see com.dealmacha.service.IMerchantService#getMerchantByName(java.lang.String)
-     */
-    @Override
-    public Merchant getMerchantByName(final String merchant) {
-        // TODO Auto-generated method stub
-        return merchantRepository.findMerchantByName(merchant);
-    }
+	@Override
+	public Merchant getMerchant(final String merchantId) {
+		Merchant merchant = merchantRepository.findOne(merchantId);
+		Merchant mer = new Merchant();
+		mer.setAffiliateId(merchant.getAffiliateId());
+		mer.setAffiliateKey(merchant.getAffiliateKey());
+		mer.setDescription(merchant.getDescription());
+		mer.setId(merchant.getId());
+		mer.setMerchantImage(merchant.getMerchantImage());
+		mer.setMerchantName(merchant.getMerchantName());
+		mer.setMerchantToken(merchant.getMerchantToken());
+		mer.setUrl(merchant.getUrl());
+		return merchant;
+	}
 
-    @Override
-    public Merchant updateMerchant(final Merchant merchant) {
-        // TODO Auto-generated method stub
-        return merchantRepository.save(merchant);
-    }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see com.dealmacha.service.IMerchantService#getMerchantByName(java.lang.String)
+	 */
+	@Override
+	public Merchant getMerchantByName(final String merchant) {
+		// TODO Auto-generated method stub
+		return merchantRepository.findMerchantByName(merchant);
+	}
+
+	@Override
+	public Merchant updateMerchant(final Merchant merchant) {
+		// TODO Auto-generated method stub
+		return merchantRepository.save(merchant);
+	}
 
 }

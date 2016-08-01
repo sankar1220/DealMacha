@@ -14,9 +14,9 @@
         <ul>
             <li th:each="post:${firstPageLeftSection.cmsBlocks[0].cmsPostses}">
                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <div class="item_div hot_deal_main_carousel">
+                    <div class="item_div hot_deal_main_carousel mgt10">
                         <img th:src = "${post.cmsPostsImageses[0].imageLocation}" class="img-responsive" />
-                        <div class="right_block" th:if="${post.postsExpiryTime}">
+                        <!-- <div class="right_block" th:if="${post.postsExpiryTime}">
                             <div class="caption">
                                 <div class="item_time" >
                                     <div class="item_timer product_time_57">
@@ -39,16 +39,16 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="star_rate">
+                        </div> -->
+                       <!--  <div class="star_rate">
                             <span class="rating r12"></span>
                             <i style="width:81%"></i>
-                        </div>
-                        <h4><a th:href="${post.url}" th:text="${post.postsProductTitle}">Washing Machine</a></h4>
+                        </div> -->
+                        <h4><a th:href="${post.url}" th:target="${post.urlTargetLocation}" th:text="${post.postsProductTitle}">Washing Machine</a></h4>
                         <p class="price">
                             
-                            <span class="price_old" th:inline="text">Rs[[${post.postsProductPrice}]]</span>
-                            <span class="price_new" th:inline="text">Rs[[${post.postsProductAfterPrice}]]</span>
+                            <span class="price_old" th:inline="text"><i class="fa fa-inr ls5" aria-hidden="true"></i>[[${post.postsProductPrice}]]/-</span>
+                            <span class="price_new" th:inline="text"><i class="fa fa-inr ls5" aria-hidden="true"></i>[[${post.postsProductAfterPrice}]]/-</span>
                         </p>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
         
         </ul>
     </div>
-    <div class="best_seller_arrow">
+    <div class="best_seller_arrow mgt40">
         <a data-jcarouselcontrol="true" href="#" class="jcarousel-control-prev">‹</a>
         <a data-jcarouselcontrol="true" href="#" class="jcarousel-control-next">›</a>
     </div>
@@ -77,54 +77,54 @@
  <div class="jcarousel-wrapper">
      <div data-jcarousel="true" class="jcarousel">
          <ul>
-              <li th:each="post,postIndex:${firstPageRightSection.cmsBlocks[0].cmsPostses}" th:with = "listSize = ${#lists.size(firstPageRightSection.cmsBlocks[0].cmsPostses)}">
+              <li  th:each="post,postIndex:${firstPageRightSection.cmsBlocks[0].cmsPostses}" th:with = "listSize = ${#lists.size(firstPageRightSection.cmsBlocks[0].cmsPostses)}">
               <th:block th:if="${postIndex.index}%3==0" >
-                <div class="col-lg-12 col-xs-12 best_seller_list1 ptb" th:if="${postIndex.index} &lt; ${listSize}">
-                    <div class="best_seller_img">
+                <div class="col-lg-12 col-xs-12 best_seller_list1 ptb mgt20" th:if="${postIndex.index} &lt; ${listSize}">
+                    <div class="best_seller_img col-lg-6">
                         <img th:src="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].cmsPostsImageses[0].imageLocation}" class="best_sell_img img-responsive" />
                     </div>
-                    <div  style="float: left;">
-                        <div class="star_rate">
+                    <div class="col-lg-6 p-none" style="float: left;">
+                        <!-- <div class="star_rate">
                             <span class="rating r12"></span>
                             <i style="width:81%"></i>
-                        </div>
-                        <h4><a th:href="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].url}" th:text="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].postsProductTitle}">Dinning Table</a></h4>
-                        <p class="price">
-                            <span class="price_old" th:inline="text">Rs[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].postsProductPrice}]]</span>
-                            <span class="price_new" th:inline="text">Rs[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].postsProductAfterPrice}]]</span>
+                        </div> -->
+                        <h4><a class="" th:target="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].urlTargetLocation}" th:href="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].url}" th:text="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].postsProductTitle}">Dinning Table</a></h4>
+                        <p class="price ">
+                            <span class="price_old" th:inline="text"><i class="fa fa-inr ls5" aria-hidden="true"></i>[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].postsProductPrice}]]/-</span><br/>
+                            <span class="price_new" th:inline="text"><i class="fa fa-inr ls5" aria-hidden="true"></i>[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index].postsProductAfterPrice}]]/-</span>
                         </p>
                     </div>
                 </div>
 
-               <div class="col-lg-12 col-xs-12 best_seller_list1 ptb" th:if="${postIndex.index+1} &lt; ${listSize}">
-                    <div class="best_seller_img">
+               <div class="col-lg-12 col-xs-12 best_seller_list1 ptb mgt20" th:if="${postIndex.index+1} &lt; ${listSize}">
+                    <div class="best_seller_img col-lg-6">
                         <img th:src="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].cmsPostsImageses[0].imageLocation}" class="best_sell_img img-responsive" />
                     </div>
-                    <div  style="float: left;">
-                        <div class="star_rate">
+                    <div  style="float: left;" class="col-lg-6 p-none">
+                       <!--  <div class="star_rate">
                             <span class="rating r12"></span>
                             <i style="width:81%"></i>
-                        </div>
-                        <h4><a th:href="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].url}" th:text="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].postsProductTitle}">Dinning Table</a></h4>
-                        <p class="price">
-                            <span class="price_old" th:inline="text">Rs[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].postsProductPrice}]]</span>
-                            <span class="price_new" th:inline="text">Rs[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].postsProductAfterPrice}]]</span>
+                        </div> -->
+                        <h4><a class="" th:target="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].urlTargetLocation}" th:href="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].url}" th:text="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].postsProductTitle}">Dinning Table</a></h4>
+                        <p class="price ">
+                            <span class="price_old" th:inline="text"><i class="fa fa-inr ls5" aria-hidden="true"></i>[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].postsProductPrice}]]/-</span><br/>
+                            <span class="price_new" th:inline="text"><i class="fa fa-inr ls5" aria-hidden="true"></i>[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+1].postsProductAfterPrice}]]/-</span>
                         </p>
                     </div>
                 </div>
               <div class="col-lg-12 col-xs-12 best_seller_list1 ptb"  th:if="${postIndex.index+2} &lt; ${listSize}">
-                    <div class="best_seller_img">
+                    <div class="best_seller_img col-lg-6">
                         <img th:src="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].cmsPostsImageses[0].imageLocation}" class="best_sell_img img-responsive" />
                     </div>
-                    <div  style="float: left;">
-                        <div class="star_rate">
+                    <div  style="float: left;" class="col-lg-6">
+                        <!-- <div class="star_rate">
                             <span class="rating r12"></span>
                             <i style="width:81%"></i>
-                        </div>
-                        <h4><a th:href="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].url}" th:text="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].postsProductTitle}">Dinning Table</a></h4>
-                        <p class="price">
-                            <span class="price_old" th:inline="text">Rs[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].postsProductPrice}]]</span>
-                            <span class="price_new" th:inline="text">Rs[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].postsProductAfterPrice}]]</span>
+                        </div> -->
+                        <h4><a class="mgl5" th:target="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].urlTargetLocation}" th:href="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].url}" th:text="${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].postsProductTitle}">Dinning Table</a></h4>
+                        <p class="price mgl5">
+                            <span class="price_old" th:inline="text"><i class="fa fa-inr ls5" aria-hidden="true"></i>[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].postsProductPrice}]]/-</span>
+                            <span class="price_new" th:inline="text"><i class="fa fa-inr ls5" aria-hidden="true"></i>[[${firstPageRightSection.cmsBlocks[0].cmsPostses[postIndex.index+2].postsProductAfterPrice}]]/-</span>
                         </p>
                     </div>
                 </div>

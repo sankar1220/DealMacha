@@ -28,7 +28,7 @@ public class RequestsResourceAssembler extends EmbeddableResourceAssemblerSuppor
 
     @Override
     public Link linkToSingleResource(final RequestsModel requestsModel) {
-        return entityLinks.linkToSingleResource(AccountResource.class, requestsModel.getId());
+        return entityLinks.linkToSingleResource(RequestsResource.class, requestsModel.getId());
     }
 
     public RequestsResource toDetailedResource(final RequestsModel entity) {

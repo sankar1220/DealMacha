@@ -1,0 +1,88 @@
+<div class="inmodal">
+	<div class="modal-header">
+		<h4 class="modal-title">Offers EDIT</h4>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal form-bordered padder-t-b itemform" name="AttributesForm">
+			<div class="form-group" style="height:30px;">
+				<label class="col-sm-2 control-label">Offer Name</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="" ng-model="" />
+					</div>
+				</div>
+				<label class="col-sm-2 control-label">Offer Description</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<textarea type="text" class="form-control" name="offerDescription" ng-model="" ></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Offer PayoutType</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="OfferPayoutType" ng-model=""/>
+					</div>
+				</div>
+				<label class="col-sm-2 control-label">Offer Source</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="OfferSource" ng-model="" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Offer TargetLink</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="OfferSource" ng-model="" />
+					</div>
+				</div>
+				<label class="col-sm-2 control-label">Offer Payout</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<input type="text" class="form-control" name="OfferPayout" ng-model="" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Offer Image</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<input type="file" class="form-control" name="OfferImage" ng-model="" />
+					</div>
+				</div>
+				<label class="col-sm-2 control-label">Offer StartDate</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<input type="datetime" class="form-control" date-time ng-model=" " view="date" auto-close="true" format="yyyy-MM-dd HH:mm:ss" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Offer EndDate</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<input type="datetime" class="form-control" date-time ng-model=" " view="date" auto-close="true" format="yyyy-MM-dd HH:mm:ss" />
+					</div>
+				</div>
+				<label class="col-sm-2 control-label">Status</label>
+				<div class="col-sm-4">
+					<div class="form-control-static">
+						<select class="form-control" name="status" ng-model="" style="width:100%;" required>
+							<option value=""></option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-white" ng-click="cancel()">Close</button>
+		<button type="button" class="btn btn-primary" ng-click="">Save changes</button>
+	</div>
+</div>
+

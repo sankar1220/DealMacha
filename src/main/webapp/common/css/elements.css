@@ -1,0 +1,260 @@
+.ls5{
+	letter-spacing: 5px;
+}
+.mgt5 { margin-top: 5px; }
+.mgt10 { margin-top: 10px; }
+.mgt15 { margin-top: 15px; }
+.mgt20 { margin-top: 20px; }
+.mgt21 { margin-top: 21px; }
+.mgt30 { margin-top: 30px; }
+.mgt40 { margin-top: 40px; }
+.mgt50 { margin-top: 50px; }
+.mgt60 { margin-top: 60px; }
+.mgt70 { margin-top: 70px; }
+.mgt80 { margin-top: 80px; }
+.mgt90 { margin-top: 90px; }
+.mgt100 { margin-top: 100px; }
+.mgb0 { margin-bottom: 0px !important; }
+.mgb5 { margin-bottom: 5px; }
+.mgb10 { margin-bottom: 10px; }
+.mgb15 { margin-bottom: 15px; }
+.mgb20 { margin-bottom: 20px; }
+.mgb30 { margin-bottom: 30px; }
+.mgb40 { margin-bottom: 40px; }
+.mgb50 { margin-bottom: 50px; }
+.mgb60 { margin-bottom: 60px; }
+.mgb70 { margin-bottom: 70px; }
+.mgb80 { margin-bottom: 80px; }
+.mgb90 { margin-bottom: 90px; }
+.mgb100 { margin-bottom: 100px; }
+.mgl5 { margin-left: 5px; }
+.mgl10 { margin-left: 10px; }
+.mgl20 { margin-left: 20px; }
+.mgl30 { margin-left: 30px; }
+.mgl40 { margin-left: 40px; }
+.mgl50 { margin-left: 50px; }
+.mgr5 { margin-right: 5px; }
+.mgr10 { margin-right: 10px; }
+.mgr15 { margin-right: 15px; }
+.mgr20 { margin-right: 20px; }
+.mgr30 { margin-right: 30px; }
+.mgr40 { margin-right: 40px; }
+.mgr50 { margin-right: 50px; }
+.pd10 { padding: 10px !important; }
+.pdt5 { padding-top: 5px; }
+.pdt10 { padding-top: 10px; }
+.pdt15 { padding-top: 15px; }
+.pdt20 { padding-top: 20px; }
+.pdt30 { padding-top: 30px; }
+.pdt40 { padding-top: 40px; }
+.pdt50 { padding-top: 50px; }
+.pdt60 { padding-top: 60px; }
+.pdt70 { padding-top: 70px; }
+.pdt80 { padding-top: 80px; }
+.pdt90 { padding-top: 90px; }
+.pdt100 { padding-top: 100px; }
+.pdb5 { padding-bottom: 5px; }
+.pdb10 { padding-bottom: 10px; }
+.pdb15 { padding-bottom: 15px; }
+.pdb20 { padding-bottom: 20px; }
+.pdb30 { padding-bottom: 30px; }
+.pdb40 { padding-bottom: 40px; }
+.pdb50 { padding-bottom: 50px; }
+.pdb60 { padding-bottom: 60px; }
+.pdb70 { padding-bottom: 70px; }
+.pdb80 { padding-bottom: 80px; }
+.pdb90 { padding-bottom: 90px; }
+.pdb100 { padding-bottom: 100px; }
+.pdl5 { padding-left: 5px; }
+.pdl10 { padding-left: 10px; }
+.pdl15 { padding-left: 15px; }
+.pdl20 { padding-left: 20px; }
+.pdl25 { padding-left: 25px; }
+.pdl30 { padding-left: 30px; }
+.pdl40 { padding-left: 40px; }
+.pdl50 { padding-left: 50px; }
+.pdr5 { padding-right: 5px; }
+.pdr10 { padding-right: 10px; }
+.pdr15 { padding-right: 15px; }
+.pdr20 { padding-right: 20px; }
+.pdr25 { padding-right: 25px; }
+.pdr30 { padding-right: 30px; }
+.pdr35 { padding-right: 35px; }
+.pdr40 { padding-right: 40px; }
+.pdr45 { padding-right: 45px; }
+.pdr50 { padding-right: 50px; }
+.mg5{
+margin:5px;
+}
+.mg10{
+margin:10px;
+}
+.mg15{
+margin:15px;
+}
+.mg20{
+margin:20px;
+}
+.mg25{
+margin:25px;
+}
+.mg30{
+margin:30px;
+}
+.pd5{
+padding:5px;
+}
+.pd10{
+padding:10px;
+}
+.pd15{
+padding:15px;
+}
+.pd20{
+padding:20px;
+}
+.pd25{
+padding:25px;
+}
+.pd30{
+padding:30px;
+}
+.b-none{
+border:0px solid !important;
+}
+.b-r{
+border-right:1px solid #f9f9f9;
+}
+.b-l{
+border-left:1px solid #f9f9f9;
+}
+.b-t{
+border-top:1px solid #f9f9f9;
+}
+.b-b{
+border-bottom:1px solid #f9f9f9;
+}
+.t-c-lime{
+  color: #37B549 !important;
+}
+.t-c-w{
+  color: #fff !important;
+}
+.t-c-o{
+  color:#E46315 !important;
+}
+.t-c-r{
+  color: #ff6565;
+}
+.t-c-g{
+ color: #009966;
+}
+.bg-c-w{
+  background: #fff !important;
+}
+.p-rl{
+position:relative;
+}
+.p-ab{
+position:absolute;
+}
+.z-i1{
+-webkit-z-index:1;
+-moz-z-index:1;
+-o-z-index:1;
+z-index:1;
+}
+.z-i2{
+-webkit-z-index:2;
+-moz-z-index:2;
+-o-z-index:2;
+z-index:2;
+}
+.z-i3{
+-webkit-z-index:3;
+-moz-z-index:3;
+-o-z-index:3;
+z-index:3;
+}
+.z-i10{
+-webkit-z-index:10;
+-moz-z-index:10;
+-o-z-index:10;
+	z-index: 10;
+}
+.z-i99{
+-webkit-z-index:99;
+-moz-z-index:99;
+-o-z-index:99;
+	z-index: 99;
+}
+.z-i100{
+-webkit-z-index:100;
+-moz-z-index:100;
+-o-z-index:100;
+	z-index: 100;
+}
+
+
+@media only screen and (max-width: 414px) and (max-device-width: 414px) {
+	.xs-mgt10 { margin-top: 10px; }
+	.xs-mgt20 { margin-top: 20px; }
+	.xs-mgt30 { margin-top: 30px; }
+	.xs-mgt40 { margin-top: 40px; }
+	.xs-mgt50 { margin-top: 50px; }
+	.xs-mgt60 { margin-top: 60px; }
+	.xs-mgt70 { margin-top: 70px; }
+	.xs-mgt80 { margin-top: 80px; }
+	.xs-mgt90 { margin-top: 90px; }
+	.xs-mgt100 { margin-top: 100px; }
+	.xs-mgb10 { margin-bottom: 10px; }
+	.xs-mgb20 { margin-bottom: 20px; }
+	.xs-mgb30 { margin-bottom: 30px; }
+	.xs-mgb40 { margin-bottom: 40px; }
+	.xs-mgb50 { margin-bottom: 50px; }
+	.xs-mgb60 { margin-bottom: 60px; }
+	.xs-mgb70 { margin-bottom: 70px; }
+	.xs-mgb80 { margin-bottom: 80px; }
+	.xs-mgb90 { margin-bottom: 90px; }
+	.xs-mgb100 { margin-bottom: 100px; }
+	.xs-mgl10 { margin-left: 10px; }
+	.xs-mgl20 { margin-left: 20px; }
+	.xs-mgl30 { margin-left: 30px; }
+	.xs-mgl40 { margin-left: 40px; }
+	.xs-mgl50 { margin-left: 50px; }
+	.xs-mgr10 { margin-right: 10px; }
+	.xs-mgr20 { margin-right: 20px; }
+	.xs-mgr30 { margin-right: 30px; }
+	.xs-mgr40 { margin-right: 40px; }
+	.xs-mgr50 { margin-right: 50px; }
+	.xs-pdt10 { padding-top: 10px; }
+	.xs-pdt20 { padding-top: 20px; }
+	.xs-pdt30 { padding-top: 30px; }
+	.xs-pdt40 { padding-top: 40px; }
+	.xs-pdt50 { padding-top: 50px; }
+	.xs-pdt60 { padding-top: 60px; }
+	.xs-pdt70 { padding-top: 70px; }
+	.xs-pdt80 { padding-top: 80px; }
+	.xs-pdt90 { padding-top: 90px; }
+	.xs-pdt100 { padding-top: 100px; }
+	.xs-pdb10 { padding-bottom: 10px; }
+	.xs-pdb20 { padding-bottom: 20px; }
+	.xs-pdb30 { padding-bottom: 30px; }
+	.xs-pdb40 { padding-bottom: 40px; }
+	.xs-pdb50 { padding-bottom: 50px; }
+	.xs-pdb60 { padding-bottom: 60px; }
+	.xs-pdb70 { padding-bottom: 70px; }
+	.xs-pdb80 { padding-bottom: 80px; }
+	.xs-pdb90 { padding-bottom: 90px; }
+	.xs-pdb100 { padding-bottom: 100px; }
+	.xs-pdl10 { padding-left: 10px; }
+	.xs-pdl20 { padding-left: 20px; }
+	.xs-pdl30 { padding-left: 30px; }
+	.xs-pdl40 { padding-left: 40px; }
+	.xs-pdl50 { padding-left: 50px; }
+	.xs-pdr10 { padding-right: 10px; }
+	.xs-pdr20 { padding-right: 20px; }
+	.xs-pdr30 { padding-right: 30px; }
+	.xs-pdr40 { padding-right: 40px; }
+	.xs-pdr50 { padding-right: 50px; }
+}

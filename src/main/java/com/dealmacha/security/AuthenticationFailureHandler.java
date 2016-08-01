@@ -20,7 +20,6 @@ public class AuthenticationFailureHandler extends SimpleUrlAuthenticationFailure
     public void onAuthenticationFailure(final HttpServletRequest request, final HttpServletResponse response,
             final AuthenticationException exception) throws IOException, ServletException {
         // TODO Auto-generated method stub
-        System.out.println("dsdasdasdasdasdasdasdasdasdasdasdasdas" + request.getParameter("channel"));
         if (request.getParameter("channel") != null) {
             //response.sendError(401);
             response.setStatus(401);

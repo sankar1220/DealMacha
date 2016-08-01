@@ -1,7 +1,5 @@
 package com.dealmacha.mail;
 
-import com.dealmacha.mail.MailProperties.Smtp;
-
 import java.util.Properties;
 
 import javax.validation.constraints.NotNull;
@@ -12,7 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+
+import com.dealmacha.mail.MailProperties.Smtp;
 
 @Configuration
 @ConfigurationProperties(locations = "classpath:mail.properties", prefix = "mail")
@@ -30,7 +29,7 @@ public class MailConfiguration {
     @NotNull
     private Smtp smtp;
 
-    @Bean
+  /*  @Bean
     public ClassLoaderTemplateResolver emailTemplateResolver() {
         ClassLoaderTemplateResolver emailTemplateResolver = new ClassLoaderTemplateResolver();
         emailTemplateResolver.setPrefix("/mail/");
@@ -40,7 +39,7 @@ public class MailConfiguration {
         emailTemplateResolver.setOrder(1);
 
         return emailTemplateResolver;
-    }
+    }*/
 
     public String getFrom() {
         return from;

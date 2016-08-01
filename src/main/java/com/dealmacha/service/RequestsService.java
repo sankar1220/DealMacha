@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.dealmacha.dao.AddressRepository;
 import com.dealmacha.dao.RequestsRepository;
 import com.dealmacha.domain.Requests;
 
@@ -18,28 +17,28 @@ public class RequestsService implements IRequestsService {
     private RequestsRepository requestsRepository;
 	@Override
 	public Requests create(Requests requests) {
-		// TODO Auto-generated method stub
-		return null;
+		return requestsRepository.save(requests);
 	}
 	@Override
 	public void deleteRequests(String requestsId) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public Requests getRequests(String requestsId) {
-		// TODO Auto-generated method stub
-		return null;
+		return requestsRepository.findOne(requestsId);
 	}
 	@Override
 	public List<Requests> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Requests>) requestsRepository.findAll();
 	}
 	@Override
 	public Requests updateRequests(Requests requests) {
+		return requestsRepository.save(requests);
+	}
+	@Override
+	public List<Requests> getRequestsByUsers(String usersId) {
 		// TODO Auto-generated method stub
-		return null;
+		return requestsRepository.findRequestByUsers(usersId);
 	}
     
 

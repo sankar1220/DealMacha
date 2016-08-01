@@ -5,6 +5,7 @@ import com.dealmacha.mail.Mail;
 
 public interface IMailService {
 
+	
     /**
      * @param mail
      */
@@ -16,8 +17,9 @@ public interface IMailService {
      * @param users
      */
 
-  /*  void sendUserRegistraionMail(Mail mail, Users users);*/
+    void sendUserRegistraionMail(Mail mail, Users users);
 
+    void sendUserPasswordResetMail(Mail mail, Users users);
     //Mail getMail(String string);
 
     /*  void getByChitMembers(String chitId, String allMembers);

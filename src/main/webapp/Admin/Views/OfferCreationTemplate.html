@@ -1,0 +1,175 @@
+<div class="ibox float-e-margins" ng-controller="OffersCreationController">
+	<div class="ibox-title">
+		<h5 class="text-uppercase fontpro">Offers Creation</h5>
+	</div>
+	<div class="ibox-content">
+		<form class="form-horizontal" id="userCreateForm" name="OffersForm">
+			<div class="form-body">
+				<div class="form-group m-t-sm">
+				<label class="control-label col-md-2">offer Name 
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.offerName.$invalid && !OffersForm.offerName.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.offerName" placeholder="Name" required name="offerName">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Offer Commission AmountType 
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.offerCommissionAmountType.$invalid && !OffersForm.offerCommissionAmountType.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.offerCommissionAmountType" placeholder="Name" required name="offerCommissionAmountType">
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-t-sm">
+				<label class="control-label col-md-2">Offer Source 
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.offerSource.$invalid && !OffersForm.offerSource.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.offerSource" placeholder="Name" required name="offerSource">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Offer Commission Amount 
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.offerCommissionAmount.$invalid && !OffersForm.offerCommissionAmount.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.offerCommissionAmount" placeholder="Name" required name="offerCommissionAmount">
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-t-sm">
+				<label class="control-label col-md-2">Offer StartDate 
+					<span class="required" aria-required="true">* </span>
+				</label>
+				<div class="col-sm-4">
+				 	<div class="date date-picker" data-date-format="DD/MM/YYYY" ng-class="{'has-error':OffersForm.offerStartDate.$invalid && !OffersForm.offerStartDate.$pristine}">	
+						<input type="datetime" class="form-control" date-time ng-model="offers.offerStartDate" min-view="date" auto-close="true" format="dd/MM/yyyy" placeholder="Enter Start Date.." required name="offerStartDate"/>
+					</div>
+				</div>
+					
+					<label class="control-label col-md-2">Offer EndDate
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-sm-4">
+				 	<div class="date date-picker" data-date-format="DD/MM/YYYY" ng-class="{'has-error':OffersForm.offerEndDate.$invalid && !OffersForm.offerEndDate.$pristine}">	
+						<input type="datetime" class="form-control" date-time ng-model="offers.offerEndDate" min-view="date" auto-close="true" format="dd/MM/yyyy" placeholder="Enter End Date.." required name="offerEndDate"/>
+					</div>
+				</div>
+				</div>
+				<div class="form-group m-t-sm">
+				<label class="control-label col-md-2">Offer Status 
+					<span class="required" aria-required="true">* </span>
+				</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.offerStatus.$invalid && !OffersForm.offerStatus.$pristine}">
+							<select class="select2_demo_2 form-control" ng-model="offers.offerStatus" style="width:100%" required name="offerStatus">
+								<option value=""></option>
+								<option value="ACTIVE">ACTIVE</option>
+								<option value="INACTIVE">INACTIVE</option>
+							</select>
+						</div>
+					</div>
+					<label class="control-label col-md-2">Offer CommissionType
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.offerCommissionType.$invalid && !OffersForm.offerCommissionType.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.offerCommissionType" placeholder="Name" required name="offerCommissionType">
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-t-sm">
+					<label class="control-label col-md-2">Target Url
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.targetUrl.$invalid && !OffersForm.targetUrl.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.targetUrl" placeholder="Name" required name="targetUrl">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Offer CreatedDate
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-sm-4">
+				 	<div class="date date-picker" data-date-format="DD/MM/YYYY" ng-class="{'has-error':OffersForm.offerCreatedDate.$invalid && !OffersForm.offerCreatedDate.$pristine}">	
+						<input type="datetime" class="form-control" date-time ng-model="offers.offerCreatedDate" min-view="date" auto-close="true" format="dd/MM/yyyy" placeholder="Enter Created Date.." required name="offerCreatedDate" />
+					</div>
+				</div>
+				</div>
+				<div class="form-group m-t-sm">
+					<label class="control-label col-md-2">Image Name
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.imageName.$invalid && !OffersForm.imageName.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.imageName" placeholder="Name" required name="imageName">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Image Type
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.imageType.$invalid && !OffersForm.imageType.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.imageType" placeholder="Name" required name="imageType">
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-t-sm">
+					<label class="control-label col-md-2">Image Location
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.imageLocation.$invalid && !OffersForm.imageLocation.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.imageLocation" placeholder="Name" required name="imageLocation">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Offer Description
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.offerDescription.$invalid && !OffersForm.offerDescription.$pristine}">
+							<textarea type="text" class="form-control" name="" ng-model="offers.offerDescription" required name="offerDescription"></textarea>
+						</div>
+					</div>
+				</div>
+					<div class="form-group m-t-sm">
+					<label class="control-label col-md-2">Offer Type
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.offerType.$invalid && !OffersForm.offerType.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.offerType" placeholder="Name" required name="offerType">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Offer Area
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':OffersForm.offerArea.$invalid && !OffersForm.offerArea.$pristine}">
+							<input type="text" class="form-control" ng-model="offers.offerArea" placeholder="Name" required name="offerArea">
+						</div>
+					</div>
+				</div>
+					<div class="form-actions">
+					<div class="row">
+						<div class="col-md-12">
+						 <div class="row">
+							 <div class="text-center" style="margin-top: 50px;">
+								<a class="btn" ng-click="OffersCreate(offers)" style=" color: #FFFFFF;background-color: #35aa47;" ng-disabled="OffersForm.$invalid">Submit</a>
+									<a ui-sref="Offers.Offer" class="btn default button_bckgrndclr">Cancel</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+					 
+
+

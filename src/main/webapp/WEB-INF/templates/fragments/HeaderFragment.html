@@ -1,30 +1,16 @@
 	<header th:fragment="HeaderFragment(menuStatus)" ng-controller="HeaderController">
-		<div class="header_top">
+		<div class="header_top" id="header_top">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4 col-md-5 hidden-sm hidden-xs header_top_left">
 						<div class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner" role="listbox">
-								<div class="item active">
-									<p>
-										<a href="#">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit.
+								<div class="item" th:each="post,postIndex:${topHeaderTitleSection.cmsBlocks[0].cmsPostses}" th:classappend="${postIndex.index==0}?'active'">
+									<p th:text="${post.postTitle}">
+										<a href="#">Dealmacha</a> Price comparison and Product discovery .
 									</p>
 								</div>
-								<div class="item">
-									<p>
-										<a href="#">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit.
-									</p>
-								</div>
-								<div class="item">
-									<p>
-										<a href="#">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit.
-									</p>
-								</div>
-								<div class="item">
-									<p>
-										<a href="#">Lorem ipsum</a> dolor sit amet, 	consectetur adipiscing elit.
-									</p>
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -56,7 +42,7 @@
 </div>
  </li></th:block>
 
-						<li>
+						<!-- <li>
 									<a href="#">
 										<span class="flaticon-favorite-heart-button user"></span>Wish List 
 										<span class="flaticon-down-arrow arrow_1"></span>
@@ -67,19 +53,19 @@
 								</li>
 								<li class="list_bdr_rit">
 									<a href="#">Pounds <span class="flaticon-down-arrow arrow_1"></span></a>
-								</li>
+								</li> -->
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="header_center">
+		<div class="header_center mgb5 mgt5">
 			<div class="container">
 				<div class="">
-					<div class="navbar_logo col-lg-2 col-md-3 col-sm-12 hidden-xs">
+					<div class="col-lg-3 col-md-3 col-sm-12 hidden-xs">
 						<a href="/">
-							<img src="/home/images/logo.png" class="img-responsive"/>
+							<img src="/home/images/logo.png" class="img-responsive logo_wm"/>
 						</a>
 					</div>
 					<div id="mySidenav" class="sidenav">
@@ -132,8 +118,14 @@
 							</div>
 						</div>
 					</div>
-					<div class="header_center_right col-lg-3 col-md-2 hidden-sm hidden-xs">
-						<div style="float: left;">
+
+
+
+								
+					<div class="header_center_right col-lg-2 col-md-2 hidden-sm hidden-xs p-none">
+						
+						
+						<div style="float: left;" class="mgl40">
 							<span class="flaticon-tool list_icon2"></span>
 						</div>
 						<div style="float: left;">
@@ -141,6 +133,7 @@
 							<p class="p2nd">Rs 0.00</p>
 						</div>
 					</div>
+				
 				</div>
 			</div>
 		</div>

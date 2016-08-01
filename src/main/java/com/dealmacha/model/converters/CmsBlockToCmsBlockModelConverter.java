@@ -25,27 +25,31 @@ import org.springframework.stereotype.Component;
 @Component("cmsBlockToCmsBlockModelConverter")
 public class CmsBlockToCmsBlockModelConverter implements Converter<CmsBlock, CmsBlockModel> {
 
-    private ObjectFactory<CmsBlockModel> cmsBlockModelFactory;
-    @Autowired
-    private ConversionService conversionService;
+	private ObjectFactory<CmsBlockModel> cmsBlockModelFactory;
+	@Autowired
+	private ConversionService conversionService;
 
-    @Override
-    public CmsBlockModel convert(final CmsBlock source) {
-        CmsBlockModel cmsBlockModel = cmsBlockModelFactory.getObject();
-        BeanUtils.copyProperties(source, cmsBlockModel);
-        cmsBlockModel.setOrderOfPlace(source.getOrderOfPlace().toString());
-        if (CollectionUtils.isNotEmpty(source.getCmsPostses())) {
-            List<CmsPostsModel> converted = (List<CmsPostsModel>) conversionService.convert(source.getCmsPostses(),
-                    TypeDescriptor.forObject(source.getCmsPostses()),
-                    CollectionTypeDescriptor.forType(TypeDescriptor.valueOf(List.class), CmsPostsModel.class));
-            cmsBlockModel.getCmsPostsModels().addAll(converted);
-        }
-        return cmsBlockModel;
-    }
+	@Override
+	public CmsBlockModel convert(final CmsBlock source) {
+		CmsBlockModel cmsBlockModel = cmsBlockModelFactory.getObject();
+		BeanUtils.copyProperties(source, cmsBlockModel);
+		if (source.getOrderOfPlace() != null) {
+			cmsBlockModel.setOrderOfPlace(source.getOrderOfPlace().toString());
+		}
+		if (CollectionUtils.isNotEmpty(source.getCmsPostses()))
 
-    @Autowired
-    public void setCmsBlockFactory(final ObjectFactory<CmsBlockModel> cmsBlockModelFactory) {
-        this.cmsBlockModelFactory = cmsBlockModelFactory;
-    }
+		{
+			List<CmsPostsModel> converted = (List<CmsPostsModel>) conversionService.convert(source.getCmsPostses(),
+					TypeDescriptor.forObject(source.getCmsPostses()),
+					CollectionTypeDescriptor.forType(TypeDescriptor.valueOf(List.class), CmsPostsModel.class));
+			cmsBlockModel.getCmsPostsModels().addAll(converted);
+		}
+		return cmsBlockModel;
+	}
+
+	@Autowired
+	public void setCmsBlockFactory(final ObjectFactory<CmsBlockModel> cmsBlockModelFactory) {
+		this.cmsBlockModelFactory = cmsBlockModelFactory;
+	}
 
 }

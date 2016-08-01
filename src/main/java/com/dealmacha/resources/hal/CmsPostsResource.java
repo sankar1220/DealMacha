@@ -21,12 +21,14 @@ public class CmsPostsResource extends ResourceWithEmdedded {
     private String orderOfPlace;
     private String cmsBlockId;
     private String url;
+    private String urlTargetLocation;
     private String postsImageWidth;
     private String postsImageHeight;
     private String cmsPostsId;
     private String postsImageUrl;
     private String postsImageId;
     private String cmsBlockName;
+    private String description;
 
     private String postsImageAlt;
 
@@ -192,5 +194,21 @@ public class CmsPostsResource extends ResourceWithEmdedded {
     public void setUrl(final String url) {
         this.url = url;
     }
+
+	public String getUrlTargetLocation() {
+		return urlTargetLocation;
+	}
+
+	public void setUrlTargetLocation(String urlTargetLocation) {
+		this.urlTargetLocation = urlTargetLocation;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }

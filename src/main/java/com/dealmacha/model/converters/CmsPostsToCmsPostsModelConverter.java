@@ -57,6 +57,7 @@ public class CmsPostsToCmsPostsModelConverter implements Converter<CmsPosts, Cms
         }
         if (source.getPostsExpiryTime() != null) {
 
+        	
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
             cmsPostsModel.setPostsExpiryTime(sdf.format(source.getPostsExpiryTime()));

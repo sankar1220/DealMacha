@@ -9,6 +9,7 @@ public class TransactionResource extends ResourceWithEmdedded {
     private String code;
     private String amount;
     private String paymentType;
+    private String transactionCode;
     private String transactionFor;
     private String transactionErrorCode;
     private String transactionMerchantErrorCode;
@@ -243,5 +244,13 @@ public class TransactionResource extends ResourceWithEmdedded {
     public void setUsersId(final String usersId) {
         this.usersId = usersId;
     }
+
+	public String getTransactionCode() {
+		return transactionCode;
+	}
+
+	public void setTransactionCode(String transactionCode) {
+		this.transactionCode = transactionCode;
+	}
 
 }

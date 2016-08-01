@@ -2,6 +2,7 @@
 .header_top{
     border-bottom: 1px solid #eee;
     border-top: 3px solid #444;
+        height: 35px;
 }
 .header_top_left p a{
     color: #fff;
@@ -26,7 +27,7 @@
     border-left: 1px solid #ddd;
     display: inline;
     list-style: outside none none;
-    padding: 4px 10px 9px 10px;
+    padding: 4px 10px 6px 10px;
 }
 .header_top_right .account ul li.list_bdr_rit{
     border-right: 1px solid #ddd;
@@ -46,7 +47,7 @@
     /*border-bottom: 1px solid #eee;*/
     text-align: center;
     /*background-color: #eee;*/
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 .header_center_right{
     padding-top: 7px;
@@ -105,7 +106,8 @@ p{
 }
 
 .head_lg_input{
-        border-radius: 0px;
+            border-radius: 0px;
+    height: 35px;
 }
 .head_lg_input:focus{
     box-shadow: none;
@@ -236,8 +238,8 @@ p{
 
 .item_div img{
     margin: auto;
-    width: 170px;
-    height: 170px;
+    width: auto;
+    height: auto;
     padding-top: 10px;
 }
 .navbar-inverse{
@@ -284,15 +286,15 @@ p{
     background-image: none;
 }
 .main_carso .left .glyphicon-chevron-left{
-        left: 11px;
-    border: 1px solid #000;
-    background-color: red;
+        left: 20px;
+    /*border: 1px solid #000;
+    background-color: red;*/
     font-size: 27px;
 }
 .main_carso .right .glyphicon-chevron-right{
-    right: 12px;
-    border: 1px solid #000;
-    background-color: red;
+    right: 15px;
+    /*border: 1px solid #000;
+    background-color: red;*/
     font-size: 27px;
 }
 .header_left_1 ul li{
@@ -318,7 +320,7 @@ p{
     padding-top: 20px;
 }
 .hot_deal_main_carousel{
-    height: 329px;
+  /*  height: 329px;*/
 }
 .hot_heading h1{
     font-size: 15px;
@@ -575,6 +577,9 @@ h4 a:hover{
     font-size: 18px;
     font-weight: bold;
 }
+.ls5{
+    letter-spacing: 5px;
+}
 .price .price_old {
     font-size: 12px; 
     font-weight: normal;
@@ -656,9 +661,15 @@ select{
     padding-right: 0px;
     margin-right: -15px;
 }
+.tac{
+    text-align: center;
+}
 .item_div{
     border:1px solid #eee;
     margin-top: 20px;
+        height: 270px;
+        width: 100%;
+        overflow: hidden;
 }
 .item_div:hover{
     border-color: #EA3A3C;
@@ -684,7 +695,7 @@ select{
     list-style-type: none;float: left;
 }
 .best_seller_div{
-    border:1px solid #eee;
+        border-bottom: 1px solid #eee;
     margin-top: 20px;
 }
 .best_seller_list1{
@@ -700,6 +711,9 @@ select{
     padding-right: 10px;
     padding-left: 10px;
     border-left:1px solid #eee;
+}
+.hot_heading ul li:active{
+    color: #dc3333;
 }
 .hot_heading ul{
     position: absolute;
@@ -729,6 +743,7 @@ select{
 .item_div1 ul{
     padding-left: 0px;
     padding-bottom: 16px;
+        padding: 13px;
 }
 .item_div1 ul li a{
     font-size: 13px;
@@ -773,7 +788,8 @@ select{
 }
 .testimoni{
     background-color: #eee;
-    padding-bottom: 49px;
+    padding-bottom: 80px;
+        height: 260px;
 }
 .testimoni h1{
     font-size: 18px;
@@ -786,7 +802,7 @@ select{
     border:1px solid #eee;
 }
 .testi_info p{
-    padding-left: 100px;
+    /*padding-left: 100px;*/
     line-height: 20px;
 }
 .testi_info p a{
@@ -797,6 +813,20 @@ select{
 }
 .testi_info p a:hover{
     text-decoration: none;
+}
+.testi_carso .active{
+    background-color: #cc2828;
+}
+.testi_carso li{
+    border:1px solid #cc2828;
+}
+.logo_wm{
+        width: 61%;
+    margin: 0px 50px;
+
+}
+.p-none{
+    padding:0px;
 }
 .logos ul{
     margin-bottom: 0px;
@@ -882,7 +912,7 @@ select{
     height: 40px;
     padding: 5px 15px;
     background: #fff;
-    color: #999;
+    color: #000;
     font-size: 12px;
     float: left;
     width: 60%;
@@ -1015,7 +1045,7 @@ select{
     border-bottom: 2px solid #EA3A3C;
 }
 .cat_list ul{
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     margin-left: -15px;
 }
 .cat_list ul li{
@@ -1447,7 +1477,7 @@ select{
         color: #fff;
         border-radius: 0px;
         font-size: 13px;
-        padding: 5px 10px 5px 10px;
+        padding: 10px 10px 10px 10px;
         width: 28%;
     }
     .page_section_login .btn-lg.sigin:hover{
@@ -1744,6 +1774,20 @@ select{
 .deals_efct:hover .hai{
     display: block !important;
 }
+.box_s{
+    display: none;
+    color: #000;
+    z-index: 1;
+    position: absolute;
+    left: 290px;
+    top: 0;
+    width: 849px;
+    height: 426px;
+    background-color: #fff;
+}
+.deals_efct:hover .box_s{
+    display: block !important;
+}
 .side_menu_sub_div1{
     position: 
 }
@@ -2030,4 +2074,102 @@ text-align: left;
   left: 100%;
   margin-left: 15px;
 }
+.icon_i{
+    color: #fff;
+    font-size: 38px;
+    margin-top: 195px;
+    margin-left: 95px;
+}
+.icons_i{
+   color: #fff;
+    font-size: 38px;
+    margin-top: 195px;
+    right: 49px; 
+}
+.icon_i:hover{
+    color:#dededd !important;
+}
+.icons_i:hover{
+  color:#dededd !important;
+}
+/*.icons_iconleft{
+    color: #fff;
+    font-size: 38px;
+    margin-top: 195px;
+    margin-left: 95px;
+}
+.icons_iconright{
+    color: #fff;
+    font-size: 38px;
+    margin-top: 195px;
+    margin-left: 95px;
+}*/
 /*End lineup*/
+
+.load_more{
+    background: #ea3a3c;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+}
+.load_more:hover{
+    background: #ea3a3c;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.msg-block {
+    margin-top:5px;
+}
+.msg-error {
+    color:#F00;
+    font-size:14px;
+}
+a:focus, a:hover {
+    color: #ff7060;
+    text-decoration: none;
+}
+.custom_header{
+        background: #ff6363;
+    color: #fff;
+}
+.br-none{
+    border-radius: 0px;
+}
+.error{
+    color:red;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#back-top {
+    background: #fff none repeat scroll 0 0;
+    bottom: 18px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+    display: block;
+    font-size: 20px;
+    height: 40px;
+    line-height: 36px;
+    position: fixed;
+    right: 20px;
+    text-align: center;
+    width: 40px;
+    z-index: 9;
+}
+.load_more_div {
+    background: #ea3a3c;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+}
+.load_more:hover {
+    background: #ea3a3c;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+}

@@ -1,56 +1,74 @@
-<ion-content ng-controller="ListCtrl">
-	<div class="list" style="margin-top: 41px;margin-bottom: 0px;">
-		<!-- <div class="item-input-inset search_div">
+<ion-view>
+<ion-content ng-controller="ProductsListController" class="has-header">
+	<!-- <div class="list" style="margin-top: 41px;margin-bottom: 0px;">
+		<div class="item-input-inset search_div">
 			<label class="item-input-wrapper search_hed_input">
 				<i class="icon ion-search placeholder-icon"></i>
 				<input type="text" placeholder="Search Here..."/>
 			</label>
-		</div> -->
-	</div>
-	<div class="">
-		<th:block th:each="prod,prodlength:${products}">
-		<div class="row" th:if="${prodlength.even}">
-		<div class="col-50 item_list_dtl">
-			<div class="item item-body">
-    			<a th:attr="ng-click='singlePage(\''+${#strings.replace(products[prodlength.index].product_title,' ','_')}+'\')'">
-    				<img class="full-image img-responsive fiir" th:src="${products[prodlength.index].product_image}" style="margin: auto;"/>
-    			</a>
-    			<!--<span class="offer" th:text="${#lists.size(products)}">Sankar</span>-->
-    			<p style="color: #999" th:text="${products[prodlength.index].product_title}"></p>
-  				<!--<p style="color: #3a734a">
-  					<span class="ion-android-star"></span>
-  					<span class="ion-android-star"></span>
-  					<span class="ion-android-star"></span>
-  					<span class="ion-android-star"></span>
-  					<span class="ion-android-star"></span>
-  				</p>-->
-  				<!--<p style="color: #999"><del th:text="${products[prodlength.index].product_lowest_price}">Rs.2999</del></p>-->
-  				<p class="list_item_price" th:text="${products[prodlength.index].product_lowest_price}">Rs.1650</p>
-  			</div>
 		</div>
-		<div class="col-50 item_list_dtl">
-			<div class="item item-body">
-    			<a th:attr="ng-click='singlePage(\''+${products[prodlength.index+1].product_title}+'\')'">
-    				<img class="full-image img-responsive fiir" th:src="${products[prodlength.index+1].product_image}" style="margin: auto;"/>
-    			</a>
-    			<!--<span class="offer" th:text="${#lists.size(products)}">Sankar</span>-->
-    			<p style="color: #999" th:text="${products[prodlength.index+1].product_title}"></p>
-  				<!--<p style="color: #3a734a">
-  					<span class="ion-android-star"></span>
-  					<span class="ion-android-star"></span>
-  					<span class="ion-android-star"></span>
-  					<span class="ion-android-star"></span>
-  					<span class="ion-android-star"></span>
-  				</p>-->
-  				<p style="color: #999"><del th:text="${products[prodlength.index+1].product_lowest_price}">Rs.2999</del></p>
-  				<p class="list_item_price" th:text="${products[prodlength.index+1].product_lowest_price}">Rs.1650</p>
-  			</div>
-		</div>
-		</div>
-		</th:block>
-	</div>
+	</div> -->
+  <div id="products_list" th:if="${products}">
+  	<!-- <div class="" -->
+    <!-- <div> -->
+  		<th:block th:each="prod,prodlength:${products}" th:fragment="MobileListFragment">
+    		<div class="row" th:if="${prodlength.even}" style="text-align: center;">
+    		<div class="col-50 item_list_dtl">
+    			<div class="item item-body" th:with="productName= ${#strings.replace(products[prodlength.index].product_title,' ','_')}">
+              <a th:attr="ng-click='singlePage(\''+${productName}+'\')'">
+        			<!-- <a th:href="'#/app/singleItem/'+${#strings.replace(products[prodlength.index].product_title,' ','_')}"> -->
+        				<img class="full-image img-responsive fiir" th:src="${products[prodlength.index].product_image}" style="margin: auto;width:55px;height:86px;"/>
+        			</a>
+        			<div style="color: #999" th:text="${products[prodlength.index].product_title}"></div>
+      				<!--<p style="color: #3a734a">
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      				</p>-->
+      				<!--<p style="color: #999"><del th:text="${products[prodlength.index].product_lowest_price}">Rs.2999</del></p>-->
+      				
+              <span><i class="fa fa-inr" aria-hidden="true" style="color:red;"></i></span>
+              <span class="list_item_price" th:text="${products[prodlength.index].product_lowest_price}">
+              Rs.1650</span>
+      			</div>
+    		</div>
+    		<div class="col-50 item_list_dtl">
+    			<div class="item item-body" th:with="productName= ${#strings.replace(products[prodlength.index+1].product_title,' ','_')}">
+        			<a th:attr="ng-click='singlePage(\''+${productName}+'\')'">
+        				<img class="full-image img-responsive fiir" th:src="${products[prodlength.index+1].product_image}" style="margin: auto;width:55px;height:86px;"/>
+        			</a>
+        			<div style="color: #999;" th:text="${products[prodlength.index+1].product_title}"></div>
+              
+      				<!--<p style="color: #3a734a">
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      					<span class="ion-android-star"></span>
+      				</p>-->
+      				<!-- <p style="color: #999"><del th:text="${products[prodlength.index+1].product_lowest_price}">Rs.2999</del></p> -->
+              <span><i class="fa fa-inr" aria-hidden="true" style="color:red;"></i></span>
+      				<span class="list_item_price" th:text="${products[prodlength.index+1].product_lowest_price}">Rs.1650</span>
+      			</div>
+    		</div>
+    		</div>
+  		</th:block>
+    <!-- </div> -->
+    <div th:unless="${products}">
+        No Products
+  	</div>
+  </div>
+  <div class="input_box tac mgt20 mgb20" th:if="${products}" style="text-align: center;     margin-top: 16px;">
+    <a class="load_more" ng-click="nextPage()" ng-show="paginationStatus" style="    border: 1px solid #ec3a3c;border-radius: 25px;color: #ec3a3c;padding:10px;">
+    <!-- <i class="fa fa-spinner ls5" aria-hidden="true"></i> -->
+    LOAD MORE</a>
+    <a class="load_more_div" ng-hide="paginationStatus"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Thats All We Have!</a>
+  </div>
 	<div class="row responsive-sm">
         <div class="col footer_list" style="margin-bottom: 0px;">
+
             <ul>
                 <li><a href="#">HOME</a></li>
                 <li><a href="#">HELP</a></li>
@@ -62,5 +80,7 @@
                 <p style="">Copyright @ 2016 Made With <i class="ion-heart"></i> By Arthvedi</p>
             </center>   
         </div>
+       
     </div>
 </ion-content>
+</ion-view>

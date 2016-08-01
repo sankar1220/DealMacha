@@ -20,4 +20,5 @@ public interface IAccountService {
     Account updateAccount(Account account);
 
 	List<Account> getUsersAccount(String usersId);
+
 }

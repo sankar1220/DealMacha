@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
@@ -61,8 +62,9 @@ public class CmsBlockController {
         return new ResponseEntity<CmsBlockResource>(resource, HttpStatus.OK);
     }
 
-    @Resource(name = "cmsBlockBusinessDelegate")
-    public void setCmsBlockBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("cmsBlockBusinessDelegate")
+    public void setCmsBlockBusinessDelegate(final IBusinessDelegate<CmsBlockModel, CmsBlockContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

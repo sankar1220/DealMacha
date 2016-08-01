@@ -1,7 +1,5 @@
 package com.dealmacha;
 
-import com.dealmacha.api.keys.ApiKeys;
-
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;
@@ -11,6 +9,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.stereotype.Component;
 
+import com.dealmacha.api.keys.ApiKeys;
+
 @Component
 public class QueryService implements ApiKeys {
     private HttpClient httpClient = HttpClientBuilder.create().build();
@@ -19,10 +19,12 @@ public class QueryService implements ApiKeys {
 
         HttpResponse response = null;
 
-        HttpGet getRequest = new HttpGet(url);
-        getRequest.addHeader("accept", "application/json");
+        
 
         try {
+        	
+            HttpGet getRequest = new HttpGet(url);
+            getRequest.addHeader("accept", "application/json");
             response = httpClient.execute(getRequest);
 
             if (response.getStatusLine().getStatusCode() != 200) {

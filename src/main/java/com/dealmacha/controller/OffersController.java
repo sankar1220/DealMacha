@@ -16,6 +16,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
@@ -108,8 +109,9 @@ public class OffersController {
         keyBuilderFactory = factory;
     }
 
-    @Resource(name = "offersBusinessDelegate")
-    public void setOffersBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("offersBusinessDelegate")
+    public void setOffersBusinessDelegate(final IBusinessDelegate<OffersModel, OffersContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

@@ -1,0 +1,102 @@
+<div class="ibox float-e-margins" ng-controller="MerchantCategoryMarginCreationController">
+	<div class="ibox-title">
+		<h5 class="text-uppercase fontpro">{{$state.current.data.pageTitle}}</h5>
+	</div>
+	<div class="ibox-content">
+		<form action="#" class="form-horizontal customer_entry_form" id="merchantRegistration" name="MerchantsCategoryForm">
+			<div class="form-body">
+				<div class="form-group" style= "margin-top: 13px;">
+					<label class="control-label col-md-2">Merchant Category
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':MerchantsCategoryForm.categoryName.$invalid && !MerchantsCategoryForm.categoryName.$pristine}">
+							 <select class="form-control" data-display="merchantCategory" ng-model="merchantCategoryMargin.merchantCategoryId" required name="categoryName">
+							 	<option value=""></option>
+                <option value="{{merchantCategory.merchantCategoryId}}" ng-repeat="merchantCategory in merchantCategoryDetails">{{merchantCategory.categoryName}}</option>
+              </select>
+						</div>
+					</div>
+					<label class="control-label col-md-2">Customer Type<span class="required">*</span></label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':MerchantsCategoryForm.customerType.$invalid && !MerchantsCategoryForm.customerType.$pristine}">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							 <select class="form-control" ng-model="merchantCategoryMargin.customerType" data-display="Users" required name="customerType">
+							 	<option value="select"></option>
+                <option>NEW</option>
+                <option>OLD</option>
+              </select>
+						</div>
+					</div>
+			</div>
+			<div class="form-group" style= "margin-top: 13px;">
+				<label class="control-label col-md-2">Channel 
+						<span class="required">* </span>
+					</label>
+					<div class="col-md-4">
+						<div ng-class="{'has-error':MerchantsCategoryForm.channel.$invalid && !MerchantsCategoryForm.channel.$pristine}">
+						<select class="form-control" ng-model="merchantCategoryMargin.channel" data-display="Users" required name="channel">
+							<option value="select"></option>
+              <option>WEB</option>
+              <option>MOBILE</option>
+            </select>
+					</div>
+				</div>
+				<label class="control-label col-md-2">Commission
+					<span class="required">*</span>
+				</label>
+				<div class="col-md-4">
+					<div ng-class="{'has-error':MerchantsCategoryForm.commission.$invalid && !MerchantsCategoryForm.commission.$pristine}">
+						<input type="text" class="form-control" ng-model="merchantCategoryMargin.commission" required name="commission">
+					</div>
+				</div>
+			</div>
+			<div class="form-group" style= "margin-top: 13px;">
+				<label class="control-label col-md-2">Commission Type
+					<span class="required">* </span>
+				</label>
+				<div class="col-md-4">
+					<div ng-class="{'has-error':MerchantsCategoryForm.commissionType.$invalid && !MerchantsCategoryForm.commissionType.$pristine}">
+						<select class="form-control" data-display="Users" ng-model="merchantCategoryMargin.commissionType" required name="commissionType">
+							<option value="select"></option>
+	            <option>Percentage</option>
+	            <option>Amount</option>
+          	</select>
+					</div>
+				</div>
+				<label class="control-label col-md-2">Dealmacha Commission<span class="required" aria-required="true">* </span>
+				</label>
+				<div class="col-md-4">
+					<div>
+						<input type="text" class="form-control" ng-model="merchantCategoryMargin.dealmachaCommission" required name="dealmachaCommission">
+					</div>
+				</div>
+			</div>
+			<div class="form-group" style= "margin-top: 13px;">
+				<label class="control-label col-md-2">Dealmacha Commission Type<span class="required" aria-required="true">* </span>
+				</label>
+				<div class="col-md-4">
+					<div>
+						<select class="form-control" data-display="Users" ng-model="merchantCategoryMargin.dealmachaCommissionType" required name="dealmachaCommissionType">
+							<option value="select"></option>
+	            <option>Percentage</option>
+	            <option>Amount</option>
+	          </select>
+					</div>
+				</div>
+			</div>
+			<div class="form-actions" style="margin-top: 45px;">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="text-center">
+								<a class="btn" ng-disabled="MerchantsCategoryForm.$invalid" ng-click="merchantCategoryMarginCreate(merchantCategoryMargin)" style=" color: #FFFFFF;background-color: #35aa47;">Submit</a>
+									<a ui-sref="Merchants.merchantCategoryMargin" class="btn default button_bckgrndclr">Cancel</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

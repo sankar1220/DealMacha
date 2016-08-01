@@ -1,6 +1,5 @@
 package com.dealmacha.businessdelegate.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -21,12 +20,12 @@ import org.thymeleaf.TemplateEngine;
 import com.dealmacha.DBSequences;
 import com.dealmacha.businessdelegate.domain.IKeyBuilder;
 import com.dealmacha.dao.UsersRepository;
-import com.dealmacha.domain.Account;
 import com.dealmacha.domain.Address;
+import com.dealmacha.domain.MailConfig;
 import com.dealmacha.domain.Roles;
 import com.dealmacha.domain.UserAddress;
 import com.dealmacha.domain.Users;
-import com.dealmacha.model.AccountModel;
+import com.dealmacha.mail.Mail;
 import com.dealmacha.model.UserAddressModel;
 import com.dealmacha.model.UsersModel;
 import com.dealmacha.service.AccountService;
@@ -137,6 +136,9 @@ public class UsersBusinessDelegate implements IBusinessDelegate<UsersModel, User
                     if (model.getUserType().equals("ADMINUSER")) {
                         r.setRoleName("ROLE_ADMIN");
                     }
+                    if(model.getUserType().equals("EMPLOYEE")){
+                    	r.setRoleName("ROLE_EMPLOYEE");
+                    }
                     }
                     r.setUsers(users);
                     r = rolesService.create(r);
@@ -171,17 +173,6 @@ public class UsersBusinessDelegate implements IBusinessDelegate<UsersModel, User
                 users = usersService.addUsersAddress(users, userAddress);
             }
         }
-     if(users.getId()!=null){
-    		Set<Account> accounts = new HashSet<Account>();
-    		Account account = new Account();
-    		BigDecimal cashBackAmount = new BigDecimal(0.00);
-    		account.setCashbackAmount(cashBackAmount);
-    		account.setUsers(users);
-    		accounts.add(account);
-    		
-    		users=usersService.addAccount(users,accounts);
-    	
-    }
         
         if (users.getEmailStatus() != null) {
             if (users.getEmailStatus().equals("DUPLICATEE")) {
@@ -246,7 +237,7 @@ public class UsersBusinessDelegate implements IBusinessDelegate<UsersModel, User
                  users.setAddresses(addresses);
 
              }*/
-   /*   if (users.getId() != null) {
+      if (users.getId() != null) {
             MailConfig mcfgs = mailConfigService.getUserRegistrationMailConfig();
             if (mcfgs != null) {
                 Mail mail = new Mail();
@@ -255,7 +246,7 @@ public class UsersBusinessDelegate implements IBusinessDelegate<UsersModel, User
                 mail.setMailSubject("Account Activation Request");
                 mailService.sendUserRegistraionMail(mail, users);
             }
-        }*/
+        }
         /*   model = conversionService.convert(users, UsersModel.class);*/
         model.setId(users.getId());
         return model;
@@ -358,6 +349,43 @@ public class UsersBusinessDelegate implements IBusinessDelegate<UsersModel, User
         }
         if(context.getAll()!=null && context.getActivatedUsers()!=null) {
         	users=usersService.getActivatedUsers();
+        }
+        if (context.getForgotPasswordStatus() != null && context.getEmailId() != null) {
+            Users user = usersService.getUsersByEmailId(context.getEmailId());
+            Users usr = new Users();
+            if (user != null) {
+               /* if (user.getId() != null) {
+                    MailConfig mcfgs = mailConfigService.getUserForgotPasswordMailConfig();
+                    if (mcfgs != null) {
+                        Mail mail = new Mail();
+                        mail.setMailFrom(mailFrom);
+                        mail.setMailTo(user.getEmailId());
+                        mail.setMailSubject("Forgot Password Request");
+                        mailService.sendUserPasswordResetMail(mail, user);
+                    }
+                }*/
+
+            }
+            else {
+                usr = new Users();
+                usr.setId("No Id");
+                usr.setAuthenticateStatus("InCorrect::No Such Email Exists");
+                usr.setEmailId("N/A");
+                usr.setEmailStatus("N/A");
+                usr.setPassword("N/A");
+                usr.setMobileNo("N/A");
+                usr.setStatus("N/A");
+                usr.setUserCode("N/A");
+                usr.setUserName("N/A");
+                usr.setUserType("N/A");
+            }
+            users.add(usr);
+        }
+        
+        if (context.getUserId() != null && context.getResetPasswordStatus() != null && context.getNewPassword() != null
+                && context.getConfirmPassword() != null) {
+            Users user = usersService.getByResetPassword(context.getUserId(), context.getConfirmPassword(), context.getNewPassword());
+            users.add(user);
         }
         if (context.getUserId() != null && context.getConfirmPassword() != null && context.getNewPassword() != null
                 && context.getChangePassword() != null && context.getPassword() != null) {

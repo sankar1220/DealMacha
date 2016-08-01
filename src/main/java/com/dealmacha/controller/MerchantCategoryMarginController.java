@@ -16,6 +16,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
@@ -102,8 +103,9 @@ public class MerchantCategoryMarginController {
         keyBuilderFactory = factory;
     }
 
-    @Resource(name = "merchantCategoryMarginBusinessDelegate")
-    public void setMerchantCategoryMarginBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("merchantCategoryMarginBusinessDelegate")
+    public void setMerchantCategoryMarginBusinessDelegate(final IBusinessDelegate<MerchantCategoryMarginModel, MerchantCategoryMarginContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

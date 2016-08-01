@@ -1,27 +1,32 @@
-       <div class="container">
-            <div class="row">
-                <div class="col-md-offset-3 col-md-9 col-xs-12 main_carso">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                       
-                        <div class="carousel-inner" role="listbox">
-                            
+	   <div class="container">
+			<div class="row">
+				<div class="col-md-offset-3 col-md-9 col-xs-12 main_carso">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					   
+						<div class="carousel-inner" role="listbox">
+							
 
-                            <div class="item img_wh" th:each="post,postIndex:${mainBannerSection.cmsBlocks[0].cmsPostses}" th:classappend = "${postIndex.index==0}?'active':''">
-                                <img class="img-responsive" src="/home/images/banner2-870x433.jpg" th:src = "${post.cmsPostsImageses[0].imageLocation}" th:alt="${post.cmsPostsImageses[0].imageAlt}"/>
-                            </div>
-                           
-                        </div>
-                        <div>
-                            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+							<div class="item img_wh" th:each="post,postIndex:${mainBannerSection.cmsBlocks[0].cmsPostses}" th:classappend = "${postIndex.index==0}?'active':''"><a th:href="${post.url}" th:target="${post.urlTargetLocation}">
+								
+								<img class="img-responsive" src="/home/images/banner2-870x433.jpg" th:src = "${post.cmsPostsImageses[0].imageLocation}" th:alt="${post.cmsPostsImageses[0].imageAlt}"/></a>
+							</div>
+						   
+
+						</div>
+						<div>
+							<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+							<!-- <i class="fa fa-angle-left icons_iconleft" aria-hidden="true"></i> -->
+							<span class="glyphicon glyphicon-chevron-left icons_i" aria-hidden="true"></span>
+							
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+							<!-- <i class="fa fa-angle-right icons_iconright" aria-hidden="true"></i> -->
+							<span class="glyphicon glyphicon-chevron-right icon_i" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

@@ -5,7 +5,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.ExposesResourceFor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 import org.springframework.http.HttpStatus;
@@ -22,16 +22,11 @@ import com.dealmacha.businessdelegate.domain.IKeyBuilder;
 import com.dealmacha.businessdelegate.domain.SimpleIdKeyBuilder;
 import com.dealmacha.businessdelegate.service.IBusinessDelegate;
 import com.dealmacha.businessdelegate.service.PaymentContext;
-import com.dealmacha.businessdelegate.service.TransactionContext;
 import com.dealmacha.model.PaymentModel;
-import com.dealmacha.model.TransactionModel;
 import com.dealmacha.resources.assemblers.PaymentResourceAssembler;
-import com.dealmacha.resources.assemblers.TransactionResourceAssembler;
 import com.dealmacha.resources.hal.PaymentResource;
-import com.dealmacha.resources.hal.TransactionResource;
 
 @RestController
-@ExposesResourceFor(value = PaymentResource.class)
 @EnableHypermediaSupport(type = { HypermediaType.HAL })
 @RequestMapping(value = "/payment", produces = { MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
 public class PaymentController {
@@ -93,7 +88,7 @@ public class PaymentController {
     }
 
     @Autowired
-    public void setPaymentObjectFactory(final ObjectFactory<PaymentContext> paymentContextFactory) {
+    public void setPaymentContextFactory(final ObjectFactory<PaymentContext> paymentContextFactory) {
         this.paymentContextFactory = paymentContextFactory;
     }
 
@@ -105,8 +100,9 @@ public class PaymentController {
         keyBuilderFactory = factory;
     }
 
-    @Resource(name = "paymentBusinessDelegate")
-    public void setPaymentBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("paymentBusinessDelegate")
+    public void setPaymentBusinessDelegate(final IBusinessDelegate<PaymentModel, PaymentContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 }

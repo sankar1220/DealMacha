@@ -1,0 +1,148 @@
+<html>
+	<head>
+	<body>
+		<div class="login_form">
+			<div class="top_login">
+				<span>
+					<img src="/Dealmacha/common/images/squareform.png" class="image_img">
+				</span>
+			</div>
+				<img src="/Dealmacha/common/images/DealMachalogo1.png" class="images_imgs">
+			<div class="login_top">
+			<form name="loginForm">
+				<div class="login_ic" ng-class="{'has-error':loginForm.username.$invalid && !loginForm.username.$pristine}">
+					<i class="fa fa-user" aria-hidden="true"></i> 
+					<input type="username" placeholder="UserName" required="username">
+				</div>
+				<div class="login_ic" ng-class="{'has-error':loginForm.Password.$invalid && !loginForm.Password.$pristine}">
+					<i class="fa fa-lock" aria-hidden="true"></i>
+					<input type="password" placeholder="Password" required="Password">
+				</div>
+				<div class="log_btn">
+					<a href="#/Dashboards/DashboardPage" ng-disabled="usersForm.$invalid"><input type="submit" value="Login"></a>
+				</div>
+					<p class="copy">© 2016 Dealmacha. All rights reserved | Design by  <a href="http://Arthvedi.com/" target="_blank">Arthvedi</a></p>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
+
+<style>
+  	body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 100%;
+    background: url(/Dealmacha/common/images/cloud.jpg)no-repeat;
+    background-size: cover;
+		}
+
+	.login_form {
+	    padding: 100px 0px 50px 0px;
+	}
+	.top_login {
+	    width: 130px;
+	    height: 130px;
+	    display: block;
+	    transform: rotate(45deg) translate3d(0, 0, 0);
+	    margin: 0 auto 4em;
+	    background: #fff;
+	    position: relative;
+	}
+	.top_login span {
+	    border: 2px solid #F36;
+	    width: 105px;
+	    height: 105px;
+	    display: block;
+	    margin: 0px auto;
+	    position: absolute;
+	    top: 11px;
+	    left: 11px;
+	}
+	.images_imgs{
+    margin-left: 755px;
+    padding: 5px;
+    width: 105px;
+    height: 45px;
+}
+	.image_img {
+	    max-width: 100%;
+	    margin-top: 20px;
+	    margin-left: 25px;
+	    display: block;
+	    transform: rotate(315deg) translate3d(0, 0, 0);
+	}
+	.login_form h1 {
+	    font-size: 2em;
+	    color: #fff;
+	    font-weight: 800;
+	    text-transform: uppercase;
+	    text-align: center;
+	    margin-bottom: 2em;
+	}
+	.login_top {
+	    width: 460px;
+	    display: block;
+	    margin: 0 auto;
+	}
+	.login_ic {
+	    background: rgba(255, 255, 255, 0.33);
+	    margin-bottom: 10px;
+	    padding: 30px;
+	}
+	.login_ic i {
+	    width: 38px;
+	    height: 38px;
+	    float: left;
+	    display: inline-block;
+	    font-size: 16px;
+	    color: #fff;
+	}
+	.login_ic input[type="username"] {
+	    float: left;
+	    background: none;
+	    outline: none;
+	    font-size: 15px;
+	    font-weight: 400;
+	    color: #fff;
+	    border: none;
+	    border-left: 2px solid rgba(245, 238, 238, 0.33);
+	    width: 82%;
+	    display: inline-block;
+	    margin-left: -10px;
+	}
+	.login_ic input[type="password"] {
+	    float: left;
+	    background: none;
+	    outline: none;
+	    font-size: 15px;
+	    font-weight: 400;
+	    color: #fff;
+	    border: none;
+	    border-left: 2px solid rgba(245, 238, 238, 0.33);
+	    width: 82%;
+	    display: inline-block;
+	    margin-left: -10px;
+	}
+	.log_btn {
+	    text-align: center;
+	}
+	.log_btn input[type="submit"] {
+	    font-size: 15px;
+	    font-weight: 700;
+	    color: #fff;
+	    padding: 13px 0;
+	    background: #ff3366;
+	    display: inline-block;
+	    width: 100%;
+	    outline: none;
+	    border: 2px solid #ff3366;
+	    cursor: pointer;
+	    text-transform: uppercase;
+	}
+	p.copy {
+	    color: #fff;
+	    font-size: 13px;
+	    text-align: center;
+	    margin-top: 41px;
+	}
+</style>

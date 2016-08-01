@@ -24,6 +24,7 @@ public class UsersContext implements IBusinessDelegateContext {
     private String confirmPassword;
     private String sellerBranchId;
     private String forgotPasswordStatus;
+    private String resetPasswordStatus;
     private String userType;
     private String onlyUsers;
     private String onlyActiveUsers;
@@ -265,6 +266,14 @@ public class UsersContext implements IBusinessDelegateContext {
     public void setUserType(final String userType) {
         this.userType = userType;
     }
+
+	public String getResetPasswordStatus() {
+		return resetPasswordStatus;
+	}
+
+	public void setResetPasswordStatus(String resetPasswordStatus) {
+		this.resetPasswordStatus = resetPasswordStatus;
+	}
 
 
 }

@@ -13,9 +13,12 @@ import java.util.List;
 public class DatayugeProduct {
     private String product_name;
     private String product_model;
+    private String product_brand;
+    private String product_rating;
     private String product_main_category;
     private String product_sub_category;
-    private String isavilable;
+    private String isavailable;
+    private String[] available_colors;
     private String[] product_image_full;
     private String[] product_image_single;
     private String[] product_image_thumbnail;
@@ -23,9 +26,33 @@ public class DatayugeProduct {
     private List<DatayugeProductSpecsAlts> productSpecAlts = new ArrayList<DatayugeProductSpecsAlts>(0);
     private List<DatayugeProductStores> productStores = new ArrayList<DatayugeProductStores>(0);
 
-    public String getIsavilable() {
-        return isavilable;
-    }
+    
+    
+    public String getProduct_brand() {
+		return product_brand;
+	}
+
+	public void setProduct_brand(String product_brand) {
+		this.product_brand = product_brand;
+	}
+
+	public String getProduct_rating() {
+		return product_rating;
+	}
+
+	public void setProduct_rating(String product_rating) {
+		this.product_rating = product_rating;
+	}
+
+	public String[] getAvailable_colors() {
+		return available_colors;
+	}
+
+	public void setAvailable_colors(String[] available_colors) {
+		this.available_colors = available_colors;
+	}
+
+	
 
     public String[] getProduct_image_full() {
         return product_image_full;
@@ -76,9 +103,7 @@ public class DatayugeProduct {
         return productStores;
     }
 
-    public void setIsavilable(final String isavilable) {
-        this.isavilable = isavilable;
-    }
+ 
 
     public void setProduct_image_full(final String[] product_image_full) {
         this.product_image_full = product_image_full;
@@ -131,4 +156,12 @@ public class DatayugeProduct {
     public void setProductStores(final List<DatayugeProductStores> productStores) {
         this.productStores = productStores;
     }
+
+	public String getIsavailable() {
+		return isavailable;
+	}
+
+	public void setIsavailable(String isavailable) {
+		this.isavailable = isavailable;
+	}
 }

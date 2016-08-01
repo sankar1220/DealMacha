@@ -1,0 +1,140 @@
+<div class="page-content">
+	<div class="container-fluid" ng-controller="DashboardPageController">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="col-lg-6" ng-repeat="data in homeDetails">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="label label-success pull-right">Monthly</span>
+							<h5>Total Transcations</h5>
+						</div>
+						<div class="ibox-content yellow-bg">
+							<h2 class="no-margins"><i class="fa fa-inr"></i>{{data.totalTransactions}}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6" ng-repeat="data in homeDetails">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<!-- <span class="label label-info pull-right">Annual</span> -->
+							<h5>Commission Received</h5>
+						</div>
+						<div class="ibox-content lazur-bg">
+							<h2 class="no-margins"><i class="fa fa-inr"></i>{{data.commissionReceived}}</h2>
+							<!-- <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+							<small>New orders</small> -->
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<!-- <span class="label label-primary pull-right">Today</span> -->
+							<h5>Commission Expected</h5>
+						</div>
+						<div class="ibox-content green-haze">
+							<h2 class="no-margins"><i class="fa fa-inr"></i>{{data.commissionExpected}}</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="col-lg-12" ng-repeat="data in homeDetails">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>Number Of Activated Users</h5>
+						</div>
+						<div class="ibox-content">
+							<h2 class="no-margins">{{data.activatedUsers}}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title" style="background-color:#dff0d8">
+							<h5 class="no-margin">Requests</h5>
+						</div>
+						<div class="ibox-content">
+								<table class="table">
+	            <thead>
+	            <tr class="text-danger">
+	                <th>User Name</th>
+	                <th>Request Type</th>
+	                 <th>Amount</th>
+	                 <th>Status</th>
+	            </tr>
+	            </thead>
+	            <tbody>
+		           <tr>
+		             <td> </td>
+		             <td> </td>
+		             <td> </td>
+		             <td> </td>
+	            	</tr>
+	            </tbody>
+	          </table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="ibox float-e-margins">
+	      <div class="ibox-title">
+	        <h5>Number Of Merchants</h5>
+						<div ibox-tools></div>
+	        </div>
+	        <div class="ibox-content">
+						<table class="table">
+	            <thead>
+	            <tr class="text-danger">
+	              <!--   <th>Merchant Token</th> -->
+	                <th>Merchant Name</th>
+	                <th>Affliated Id</th>
+	            </tr>
+	            </thead>
+	            <tbody>
+		           <tr ng-repeat="merchant in merchantDetails">
+		             <!-- <td>{{merchant.merchantToken}}</td> -->
+		             <td>{{merchant.merchantName}}</td>
+		             <td>{{merchant.affliateId}}</td>
+	            	</tr>
+	            </tbody>
+	          </table>
+					</div>
+	    </div>
+		</div>
+		<div class="col-lg-6">
+			<div class="ibox float-e-margins">
+	      <div class="ibox-title">
+	        <h5>Failed Transcations</h5>
+						<div ibox-tools></div>
+	      </div>
+	      <div class="ibox-content">
+					<table class="table">
+	          <thead>
+	            <tr style="color:#1ab394">
+	             <th>UserName</th>
+	              <th>Transcation Code</th>
+	              <th>Date</th>
+	              <th>Status</th>
+	            </tr>
+	          </thead>
+	          <tbody>
+	            <tr ng-repeat="transact in transactionDetails">
+	             <td>{{transact.userName}}</td>
+	             <td>{{transact.code}}</td>
+	             <td>{{transact.createdDate}}</td>
+	             <td>{{transact.orderStatus}}</td>
+	            </tr>
+	          </tbody>
+	        </table>
+				</div>
+	    </div>
+		</div>
+	</div>
+	</div>
+</div>
+
+

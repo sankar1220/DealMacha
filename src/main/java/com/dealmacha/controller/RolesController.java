@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
@@ -20,14 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dealmacha.businessdelegate.domain.IKeyBuilder;
 import com.dealmacha.businessdelegate.domain.SimpleIdKeyBuilder;
-import com.dealmacha.businessdelegate.service.AddressContext;
 import com.dealmacha.businessdelegate.service.IBusinessDelegate;
 import com.dealmacha.businessdelegate.service.RolesContext;
-import com.dealmacha.model.AddressModel;
 import com.dealmacha.model.RolesModel;
-import com.dealmacha.resources.assemblers.AddressResourceAssembler;
 import com.dealmacha.resources.assemblers.RolesResourceAssembler;
-import com.dealmacha.resources.hal.AddressResource;
 import com.dealmacha.resources.hal.RolesResource;
 
 @RestController
@@ -105,8 +102,9 @@ public class RolesController {
         keyBuilderFactory = factory;
     }
 
-    @Resource(name = "rolesBusinessDelegate")
-    public void setRolesBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("rolesBusinessDelegate")
+    public void setRolesBusinessDelegate(final IBusinessDelegate<RolesModel, RolesContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

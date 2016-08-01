@@ -1,0 +1,46 @@
+<div id="wrapper" class="top-navigation">
+	<div ng-include="'Views/HeaderTemplate.html'"></div>
+		<div class="{{$state.current.name}}">
+		<!-- <div class="border-bottom m-t-sm"> -->
+		<div class="border-bottom">
+			<ol class="breadcrumb p-xs col-lg-12 gray-bg">
+				<li>
+					<a href="index.html"><i class="fa fa-home"></i> Home</a>
+				</li>
+				<li>
+					<a class="{{$state.current.url}}"> Offers</a>
+				</li>
+				<li>
+					<a> {{$state.current.data.pageTitle}}</a>
+				</li>
+			</ol>
+		</div>
+		<div class="container-fuild animated fadeInRight">
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="ibox-title font-green-sharp fontpro border-bottom">
+						<h3 style="margin-bottom: 3px;">Offers BOARD</h3>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item no-border" ui-sref-active="active" ng-class="{active: $state.includes('Merchants.Plans')}">
+							<a ui-sref="Offers.Offer"><i class="fa fa-shield"></i>Dealmacha Offers</a>
+						</li>
+						<!-- <li class="list-group-item no-border" ui-sref-active="active" ng-class="{active: $state.includes('')}">
+							<a ui-sref="Offers.PayoomOffer"><i class="fa fa-shield"></i> Payoom Offers</a>
+						</li> -->
+							<!-- <li class="list-group-item no-border" ui-sref-active="active" ng-class="{active: $state.includes('')}">
+							<a ui-sref="Offers.OmgOffer"><i class="fa fa-shield"></i> Omg Offers</a>
+						</li> -->
+					</ul>
+				</div>
+				<div class="col-lg-10">
+					<div ui-view></div>
+
+				</div>
+			</div>
+		</div>
+		<div ng-include="'Views/FooterTemplate.html'"></div>
+
+	</div>
+
+</div>

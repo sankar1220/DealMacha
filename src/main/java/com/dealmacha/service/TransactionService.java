@@ -5,6 +5,7 @@ import com.dealmacha.dao.TransactionRepository;
 import com.dealmacha.domain.Merchant;
 import com.dealmacha.domain.Transaction;
 import com.dealmacha.domain.Users;
+import com.dealmacha.util.UniqueKeyGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +20,14 @@ public class TransactionService implements ITransactionService, UrlKeys {
     private static final Logger LOGGER = Logger.getLogger(TransactionService.class);
     @Autowired
     private TransactionRepository transactionRepository;
-
+    @Autowired
+    private UniqueKeyGenerator uniqueKeyGenerator;
     @Override
     public Transaction create(final Transaction transaction) {
         Transaction trans = new Transaction();
         Merchant merchant = transaction.getMerchant();
         String dbmerchantName = merchant.getMerchantName().toUpperCase();
-
+        transaction.setTransactionCode(uniqueKeyGenerator.getUniqueKeyGen());
         /* if (dbmerchantName.equals("FLIPKART")) {
             String targetUrl = transaction.getTargetUrl() + "&" + FLIPKART_AFFILIATE_KEY + "=" + merchant.getAffiliateId() + "&"
                     + FLIPKART_EXT_PARAMETER + "1=" + transaction.getId() + "&" + FLIPKART_EXT_PARAMETER + "2="
@@ -39,17 +41,24 @@ public class TransactionService implements ITransactionService, UrlKeys {
             transaction.setTargetUrl(targetUrl);
         }*/
         trans = transactionRepository.save(transaction);
+     String fQuery="?";
+     
+        if(transaction.getTargetUrl().indexOf('?')!=-1){
+        	fQuery="&";
+        }
         if (dbmerchantName.equals("FLIPKART")) {
-            String targetUrl = transaction.getTargetUrl() + "&" + FLIPKART_AFFILIATE_KEY + "=" + merchant.getAffiliateId() + "&"
+            String targetUrl = transaction.getTargetUrl() + fQuery + FLIPKART_AFFILIATE_KEY + "=" + merchant.getAffiliateId() + "&"
                     + FLIPKART_EXT_PARAMETER + "1=" + trans.getId() + "&" + FLIPKART_EXT_PARAMETER + "2=" + transaction.getUsers().getId();
             transaction.setTargetUrl(targetUrl);
+            trans = transactionRepository.save(transaction);
         }
         if (dbmerchantName.equals("SNAPDEAL")) {
-            String targetUrl = transaction.getTargetUrl() + "&" + SNAPDEAL_AFFILIATE_KEY + "=" + merchant.getAffiliateId() + "&"
+            String targetUrl = transaction.getTargetUrl() + fQuery + SNAPDEAL_AFFILIATE_KEY + "=" + merchant.getAffiliateId() + "&"
                     + SNAPDEAL_EXT_PARAMETER + "=" + trans.getId() + "&" + SNAPDEAL_EXT_PARAMETER + "2=" + transaction.getUsers().getId();
             transaction.setTargetUrl(targetUrl);
+            trans = transactionRepository.save(transaction);
         }
-        trans = transactionRepository.save(transaction);
+        
         return trans;
     }
 

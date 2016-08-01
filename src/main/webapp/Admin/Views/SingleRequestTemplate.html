@@ -1,0 +1,74 @@
+<div class="ibox-title">
+	<h5 class="text-uppercase">AVAILABLE {{$state.current.data.pageTitle}}</h5>
+	<!-- <div class="ibox-tools">
+		<a class="tools-p" ng-click="AuctionFull()"><i class="fa fa-expand"></i> Full Screen</a>
+	</div> -->
+</div>
+<div ng-controller="SingleRequestController">
+	<form class="form-horizontal profile_view">
+		<div class="form-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">User Name</label>
+							<div class="col-md-6">
+								<div class="form-control-static">{{singleRequestsDetails.userName}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Request TYpe</label>
+							<div class="col-md-6">
+								<div class="form-control-static">{{singleRequestsDetails.requestTypeName}}</div>
+							</div>
+					</div>
+				</div>
+				
+			</div>
+		 <div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Amount</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{requestObj.Amount}}</div>
+						</div>
+						</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Status</label>
+							<div class="col-md-8">
+								<div class="form-control-static">{{singleRequestsDetails.requestStatus}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			 <div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Description</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleRequestsDetails.requestComments}}</div>
+						</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</form>
+		<div class="form-actions">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-offset-9 col-md-9">
+						 <a href="javascript:;" ng-click="RequestsEdit(singleRequestsDetails)" class="btn btn-outline btn-primary">
+								EDIT
+							</a>
+							<a href="" class="btn default hide_Cancel hide">Cancel</a>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+		</div>
+</div>

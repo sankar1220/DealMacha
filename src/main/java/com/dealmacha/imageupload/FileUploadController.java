@@ -16,6 +16,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -51,64 +52,7 @@ public class FileUploadController {
     private ICmsPostsService postService;
     @Autowired
     private ICmsPostsImagesService postImagesService;
-    /*
-    @RequestMapping(value = "/editPostsWithImage", method = RequestMethod.POST)
-    @ResponseBody
-    public CmsPostsModel uploadEditPostsWithImage(
-            @RequestParam(value = "postTitle", required = false, defaultValue = "N/A") final String postTitle,
-            @RequestParam(value = "postId", required = false, defaultValue = "N/A") final String postId,
-            @RequestParam(value = "postExpiryTime", required = false, defaultValue = "N/A") final String postExpiryTime,
-            @RequestParam(value = "postsProductTitle", required = false, defaultValue = "N/A") final String postProductTitle,
-            @RequestParam(value = "postsProductPrice", required = false, defaultValue = "N/A") final String productPrice,
-            @RequestParam(value = "orderOfPlace", required = false, defaultValue = "N/A") final String orderOfPlace,
-            @RequestParam(value = "postsProductDiscountedPrice", required = false, defaultValue = "N/A") final String postsProductDiscountedPrice,
-            @RequestParam(value = "blockName", required = false, defaultValue = "N/A") final String blockName,
-            @RequestParam(value = "url", required = false, defaultValue = "N/A") final String targetUrl,
-            @RequestParam(value = "imageAlt", required = false, defaultValue = "N/A") final String imageAlt,
-            @RequestParam(value = "file", required = false) final MultipartFile file, final HttpServletRequest req) {
-        UUID uniqueName = UUID.randomUUID();
-        CmsPosts post = postService.getCmsPosts(postId);
-        if (!postTitle.equals("N/A")) {
-            post.setPostTitle(postTitle);
-        }
-        if (!postExpiryTime.equals("N/A")) {
-            SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date dateTime = sdfDate.parse(postExpiryTime);
 
-            post.setPostsExpiryTime(dateTime);
-        }
-        if (!postProductTitle.equals("N/A")) {
-            post.setPostsProductTitle(postProductTitle);
-        }
-        if (!productPrice.equals("N/A")) {
-            post.setPostsProductPrice(productPrice);
-        }
-        if (!postsProductDiscountedPrice.equals("N/A")) {
-            post.setPostsProductAfterPrice(postsProductDiscountedPrice);
-        }
-        if (!targetUrl.equals("N/A")) {
-            post.setUrl(targetUrl);
-        }
-        if (file != null) {
-            String contentType = file.getContentType();
-            if (contentType.split("/")[0].equals("image")) {
-                int imageWidth = 0, imageHeight = 0;
-
-                String webAppPath = (req.getServletContext().getRealPath("/"));
-                try {
-                    BufferedImage img = ImageIO.read(file.getInputStream());
-                    imageWidth = img.getWidth();
-                    imageHeight = img.getHeight();
-                }
-                catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-        return model;
-
-    }*/
 
     @RequestMapping(value = "/delete/{postId}", method = RequestMethod.GET)
     @ResponseBody
@@ -206,8 +150,10 @@ public class FileUploadController {
             @RequestParam(value = "postsProductDiscountedPrice", required = false, defaultValue = "N/A") final String postsProductDiscountedPrice,
             @RequestParam(value = "blockName", required = false, defaultValue = "N/A") final String blockName,
             @RequestParam(value = "url", required = false, defaultValue = "N/A") final String targetUrl,
+            @RequestParam(value="urlTargetLocation" , required = false , defaultValue="_self") final String urlTargetLocation, 
             /*@RequestParam(value = "postsImage", required = false) final String postsImage,*/
             @RequestParam(value = "imageAlt", required = false, defaultValue = "N/A") final String imageAlt,
+            @RequestParam(value="description", required = false) final String description,
             @RequestParam(value = "file", required = false) final MultipartFile file, final HttpServletRequest req) {
         UUID uniqueName = UUID.randomUUID();
 
@@ -220,11 +166,23 @@ public class FileUploadController {
             post.setCmsBlock(block);
             post.setUrl(targetUrl);
             post.setOrderOfPlace(Integer.parseInt(orderOfPlace));
+            post.setUrlTargetLocation(urlTargetLocation);
+            post.setDescription(description);
+            if(postExpiryTime!=null){
+            SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");
+            Date dateTime;
+			try {
+				dateTime = sdfDate.parse(postExpiryTime);
+				  post.setPostsExpiryTime(dateTime);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            }
             post = postService.create(post);
             post.setPostName("SUCCESS:::Post Created Successfully");
             CmsPostsModel model = conversionService.convert(post, CmsPostsModel.class);
             return model;
-
         }
         contentType = file.getContentType();
         String webAppPath = (req.getServletContext().getRealPath("/"));
@@ -256,7 +214,6 @@ public class FileUploadController {
                     if (!postExpiryTime.equals("N/A")) {
                         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         Date dateTime = sdfDate.parse(postExpiryTime);
-
                         post.setPostsExpiryTime(dateTime);
                     }
                     if (!postProductTitle.equals("N/A")) {
@@ -272,6 +229,8 @@ public class FileUploadController {
                     post.setUrl(targetUrl);
                     post.setCmsBlock(block);
                     post.setOrderOfPlace(Integer.parseInt(orderOfPlace));
+                    post.setUrlTargetLocation(urlTargetLocation);
+                    post.setDescription(description);
                     post = postService.create(post);
                     if (post.getId() != null) {
                         postImage.setImageAlt(imageAlt);

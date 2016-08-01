@@ -10,6 +10,7 @@ public class AccountContext implements IBusinessDelegateContext {
     private String accountId;
     private String all;
 	private String usersId;
+	private String cashBackAmount;
 	
 	public String getUsersId() {
 		return usersId;
@@ -28,6 +29,12 @@ public class AccountContext implements IBusinessDelegateContext {
 	}
 	public void setAll(String all) {
 		this.all = all;
+	}
+	public String getCashBackAmount() {
+		return cashBackAmount;
+	}
+	public void setCashBackAmount(String cashBackAmount) {
+		this.cashBackAmount = cashBackAmount;
 	}
     
 

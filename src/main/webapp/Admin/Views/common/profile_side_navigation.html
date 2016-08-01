@@ -1,0 +1,71 @@
+<!-- Wrapper-->
+<div id="wrapper" class="top-navigation">
+	<!-- Navigation -->
+	<div ng-include="'Views/HeaderTemplate.html'"></div>
+	<!-- Page wraper -->
+	<!-- ng-class with current state name give you the ability to extended customization your view -->
+	<div class="{{$state.current.name}}">
+		<div class="row border-bottom white-bg m-t-sm">
+			<ol class="breadcrumb p-xs col-lg-12 gray-bg ">
+				<li>
+					<a href="index.html"><i class="fa fa-home"></i> Home</a>
+				</li>
+				<!-- <li>
+					<a href="{{$state.current.name}}" class="{{$state.current.url}}"> Profile</a>
+				</li> -->
+				<li>
+					<a> {{$state.current.data.pageTitle}}</a>
+				</li>
+			</ol>
+		</div>
+		<div class="container-fuild animated fadeInRight m-t-sm">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="ibox-title font-green-sharp fontpro border-bottom">
+						<h3 style="margin-bottom: 3px;">PROFILE BOARD</h3>
+					</div>
+				<!-- 	<div class="ibox-content no-padding border-left-right">
+             <img alt="image" class="img-responsive" src="../common/images/karthikeya.png"  style="width:200px;" />
+          </div> -->
+					<ul class="list-group">
+						<li class="list-group-item no-border" ui-sref-active="active">
+							<a ui-sref="Profile.MyProfile"><i class="fa fa-bullseye"></i> ProfileOverView</a>
+						</li>
+						<li class="list-group-item no-border" ui-sref-active="active">
+							<a ui-sref="Profile.ChangePassword"><i class="fa fa-group"></i> Change Password</a>
+						</li>
+						<li class="list-group-item no-border" ui-sref-active="active">
+							<a href="#/LoginPage"><i class="fa fa-user"></i> Log Out</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-9">
+					<!-- Main view  -->
+					<div ui-view>
+						
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div ng-include="'Views/FooterTemplate.html'"></div>
+
+	</div>
+	<!-- End page wrapper-->
+
+</div>
+<!-- End wrapper-->
+
+<style type="text/css">
+	.p_act{
+		cursor: pointer;
+		text-align: right;
+	}
+	.p_act.active{
+		cursor: pointer;
+		/*border-bottom: 3px solid #F3565D;*/
+		color: #F3565D !important;
+		text-align: right;
+	}
+</style>

@@ -1,0 +1,167 @@
+<div class="ibox-title">
+	<h5 class="text-uppercase">AVAILABLE {{$state.current.data.pageTitle}}</h5>
+</div>
+<div ng-controller="SingleOfferController">
+	<form class="form-horizontal profile_view">
+		<div class="form-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Offer Name</label>
+							<div class="col-md-8">
+								<div class="form-control-static">{{singleOfferDetails.offerName}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					 <div class="form-group">
+						<label class="control-label col-md-4">Offer Commission AmountType</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleOfferDetails.offerCommissionAmountType}}</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+				 <div class="form-group">
+						<label class="control-label col-md-4">Offer Source</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleOfferDetails.offerSource}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Offer Commission Amount</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleOfferDetails.offerCommissionAmount}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Offer StartDate</label>
+							<div class="col-md-8">
+								<div class="form-control-static">{{singleOfferDetails.offerStartDate}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Offer EndDate</label>
+							<div class="col-md-8">
+								<div class="form-control-static">{{singleOfferDetails.offerEndDate}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Offer Status</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleOfferDetails.offerStatus}}</div>
+						</div>
+						</div>
+					</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Offer CommissionType</label>
+						<div class="col-md-8">
+							<div class="form-control-static">{{singleOfferDetails.offerCommissionType}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Target Url</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleOfferDetails.targetUrl}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Offer CreatedDate</label>
+					 <div class="col-md-8">
+							<div class="form-control-static">{{singleOfferDetails.offerCreatedDate}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Image Name</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleOfferDetails.imageName}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+						<div class="form-group">
+						<label class="control-label col-md-4">Image Type</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleOfferDetails.imageType}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Image Location</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleOfferDetails.imageLocation}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+						<div class="form-group">
+						<label class="control-label col-md-4">Offer Description</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleOfferDetails.offerDescription}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label col-md-4">Offer Type</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleOfferDetails.offerType}}</div>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+						<div class="form-group">
+						<label class="control-label col-md-4">Offer Area</label>
+						 <div class="col-md-8">
+								<div class="form-control-static">{{singleOfferDetails.offerArea}}</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="form-actions">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-offset-9 col-md-9">
+							<button class="btn green-haze edit_back profile_edit" ng-click="OfferEdit()">Edit</button>
+							<a href="" class="btn default hide_Cancel hide">Cancel</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div> -->
+	</form>
+</div>

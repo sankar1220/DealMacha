@@ -1,0 +1,29 @@
+<div id="p-preview">
+							
+											<th:block th:unless="${#lists.isEmpty(#lists.toList(product.product_image_full))}">
+									<div class="item">
+									
+										<th:block  th:each= "image:${product.product_image_full}">
+										<img class="product-slider-image"  th:src="${image}" alt=""  />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+										</th:block>
+									</div>
+									
+								</th:block> 
+							<!-- <div class="item" th:if="${#lists.isEmpty(#lists.toList(item.restaurantItemImages))}">
+										
+										<img class="product-slider-image"  src="/Item/Images/default_360.png"  />
+										<a href="#" class="zoom" title="Product Photo"><i class="fa fa-plus"></i></a>
+									
+									</div>  -->
+								</div>
+						
+			<!-- 	<div id="p-thumb">
+						<th:block th:unless="${#lists.isEmpty(#lists.toList(product.product_image_thumbnail))}">
+									<div class="item">
+										<th:block th:each="thumbimage:${product.product_image_thumbnail}">
+										<img width="100" height="100"  th:src="${thumbimage}" class="attachment-shop_thumbnail"  />
+									</th:block>
+									</div>
+							</th:block>
+							</div> -->

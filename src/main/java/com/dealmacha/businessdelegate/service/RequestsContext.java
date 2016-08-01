@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class RequestsContext implements IBusinessDelegateContext {
     private String requestsId;
     private String all;
+    private String usersId;
 	public String getRequestsId() {
 		return requestsId;
 	}
@@ -20,6 +21,12 @@ public class RequestsContext implements IBusinessDelegateContext {
 	}
 	public void setAll(final String all) {
 		this.all = all;
+	}
+	public String getUsersId() {
+		return usersId;
+	}
+	public void setUsersId(String usersId) {
+		this.usersId = usersId;
 	}
     
 

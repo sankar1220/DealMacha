@@ -1,0 +1,99 @@
+<div class="ibox float-e-margins" ng-controller="UserCreationController">
+	<div class="ibox-title">
+		<h5 class="text-uppercase fontpro">Users Creation</h5>
+	</div>
+	<div class="ibox-content">
+		<form class="form-horizontal" id="userCreateForm" name="usersForm">
+			<div class="form-body">
+				<!-- <div class="form-group">
+					
+				</div> -->
+				<div class="form-group m-t-sm">
+				<!-- <label class="control-label col-md-2">User Type 
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':usersForm.usersType.$invalid && !usersForm.usersType.$pristine}">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control" ng-model="users.userType" placeholder="Name" required name="usersType">
+						</div>
+					</div> -->
+					<label class="control-label col-md-2">User Name 
+						<span class="required" aria-required="true">* </span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':usersForm.usersName.$invalid && !usersForm.usersName.$pristine}">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" class="form-control" ng-model="users.userName" placeholder="Name" required name="usersName">
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-t-sm">
+					<label class="control-label col-md-2">Age <span class="required">* </span></label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':usersForm.usersAge.$invalid && !usersForm.usersAge.$pristine}">
+							<span class="input-group-addon"><i class="fa fa-list-ol" aria-hidden="true"></i></span>
+								<input type="number" class="form-control" placeholder="age" ng-model="users.age" required name="usersAge"> 
+						</div>
+					</div>
+					<label class="control-label col-md-2">Mobile No <span class="required">* </span></label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':usersForm.mobile.$invalid && !usersForm.mobile.$pristine}">
+							 <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+								<input type="text" class="form-control" placeholder="mobile no" ng-model="users.mobileNo" required name="mobile"> 
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-t-sm">
+				<label class="control-label col-md-2">Alternate Mobile No</label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':usersForm.mobileNo.$invalid && !usersForm.mobileNo.$pristine}">
+							 <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+							<input type="text" class="form-control" placeholder="Alternate mobile No" ng-model="users.alternateMobileNo" required name="mobileNo">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Email Id <span class="required">* </span></label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':usersForm.userMail.$invalid && !usersForm.userMail.$pristine}">
+							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+								<input type="email" class="form-control " placeholder="name@gmail.com" ng-model="users.emailId" required name="userMail">
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-t-sm">
+				<label class="control-label col-md-2">Password <span class="required">* </span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group" ng-class="{'has-error':usersForm.userPassword.$invalid && !usersForm.userPassword.$pristine}">
+							 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input type="password" class="form-control" id="newPassword" placeholder="Password" ng-model="users.password" required name="userPassword">
+						</div>
+					</div>
+					<label class="control-label col-md-2">Confirm Password <span class="required">* </span>
+					</label>
+					<div class="col-md-4">
+						<div class="input-group"  ng-class="{'has-error':usersForm.confirmUserPassword.$invalid && !usersForm.confirmUserPassword.$pristine}">
+							 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input type="password" class="form-control" ng-model="users.confirmPassword" placeholder="Re-type Password" required name="confirmUserPassword">
+						</div>
+					</div>
+				</div>
+				<div class="form-actions">
+					<div class="row">
+						<div class="col-md-12">
+						 <div class="row">
+							 <div class="text-center" style="margin-top: 50px;">
+								<a class="btn" ng-click="UsersCreate(users)" style=" color: #FFFFFF;background-color: #35aa47;" ng-disabled="usersForm.$invalid">Submit</a>
+									<a ui-sref="Users.User" class="btn default button_bckgrndclr">Cancel</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+					 
+
+

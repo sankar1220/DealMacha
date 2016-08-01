@@ -3,6 +3,23 @@
  */
 package com.dealmacha.controller;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.hateoas.config.EnableHypermediaSupport;
+import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.dealmacha.businessdelegate.domain.IKeyBuilder;
 import com.dealmacha.businessdelegate.domain.SimpleIdKeyBuilder;
 import com.dealmacha.businessdelegate.service.CmsSectionContext;
@@ -11,25 +28,12 @@ import com.dealmacha.model.CmsSectionModel;
 import com.dealmacha.resources.assemblers.CmsSectionResourceAssembler;
 import com.dealmacha.resources.hal.CmsSectionResource;
 
-import javax.annotation.Resource;
-
-import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.hateoas.config.EnableHypermediaSupport;
-import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 /**
  * @author Jay
  *
  */
 
 @RestController
-@ExposesResourceFor(value = CmsSectionResource.class)
 @EnableHypermediaSupport(type = { HypermediaType.HAL })
 @RequestMapping(value = "/cmsSection", produces = { MediaType.APPLICATION_JSON_VALUE }, consumes = { MediaType.APPLICATION_JSON_VALUE })
 public class CmsSectionController {
@@ -74,8 +78,9 @@ public class CmsSectionController {
 
     }
 
-    @Resource(name = "cmsSectionBusinessDelegate")
-    public void setCmsSectionBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("cmsSectionBusinessDelegate")
+    public void setCmsSectionBusinessDelegate(final IBusinessDelegate<CmsSectionModel, CmsSectionContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

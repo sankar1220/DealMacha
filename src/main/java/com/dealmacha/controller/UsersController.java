@@ -1,20 +1,12 @@
 package com.dealmacha.controller;
 
-import com.dealmacha.businessdelegate.domain.IKeyBuilder;
-import com.dealmacha.businessdelegate.domain.SimpleIdKeyBuilder;
-import com.dealmacha.businessdelegate.service.IBusinessDelegate;
-import com.dealmacha.businessdelegate.service.UsersContext;
-import com.dealmacha.model.UsersModel;
-import com.dealmacha.resources.assemblers.UsersResourceAssembler;
-import com.dealmacha.resources.hal.UsersResource;
-import com.dealmacha.security.CustomUserDetails;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
@@ -23,7 +15,21 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dealmacha.businessdelegate.domain.IKeyBuilder;
+import com.dealmacha.businessdelegate.domain.SimpleIdKeyBuilder;
+import com.dealmacha.businessdelegate.service.IBusinessDelegate;
+import com.dealmacha.businessdelegate.service.UsersContext;
+import com.dealmacha.model.UsersModel;
+import com.dealmacha.resources.assemblers.UsersResourceAssembler;
+import com.dealmacha.resources.hal.UsersResource;
+import com.dealmacha.security.CustomUserDetails;
 
 @RestController
 @ExposesResourceFor(value = UsersResource.class)
@@ -66,7 +72,39 @@ public class UsersController {
             return new ResponseEntity<Iterable<UsersResource>>(models, HttpStatus.UNAUTHORIZED);
         }
     }
-
+    @RequestMapping(method = RequestMethod.POST, value = "/forgotPassword", consumes = { MediaType.ALL_VALUE })
+    @ResponseBody
+    public ResponseEntity<Iterable<UsersResource>> forgotPassword(@RequestBody final UsersModel userModel ,final HttpSession session)  {
+    	  UsersContext userContext = usersContextFactory.getObject();
+          Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+          CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        if (userDetails.getId() != null) {
+        userContext.setEmailId(userModel.getEmailId());
+        userContext.setForgotPasswordStatus("YES");
+        Iterable<UsersModel> usersModels = businessDelegate.getCollection(userContext);
+        final Iterable<UsersResource> resources = usersResourceAssembler.toResources(usersModels);
+        return new ResponseEntity<Iterable<UsersResource>>(resources, HttpStatus.OK);
+    }
+    else {
+        session.invalidate();
+        // model.addAttribute("message", "Session Expired! Login Again");
+        // return "redirect:" + url + "/login";
+        Iterable<UsersResource> models = null;
+        return new ResponseEntity<Iterable<UsersResource>>(models, HttpStatus.UNAUTHORIZED);
+    }
+    }
+    @RequestMapping(method = RequestMethod.POST, value = "/resetPassword", consumes = { MediaType.ALL_VALUE })
+    @ResponseBody
+    public  ResponseEntity<Iterable<UsersResource>> resetPassword(@RequestBody final UsersModel userModel) /*throws ResourceNotFoundException */ {
+        UsersContext userContext = usersContextFactory.getObject();
+        userContext.setUserId(userModel.getId());
+        userContext.setResetPasswordStatus("YES");
+        userContext.setNewPassword(userModel.getNewPassword());
+        userContext.setConfirmPassword(userModel.getConfirmPassword());
+        Iterable<UsersModel> usersModels = businessDelegate.getCollection(userContext);
+        final Iterable<UsersResource> resources = usersResourceAssembler.toResources(usersModels);
+        return new ResponseEntity<Iterable<UsersResource>>(resources, HttpStatus.OK);
+    }
     @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = { MediaType.ALL_VALUE })
     @ResponseBody
     public ResponseEntity<UsersResource> createUsers(@RequestBody final UsersModel usersModel) {
@@ -133,8 +171,9 @@ public class UsersController {
         keyBuilderFactory = factory;
     }
 
-    @Resource(name = "usersBusinessDelegate")
-    public void setUsersBusinessDelegate(final IBusinessDelegate businessDelegate) {
+    @Autowired
+    @Qualifier("usersBusinessDelegate")
+    public void setUsersBusinessDelegate(final IBusinessDelegate<UsersModel, UsersContext, IKeyBuilder<String>, String> businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 

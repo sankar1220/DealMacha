@@ -1,0 +1,80 @@
+<div class="row border-bottom white-bg m-t-sm">
+<!-- <h3>Merchant View</h3> -->
+	<div class="ibox-title">
+		<h5 class="text-uppercase fontpro">AVAILABLE {{$state.current.data.pageTitle}}</h5>
+			<div class="ibox-tools">
+				<a class="tools-p myButton" ui-sref="Merchants.MerchantCreation" style="margin-right: 20px;"><i class="fa fa-plus"></i> Merchants</a>
+			</div>
+	</div>
+</div>
+<div class="container-fuild m-t-sm item_scrl" ng-controller="MerchantController">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="col-lg-3" ng-repeat="data in merchantDetails">
+				<div class="ibox float-e-margins  box-shadow">
+					<div class="ibox-title">
+						<h3 class="text-center" style="color: #00a4e4;">{{data.merchantName}}</h3>
+					</div>
+					<div class="ibox-content white-bg">
+						<h2 class="no-margins"><img ng-src="{{data.merchantImage}}" class="width_w"></h2>
+					</div>
+					<!-- <div class="ibox-title left_m">
+						<h5>No Of Transcations:  05</h5>
+					</div> -->
+					<a href="#/Merchants/SingleMerchant/{{data.merchantId}}"><label class="btn btn-success ng-untouched ng-valid active ng-dirty ng-valid-parse" style="margin-left: 107px; margin-top: 13px;">View</label></a>
+				</div>
+			</div>
+			<!-- <div class="col-lg-3">
+				<div class="ibox float-e-margins  box-shadow">
+					<div class="ibox-title">
+						<h3 class="text-center" style="color: #00a4e4;">Flipkart</h3>
+					</div>
+					<div class="ibox-content white-bg">
+						<h2 class="no-margins"><img src="/Dealmacha/common/images/flipkart_logo.png" class="width_w"></h2>
+					</div>
+					<a ui-sref="Merchants.SingleMerchant"><label class="btn btn-success ng-untouched ng-valid active ng-dirty ng-valid-parse" style="margin-left: 107px; margin-top: 13px;">View</label></a>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="ibox float-e-margins  box-shadow">
+					<div class="ibox-title">
+						<h3 class="text-center" style="color: #00a4e4;">Flipkart</h3>
+					</div>
+					<div class="ibox-content white-bg">
+						<h2 class="no-margins"><img src="/Dealmacha/common/images/flipkart_logo.png"class="width_w"></h2>
+					</div>
+					<a ui-sref="Merchants.SingleMerchant"><label class="btn btn-success ng-untouched ng-valid active ng-dirty ng-valid-parse" style="margin-left: 107px; margin-top: 13px;">View</label></a>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="ibox float-e-margins  box-shadow">
+					<div class="ibox-title">
+						<h3 class="text-center" style="color: #00a4e4;">Flipkart</h3>
+					</div>
+					<div class="ibox-content white-bg">
+						<h2 class="no-margins"><img src="/Dealmacha/common/images/flipkart_logo.png"class="width_w"></h2>
+					</div>
+					<a ui-sref="Merchants.SingleMerchant"><label class="btn btn-success ng-untouched ng-valid active ng-dirty ng-valid-parse" style="margin-left: 107px; margin-top: 13px;">View</label></a>
+				</div>
+			</div> -->
+		</div>
+	</div>
+	
+</div>
+
+<style type="text/css">
+	 .box-shadow{
+		-webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.8);
+		-moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.8);
+		box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.8);
+	}
+	.width_w{
+		width: 155px; 
+		height:50px;
+		margin-left: 46px;
+	}
+	.left_m{
+		 margin-left: 50px;
+	}
+
+</style>
